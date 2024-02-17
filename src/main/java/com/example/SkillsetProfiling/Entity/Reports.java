@@ -1,14 +1,12 @@
 package com.example.SkillsetProfiling.Entity;
-
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -17,14 +15,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Job_Eligibility_Check")
-public class Job_Eligibility_Check {
+@Table(name = "Reports")
+public class Reports {
+
     @Id
-    private Integer JobID;
-    @Id
-    private Integer StudentID;
-    private Timestamp timestamp_checked;
-    private Boolean eligible;
-    private Boolean applied;
-    private Timestamp timestamp_applied;
+    private Integer ReportID;
+    private Integer reportTypeID;
+    private String report_description;
+    private Integer userID;
+    private String report_status;
+    private Timestamp timestamp_reported;
+    private Timestamp timestamp_status_modified;
 }

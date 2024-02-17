@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Getter
@@ -27,6 +28,6 @@ public class User_Details {
     @Lob
     private byte[] profile_picture;
     private Integer roleID;
-    private Date date_created;
-    private Date date_updated;
+    private Timestamp timestamp_created;
+    private Timestamp timestamp_updated;
 }

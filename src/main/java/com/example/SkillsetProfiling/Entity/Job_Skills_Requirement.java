@@ -8,23 +8,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Time;
-import java.sql.Timestamp;
-import java.util.Date;
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Job_Eligibility_Check")
-public class Job_Eligibility_Check {
+@Table(name = "Job_Skills_Requirement")
+public class Job_Skills_Requirement {
+
     @Id
     private Integer JobID;
-    @Id
-    private Integer StudentID;
-    private Timestamp timestamp_checked;
-    private Boolean eligible;
-    private Boolean applied;
-    private Timestamp timestamp_applied;
+    private Integer SkillID;
+    private Integer LevelID;
 }

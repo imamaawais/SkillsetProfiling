@@ -12,20 +12,19 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Getter
 @Setter
-@NoArgsConstructor
+@Getter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Job_Postings")
-public class Job_Postings {
+@Table(name = "Student_Skill_Level")
+public class Student_Skill_Level {
+
     @Id
-    private Integer JobID;
-    private Integer hrID;
-    private String job_title;
-    private String job_description;
-    private Boolean required_industrial_experience;
-    private String posting_status;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_closed;
+    private Integer StudentSkillLevelID;
+    private Integer studentID;
+    private Integer skillID;
+    private Integer levelID;
+    private Integer progress;
+    private Timestamp timestamp_updated;
 }
