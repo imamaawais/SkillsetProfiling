@@ -15,18 +15,17 @@ import lombok.Setter;
 @Table(name = "Mentor_Qualification")
 @IdClass(Mentor_Qualification_Key.class)
 public class Mentor_Qualification {
-
     @Id
     @ManyToOne
     @JoinColumn(name = "MentorID")
-    private Mentor_Details MentorID;
+    private Mentor_Details mentor_details;
     @Id
     @ManyToOne
     @JoinColumn(name = "QualificationID")
-    private Qualification QualificationID;
+    private Qualification qualification;
     @Id
     @ManyToOne
     @JoinColumn(name = "DomainID")
-    private Domain DomainID;
+    private Domain domain;
     private Boolean completed;
 }

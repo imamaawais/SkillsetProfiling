@@ -1,8 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +19,9 @@ import java.util.Date;
 public class Job_Postings {
     @Id
     private Integer JobID;
-    private Integer hrID;
+    @ManyToOne
+    @JoinColumn(name = "hrID")
+    private HR_Details hr_details;
     private String job_title;
     private String job_description;
     private Boolean required_industrial_experience;

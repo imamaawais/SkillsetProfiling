@@ -1,8 +1,7 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Job_Domain_Requirements_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,9 +13,14 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Job_Domain_Requirements")
+@IdClass(Job_Domain_Requirements_Key.class)
 public class Job_Domain_Requirements {
     @Id
-    private Integer JobID;
+    @ManyToOne
+    @JoinColumn(name = "JobID")
+    private Job_Postings job_postings;
     @Id
-    private Integer DomainID;
+    @ManyToOne
+    @JoinColumn(name = "DomainID")
+    private Domain domain;
 }

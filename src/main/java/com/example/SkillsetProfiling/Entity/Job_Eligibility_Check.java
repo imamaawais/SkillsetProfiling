@@ -1,16 +1,13 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Job_Eligibility_Check_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Getter
 @Setter
@@ -18,11 +15,16 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 @Table(name = "Job_Eligibility_Check")
+@IdClass(Job_Eligibility_Check_Key.class)
 public class Job_Eligibility_Check {
     @Id
-    private Integer JobID;
+    @ManyToOne
+    @JoinColumn(name = "JobID")
+    private Job_Postings job_posting;
     @Id
-    private Integer StudentID;
+    @ManyToOne
+    @JoinColumn(name = "StudentID")
+    private Student_Details student_details;
     private Timestamp timestamp_checked;
     private Boolean eligible;
     private Boolean applied;

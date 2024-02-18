@@ -17,10 +17,10 @@ public class Student_Details {
     private Integer StudentID;
     @OneToOne
     @JoinColumn(name = "userID")
-    private User_Details userID;
+    private User_Details user_details;
     private Integer enrollment_year;
     @ManyToOne
     @JoinColumn(name = "domainID")
-    private Domain domainID;
+    private Domain domain;
     private Integer expected_graduation;
 }

@@ -18,9 +18,9 @@ import java.util.Date;
 public class User_Details {
     @Id
     private Integer UserID;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "email")
-    private Auth email;
+    private Auth auth;
     private String first_name;
     private String last_name;
     private Date date_of_birth;
@@ -28,7 +28,7 @@ public class User_Details {
     private byte[] profile_picture;
     @ManyToOne
     @JoinColumn(name = "roleID")
-    private Role roleID;
+    private Role role;
     private Timestamp timestamp_created;
     private Timestamp timestamp_updated;
 }
