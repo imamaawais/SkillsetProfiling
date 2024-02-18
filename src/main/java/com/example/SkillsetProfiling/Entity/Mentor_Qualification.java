@@ -1,8 +1,7 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Mentor_Qualification_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,12 +13,20 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Mentor_Qualification")
+@IdClass(Mentor_Qualification_Key.class)
 public class Mentor_Qualification {
+
     @Id
-    private Integer MentorID;
+    @ManyToOne
+    @JoinColumn(name = "MentorID")
+    private Mentor_Details MentorID;
     @Id
-    private Integer QualificationID;
+    @ManyToOne
+    @JoinColumn(name = "QualificationID")
+    private Qualification QualificationID;
     @Id
-    private Integer DomainID;
+    @ManyToOne
+    @JoinColumn(name = "DomainID")
+    private Domain DomainID;
     private Boolean completed;
 }

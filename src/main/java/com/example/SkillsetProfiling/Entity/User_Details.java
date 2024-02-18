@@ -1,9 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,13 +18,17 @@ import java.util.Date;
 public class User_Details {
     @Id
     private Integer UserID;
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "email")
+    private Auth email;
     private String first_name;
     private String last_name;
     private Date date_of_birth;
     @Lob
     private byte[] profile_picture;
-    private Integer roleID;
+    @ManyToOne
+    @JoinColumn(name = "roleID")
+    private Role roleID;
     private Timestamp timestamp_created;
     private Timestamp timestamp_updated;
 }
