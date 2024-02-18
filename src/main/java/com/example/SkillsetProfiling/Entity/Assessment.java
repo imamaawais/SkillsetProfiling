@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +18,12 @@ public class Assessment {
 
     @Id
     private Integer AssessmentID;
-    private Integer questionPaperID;
-    private Integer studentID;
+    @ManyToOne
+    @JoinColumn(name = "questionPaperID")
+    private Question_Paper question_paper;
+    @ManyToOne
+    @JoinColumn(name = "studentID")
+    private Student_Details student_details;
     private Integer time_taken;
     private Integer total_score;
     private Timestamp assessment_timestamp;

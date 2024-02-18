@@ -1,7 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Test_Attempt_History_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +12,17 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Test_Attempt_History")
+@IdClass(Test_Attempt_History_Key.class)
 public class Test_Attempt_History {
 
     @Id
-    private Integer TestID;
-    private Integer AssessmentID;
+    @ManyToOne
+    @JoinColumn(name = "TestID")
+    private Test test;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "AssessmentID")
+    private Assessment assessment;
     private Integer attempt_number;
 
 

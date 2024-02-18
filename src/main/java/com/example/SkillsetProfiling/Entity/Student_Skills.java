@@ -1,8 +1,7 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Student_Skills_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,11 +16,16 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "Student_Skills")
+@IdClass(Student_Skills_Key.class)
 public class Student_Skills {
-
     @Id
-    private Integer StudentID;
-    private Integer SkillID;
+    @ManyToOne
+    @JoinColumn(name = "StudentID")
+    private Student_Details student_details;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "SkillID")
+    private Skills skills;
     private Integer self_level;
     private Integer levelID;
     private Timestamp timestamp_updated;

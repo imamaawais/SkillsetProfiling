@@ -1,8 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +18,8 @@ public class Sub_Skills {
     private Integer SubSkillID;
     private String sub_skill_name;
     private String sub_skill_description;
-    private Integer skillID;
+    @ManyToOne
+    @JoinColumn(name = "skillID")
+    private Skills skills;
 
 }

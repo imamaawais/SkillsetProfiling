@@ -1,7 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Badge_Assignment_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,10 +12,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Badge_Assignment")
+@IdClass(Badge_Assignment_Key.class)
 public class Badge_Assignment {
-
     @Id
-    private Integer BadgeID;
-    private Integer StudentID;
-    private Integer SkillID;
+    @ManyToOne
+    @JoinColumn(name = "BadgeID")
+    private Badges badges;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "StudentID")
+    private Student_Details student_details;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "SkillID")
+    private Skills skills;
 }

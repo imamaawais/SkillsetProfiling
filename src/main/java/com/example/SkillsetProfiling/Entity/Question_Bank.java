@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +20,9 @@ public class Question_Bank {
     private Integer QuestionID;
     private String question_text;
     private String answer;
-    private Integer difficultyID;
+    @ManyToOne
+    @JoinColumn(name = "difficultyID")
+    private Question_Difficulty question_difficulty;
     private Timestamp timestamp_created;
     private Timestamp timestamp_updated;
 }

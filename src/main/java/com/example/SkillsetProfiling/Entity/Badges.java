@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,6 +16,8 @@ public class Badges {
     @Id
     private Integer BadgeID;
     private String badge_name;
-    private Integer badgeGroupID;
+    @ManyToOne
+    @JoinColumn(name = "badgeGroupID")
+    private Badge_Groups badge_groups;
 
 }

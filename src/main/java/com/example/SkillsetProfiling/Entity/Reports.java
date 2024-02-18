@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,9 +18,13 @@ public class Reports {
 
     @Id
     private Integer ReportID;
-    private Integer reportTypeID;
+    @ManyToOne
+    @JoinColumn(name = "reportTypeID")
+    private Report_Types report_types;
     private String report_description;
-    private Integer userID;
+    @ManyToOne
+    @JoinColumn(name = "userID")
+    private User_Details user_details;
     private String report_status;
     private Timestamp timestamp_reported;
     private Timestamp timestamp_status_modified;

@@ -1,8 +1,7 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.SkillsetProfiling.Key.Mentor_Specialization_Key;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +13,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Mentor_Specialization")
+@IdClass(Mentor_Specialization_Key.class)
 public class Mentor_Specialization {
 
     @Id
-    private Integer MentorID;
-    private Integer SkillID;
+    @ManyToOne
+    @JoinColumn(name = "MentorID")
+    private Mentor_Details mentor_details;
+    @Id
+    @ManyToOne
+    @JoinColumn(name = "SkillID")
+    private Skills skills;
 
 }

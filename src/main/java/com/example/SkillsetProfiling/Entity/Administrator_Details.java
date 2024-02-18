@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +15,8 @@ public class Administrator_Details {
 
     @Id
     private Integer AdministratorID;
-    private Integer userID;
+    @OneToOne
+    @JoinColumn(name = "userID")
+    private User_Details user_details;
 
 }
