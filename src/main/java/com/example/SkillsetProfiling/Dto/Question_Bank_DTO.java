@@ -1,4 +1,5 @@
-package com.example.SkillsetProfiling.Entity;
+package com.example.SkillsetProfiling.Dto;
+import com.example.SkillsetProfiling.Entity.Question_Difficulty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,16 +12,10 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Question_Bank")
-public class Question_Bank {
-
-    @Id
+public class Question_Bank_DTO {
     private Integer QuestionID;
     private String question_text;
     private String answer;
-    @ManyToOne
-    @JoinColumn(name = "difficultyID")
     private Question_Difficulty question_difficulty;
     private Timestamp timestamp_created;
     private Timestamp timestamp_updated;

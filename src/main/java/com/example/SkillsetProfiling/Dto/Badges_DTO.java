@@ -1,5 +1,5 @@
-package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.*;
+package com.example.SkillsetProfiling.Dto;
+import com.example.SkillsetProfiling.Entity.Badge_Groups;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,14 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Badges")
-public class Badges {
-    @Id
+public class Badges_DTO {
     private Integer BadgeID;
     private String badge_name;
-    @ManyToOne
-    @JoinColumn(name = "badgeGroupID")
     private Badge_Groups badge_groups;
-
 }

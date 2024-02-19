@@ -14,7 +14,6 @@ import lombok.Setter;
 @Table(name = "Assessment_Scores")
 @IdClass(Assessment_Scores_Key.class)
 public class Assessment_Scores {
-
     @Id
     @ManyToOne
     @JoinColumn(name = "AssessmentID")

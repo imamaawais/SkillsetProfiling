@@ -1,6 +1,5 @@
 package com.example.SkillsetProfiling;
 
-import com.example.SkillsetProfiling.Entity.Skills;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

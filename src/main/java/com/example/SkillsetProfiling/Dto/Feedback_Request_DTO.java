@@ -1,5 +1,8 @@
-package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.*;
+package com.example.SkillsetProfiling.Dto;
+
+import com.example.SkillsetProfiling.Entity.Assessment;
+import com.example.SkillsetProfiling.Entity.Question_Bank;
+import com.example.SkillsetProfiling.Entity.Student_Details;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,19 +14,10 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Feedback_Request")
-public class Feedback_Request {
-    @Id
+public class Feedback_Request_DTO {
     private Integer FeedbackID;
-    @ManyToOne
-    @JoinColumn(name = "assessmentID")
     private Assessment assessment;
-    @ManyToOne
-    @JoinColumn(name = "questionID")
     private Question_Bank question_bank;
-    @ManyToOne
-    @JoinColumn(name = "studentID")
     private Student_Details student_details;
     private String request_message;
     private Timestamp request_timestamp;

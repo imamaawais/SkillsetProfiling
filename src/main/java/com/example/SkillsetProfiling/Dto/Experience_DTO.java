@@ -1,7 +1,5 @@
-package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+package com.example.SkillsetProfiling.Dto;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,10 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Experience")
-public class Experience {
-    @Id
+public class Experience_DTO {
     private Integer ExperienceID;
     private String experience_name;
 }

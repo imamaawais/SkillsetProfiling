@@ -1,5 +1,6 @@
-package com.example.SkillsetProfiling.Entity;
-import jakarta.persistence.*;
+package com.example.SkillsetProfiling.Dto;
+
+import com.example.SkillsetProfiling.Entity.Mentor_Details;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,14 +12,8 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Feedback_Response")
-public class Feedback_Response {
-
-    @Id
+public class Feedback_Response_DTO {
     private Integer FeedbackID;
-    @ManyToOne
-    @JoinColumn(name = "mentorID")
     private Mentor_Details mentor_details;
     private String response_message;
     private Timestamp response_timestamp;

@@ -1,5 +1,7 @@
-package com.example.SkillsetProfiling.Entity;
+package com.example.SkillsetProfiling.Dto;
 
+import com.example.SkillsetProfiling.Entity.Skills;
+import com.example.SkillsetProfiling.Entity.Student_Details;
 import com.example.SkillsetProfiling.Key.Student_Skills_Key;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,17 +15,8 @@ import java.sql.Timestamp;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "Student_Skills")
-@IdClass(Student_Skills_Key.class)
-public class Student_Skills {
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "StudentID")
+public class Student_Skills_DTO {
     private Student_Details student_details;
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "SkillID")
     private Skills skills;
     private Integer self_level;
     private Integer levelID;

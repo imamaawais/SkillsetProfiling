@@ -1,5 +1,6 @@
-package com.example.SkillsetProfiling.Entity;
+package com.example.SkillsetProfiling.Dto;
 
+import com.example.SkillsetProfiling.Entity.HR_Details;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,13 +13,8 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Job_Postings")
-public class Job_Postings {
-    @Id
+public class Job_Postings_DTO {
     private Integer JobID;
-    @ManyToOne
-    @JoinColumn(name = "hrID")
     private HR_Details hr_details;
     private String job_title;
     private String job_description;
@@ -27,3 +23,4 @@ public class Job_Postings {
     private Timestamp timestamp_created;
     private Timestamp timestamp_closed;
 }
+

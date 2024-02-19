@@ -1,4 +1,4 @@
-package com.example.SkillsetProfiling.Entity;
+package com.example.SkillsetProfiling.Dto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -10,13 +10,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "Auth")
-public class Auth {
-    @Id
-    private String email;
-    private String password;
-    private String phone_number;
+@NoArgsConstructor
+public class Skill_Level_DTO {
+    private Integer LevelID;
+    private String level_name;
+    private Integer no_tests_required;
 }
