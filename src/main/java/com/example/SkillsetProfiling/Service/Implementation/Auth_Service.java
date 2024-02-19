@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class Auth_Service implements IAuth_Service {
@@ -26,5 +29,12 @@ public class Auth_Service implements IAuth_Service {
         Auth_DTO savedAuthDTO = mapper.map(savedAuth, Auth_DTO.class);
 
         return savedAuthDTO;
+    }
+
+    public List<Auth_DTO> getAllUsers() {
+        List<Auth> allUsers = AuthRepo.findAll(); // Assuming AuthRepo extends JpaRepository<Auth, Long>
+        return allUsers.stream()
+                .map(user -> mapper.map(user, Auth_DTO.class))
+                .collect(Collectors.toList());
     }
 }
