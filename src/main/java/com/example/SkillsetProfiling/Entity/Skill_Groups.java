@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Skill_Group")
-public class Skill_Group {
+@Table(name = "Skill_Groups")
+public class Skill_Groups {
     @Id
     private Integer SkillGroupID;
     private String group_name;

@@ -12,9 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Job_Skills_Requirement")
+@Table(name = "Job_Skills_Requirements")
 @IdClass(Job_Skills_Requirement_Key.class)
-public class Job_Skills_Requirement {
+public class Job_Skills_Requirements {
 
     @Id
     @ManyToOne
