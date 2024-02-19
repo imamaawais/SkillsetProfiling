@@ -18,10 +18,10 @@ public class Question_Sub_Skill {
     @Id
     @ManyToOne
     @JoinColumn(name = "QuestionID")
-    private Question_Bank question_bank;
+    private Question_Bank QuestionID;
     @Id
     @ManyToOne
     @JoinColumn(name = "SubSkillID")
-    private Sub_Skills sub_skills;
+    private Sub_Skills SubSkillID;
 
 }

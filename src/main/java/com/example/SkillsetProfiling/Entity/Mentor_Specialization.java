@@ -19,10 +19,10 @@ public class Mentor_Specialization {
     @Id
     @ManyToOne
     @JoinColumn(name = "MentorID")
-    private Mentor_Details mentor_details;
+    private Mentor_Details MentorID;
     @Id
     @ManyToOne
     @JoinColumn(name = "SkillID")
-    private Skills skills;
+    private Skills SkillID;
 
 }

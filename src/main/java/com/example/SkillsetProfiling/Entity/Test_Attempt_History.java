@@ -18,11 +18,11 @@ public class Test_Attempt_History {
     @Id
     @ManyToOne
     @JoinColumn(name = "TestID")
-    private Test test;
+    private Test TestID;
     @Id
     @ManyToOne
     @JoinColumn(name = "AssessmentID")
-    private Assessment assessment;
+    private Assessment AssessmentID;
     private Integer attempt_number;
 
 

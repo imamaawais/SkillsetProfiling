@@ -11,6 +11,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Job_Eligibility_Check_Key implements Serializable {
-    private Integer JobId;
-    private Integer StudentId;
+    private Integer JobID;
+    private Integer StudentID;
 }

@@ -20,11 +20,11 @@ public class Job_Eligibility_Check {
     @Id
     @ManyToOne
     @JoinColumn(name = "JobID")
-    private Job_Postings job_posting;
+    private Job_Postings JobID;
     @Id
     @ManyToOne
     @JoinColumn(name = "StudentID")
-    private Student_Details student_details;
+    private Student_Details StudentID;
     private Timestamp timestamp_checked;
     private Boolean eligible;
     private Boolean applied;

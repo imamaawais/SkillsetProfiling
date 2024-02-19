@@ -18,14 +18,14 @@ public class Mentor_Qualification {
     @Id
     @ManyToOne
     @JoinColumn(name = "MentorID")
-    private Mentor_Details mentor_details;
+    private Mentor_Details MentorID;
     @Id
     @ManyToOne
     @JoinColumn(name = "QualificationID")
-    private Qualification qualification;
+    private Qualification QualificationID;
     @Id
     @ManyToOne
     @JoinColumn(name = "DomainID")
-    private Domain domain;
+    private Domain DomainID;
     private Boolean completed;
 }

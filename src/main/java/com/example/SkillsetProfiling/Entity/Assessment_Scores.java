@@ -17,11 +17,11 @@ public class Assessment_Scores {
     @Id
     @ManyToOne
     @JoinColumn(name = "AssessmentID")
-    private Assessment assessment;
+    private Assessment AssessmentID;
     @Id
     @ManyToOne
     @JoinColumn(name = "QuestionID")
-    private Question_Bank question_bank;
+    private Question_Bank QuestionID;
     private String user_answer;
     private Boolean is_attempted;
 }

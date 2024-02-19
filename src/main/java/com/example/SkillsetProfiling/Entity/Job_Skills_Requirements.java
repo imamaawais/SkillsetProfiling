@@ -19,13 +19,13 @@ public class Job_Skills_Requirements {
     @Id
     @ManyToOne
     @JoinColumn(name = "JobID")
-    private Job_Postings job_postings;
+    private Job_Postings JobID;
     @Id
     @ManyToOne
     @JoinColumn(name = "SkillID")
-    private Skills skills;
+    private Skills SkillID;
     @Id
     @ManyToOne
     @JoinColumn(name = "LevelID")
-    private Skill_Level skill_level;
+    private Skill_Level LevelID;
 }

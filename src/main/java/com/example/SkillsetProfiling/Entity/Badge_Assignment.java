@@ -17,13 +17,13 @@ public class Badge_Assignment {
     @Id
     @ManyToOne
     @JoinColumn(name = "BadgeID")
-    private Badges badges;
+    private Badges BadgeID;
     @Id
     @ManyToOne
     @JoinColumn(name = "StudentID")
-    private Student_Details student_details;
+    private Student_Details StudentID;
     @Id
     @ManyToOne
     @JoinColumn(name = "SkillID")
-    private Skills skills;
+    private Skills SkillID;
 }

@@ -18,10 +18,10 @@ public class Student_Experience {
     @Id
     @ManyToOne
     @JoinColumn(name = "StudentID")
-    private Student_Details student_details;
+    private Student_Details StudentID;
     @Id
     @ManyToOne
     @JoinColumn(name = "ExperienceID")
-    private Experience experience;
+    private Experience ExperienceID;
     private Integer no_of_years;
 }

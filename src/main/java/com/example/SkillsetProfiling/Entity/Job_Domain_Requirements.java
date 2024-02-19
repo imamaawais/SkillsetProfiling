@@ -18,9 +18,9 @@ public class Job_Domain_Requirements {
     @Id
     @ManyToOne
     @JoinColumn(name = "JobID")
-    private Job_Postings job_postings;
+    private Job_Postings JobID;
     @Id
     @ManyToOne
     @JoinColumn(name = "DomainID")
-    private Domain domain;
+    private Domain DomainID;
 }

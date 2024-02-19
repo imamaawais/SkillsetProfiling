@@ -18,10 +18,10 @@ public class Question_Paper_Questions {
     @Id
     @ManyToOne
     @JoinColumn(name = "QuestionPaperID")
-    private Question_Paper question_paper;
+    private Question_Paper QuestionPaperID;
     @Id
     @ManyToOne
     @JoinColumn(name = "QuestionID")
-    private Question_Bank question_bank;
+    private Question_Bank QuestionID;
 
 }

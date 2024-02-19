@@ -20,11 +20,11 @@ public class Student_Skills {
     @Id
     @ManyToOne
     @JoinColumn(name = "StudentID")
-    private Student_Details student_details;
+    private Student_Details StudentID;
     @Id
     @ManyToOne
     @JoinColumn(name = "SkillID")
-    private Skills skills;
+    private Skills SkillID;
     private Integer self_level;
     private Integer levelID;
     private Timestamp timestamp_updated;
