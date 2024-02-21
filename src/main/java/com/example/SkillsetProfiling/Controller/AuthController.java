@@ -1,6 +1,7 @@
 package com.example.SkillsetProfiling.Controller;
 
 import com.example.SkillsetProfiling.Dto.Auth_DTO;
+import com.example.SkillsetProfiling.Exception.UserNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Auth_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,7 @@ public class AuthController {
 
     @GetMapping("/users")
     public ResponseEntity<List<Auth_DTO>> getAllUsers() {
-        List<Auth_DTO> userList = service.getAllUsers(); // Assuming you have a method in your service to fetch all users
+        List<Auth_DTO> userList = service.getAllUsers();
 
         if (userList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -66,14 +67,21 @@ public class AuthController {
 
     @DeleteMapping("/users/{email}")
     public ResponseEntity<Void> deleteUser(@PathVariable String email) {
-        boolean deleted = service.deleteUser(email);
+       try{
+           boolean deleted = service.deleteUser(email);
+           if (deleted){
+               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+           }else{
+               return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+           }
+       } catch(UserNotFoundException e){
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+       }
 
-        if (!deleted) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
 
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+
+
+         }
 
 
 
