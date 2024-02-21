@@ -12,4 +12,5 @@ public interface IRole_Service {
     Role_DTO getRoleByRoleName(String roleName) throws RoleNotFoundException;
     Role_DTO updateRole(Integer roleId, Role_DTO updatedRoleDTO) throws RoleNotFoundException;
     boolean deleteRole(Integer roleId) throws RoleNotFoundException ;
+
 }
