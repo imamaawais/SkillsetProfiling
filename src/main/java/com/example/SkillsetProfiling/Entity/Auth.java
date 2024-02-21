@@ -1,5 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,10 +14,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Auth")
+@Table(name = "auth")
 public class Auth {
     @Id
     private String email;
     private String password;
-    private String phone_number;
+    @Column(name = "phone_number")
+    private String phoneNumber;
 }

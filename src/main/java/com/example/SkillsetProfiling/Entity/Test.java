@@ -16,10 +16,10 @@ public class Test {
     @Id
     private Integer TestID;
     @ManyToOne
-    @JoinColumn(name = "studentSkillLevelID")
+    @JoinColumn(name = "student_Skill_LevelID")
     private Student_Skill_Level student_skill_level;
-    private Integer test_number;
-    private Boolean is_passed;
-    private Integer no_of_attempts;
+    private Integer testNumber;
+    private Boolean isPassed;
+    private Integer noOfAttempts;
 
 }

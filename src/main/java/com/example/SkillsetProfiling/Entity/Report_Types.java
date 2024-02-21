@@ -17,5 +17,5 @@ public class Report_Types {
 
     @Id
     private Integer ReportTypeID;
-    private String type_name;
+    private String typeName;
 }

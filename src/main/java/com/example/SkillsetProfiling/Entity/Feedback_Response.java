@@ -20,6 +20,6 @@ public class Feedback_Response {
     @ManyToOne
     @JoinColumn(name = "mentorID")
     private Mentor_Details mentor_details;
-    private String response_message;
-    private Timestamp response_timestamp;
+    private String responseMessage;
+    private Timestamp responseTimestamp;
 }

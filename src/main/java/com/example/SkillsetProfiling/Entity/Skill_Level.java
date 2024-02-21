@@ -18,6 +18,6 @@ public class Skill_Level {
 
     @Id
     private Integer LevelID;
-    private String level_name;
-    private Integer no_tests_required;
+    private String levelName;
+    private Integer noTestsRequired;
 }

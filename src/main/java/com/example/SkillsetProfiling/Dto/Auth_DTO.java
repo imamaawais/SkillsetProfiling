@@ -12,5 +12,5 @@ import lombok.Setter;
 public class Auth_DTO {
     private String email;
     private String password;
-    private String phone_number;
+    private String phoneNumber;
 }

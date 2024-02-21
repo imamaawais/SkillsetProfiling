@@ -1,9 +1,6 @@
 package com.example.SkillsetProfiling.Dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,5 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Role_DTO {
     private Integer RoleID;
-    private String role_name;
+    //@JsonProperty("role_name") // dont need since object mapper used
+    private String roleName;
 }

@@ -23,5 +23,5 @@ public class Student_Experience {
     @ManyToOne
     @JoinColumn(name = "ExperienceID")
     private Experience ExperienceID;
-    private Integer no_of_years;
+    private Integer noOfYears;
 }

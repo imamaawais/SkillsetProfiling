@@ -21,14 +21,14 @@ public class User_Details {
     @OneToOne
     @JoinColumn(name = "email")
     private Auth auth;
-    private String first_name;
-    private String last_name;
-    private Date date_of_birth;
+    private String firstName;
+    private String lastName;
+    private Date dateOfBirth;
     @Lob
-    private byte[] profile_picture;
+    private byte[] profilePicture;
     @ManyToOne
     @JoinColumn(name = "roleID")
     private Role role;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 }

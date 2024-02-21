@@ -16,5 +16,5 @@ import lombok.Setter;
 public class Experience {
     @Id
     private Integer ExperienceID;
-    private String experience_name;
+    private String experienceName;
 }

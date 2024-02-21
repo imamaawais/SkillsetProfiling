@@ -19,5 +19,5 @@ public class Industry {
     @Id
     private Integer IndustryID;
     @Column(unique = true)
-    private String industry_name;
+    private String industryName;
 }

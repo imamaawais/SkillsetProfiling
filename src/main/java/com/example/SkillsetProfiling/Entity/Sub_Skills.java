@@ -16,8 +16,8 @@ public class Sub_Skills {
 
     @Id
     private Integer SubSkillID;
-    private String sub_skill_name;
-    private String sub_skill_description;
+    private String subSkillName;
+    private String subSkillDescription;
     @ManyToOne
     @JoinColumn(name = "skillID")
     private Skills skills;

@@ -23,7 +23,7 @@ public class Question_Paper {
     @ManyToOne
     @JoinColumn(name = "skillID")
     private Skills skillID;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 
 }

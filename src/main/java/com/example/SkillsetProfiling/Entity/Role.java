@@ -18,5 +18,5 @@ public class Role {
     private Integer RoleID;
 
     @Column(unique = true)
-    private String role_name;
+    private String roleName;
 }

@@ -22,6 +22,6 @@ public class Assessment_Scores {
     @ManyToOne
     @JoinColumn(name = "QuestionID")
     private Question_Bank QuestionID;
-    private String user_answer;
-    private Boolean is_attempted;
+    private String userAnswer;
+    private Boolean isAttempted;
 }

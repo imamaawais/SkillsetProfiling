@@ -72,7 +72,7 @@ public class Auth_Service implements IAuth_Service {
         // Update user information based on updatedAuthDTO
         // For example:
         existingUser.setPassword(updatedAuthDTO.getPassword());
-        existingUser.setPhone_number(updatedAuthDTO.getPhone_number());
+        existingUser.setPhoneNumber(updatedAuthDTO.getPhoneNumber());
 
         Auth updatedUser = AuthRepo.save(existingUser);
         return mapper.map(updatedUser, Auth_DTO.class);

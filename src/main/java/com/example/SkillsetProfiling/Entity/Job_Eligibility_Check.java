@@ -25,8 +25,8 @@ public class Job_Eligibility_Check {
     @ManyToOne
     @JoinColumn(name = "StudentID")
     private Student_Details StudentID;
-    private Timestamp timestamp_checked;
+    private Timestamp timestampChecked;
     private Boolean eligible;
     private Boolean applied;
-    private Timestamp timestamp_applied;
+    private Timestamp timestampApplied;
 }

@@ -35,22 +35,22 @@ public class RoleController {
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
 
-    @GetMapping("/{RoleID}")
+    @GetMapping("/id/{RoleID}")
     public ResponseEntity<Role_DTO> getRoleByRoleID(@PathVariable int RoleID) throws RoleNotFoundException {
         Role_DTO roleDTO = service.getRoleByRoleID(RoleID);
 
         return new ResponseEntity<>(roleDTO, HttpStatus.OK);
     }
 
-//    @GetMapping("/{roleName}")
-//    public ResponseEntity<Role_DTO> getRoleByRoleName(@PathVariable String roleName) {
-//        try {
-//            Role_DTO roleDTO = service.getRoleByRoleName(roleName);
-//            return new ResponseEntity<>(roleDTO, HttpStatus.OK);
-//        } catch (RoleNotFoundException e) {
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }
-//    }
+    @GetMapping("/name/{roleName}")
+    public ResponseEntity<Role_DTO> getRoleByRoleName(@PathVariable String roleName) {
+        try {
+            Role_DTO roleDTO = service.getRoleByRoleName(roleName);
+            return new ResponseEntity<>(roleDTO, HttpStatus.OK);
+        } catch (RoleNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 
 
     @PutMapping("/{RoleId}")

@@ -19,5 +19,5 @@ public class Qualification {
     @Id
     private Integer QualificationID;
     @Column(unique = true)
-    private String qualification_name;
+    private String qualificationName;
 }

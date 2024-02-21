@@ -25,7 +25,7 @@ public class Feedback_Request {
     @ManyToOne
     @JoinColumn(name = "studentID")
     private Student_Details student_details;
-    private String request_message;
-    private Timestamp request_timestamp;
-    private String request_status;
+    private String requestMessage;
+    private Timestamp requestTimestamp;
+    private String requestStatus;
 }

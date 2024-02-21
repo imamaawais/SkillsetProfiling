@@ -18,13 +18,13 @@ public class Assessment {
     @Id
     private Integer AssessmentID;
     @ManyToOne
-    @JoinColumn(name = "questionPaperID")
+    @JoinColumn(name = "question_PaperID")
     private Question_Paper question_paper;
     @ManyToOne
     @JoinColumn(name = "studentID")
-    private Student_Details student_details;
-    private Integer time_taken;
-    private Integer total_score;
-    private Timestamp assessment_timestamp;
-    private Boolean is_passed;
+    private Student_Details studentDetails;
+    private Integer timeTaken;
+    private Integer totalScore;
+    private Timestamp assessmentTimestamp;
+    private Boolean isPassed;
 }

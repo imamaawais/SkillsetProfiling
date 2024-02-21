@@ -13,10 +13,10 @@ public class Skills {
 
     @Id
     private Integer SkillID;
-    private String skill_name;
+    private String skillName;
     @ManyToOne
-    @JoinColumn(name = "skillGroupID")
+    @JoinColumn(name = "skill_GroupID")
     private Skill_Groups skill_group;
-    private String skill_description;
+    private String skillDescription;
 
 }

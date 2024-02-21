@@ -22,6 +22,6 @@ public class Question_Bank {
     @ManyToOne
     @JoinColumn(name = "difficultyID")
     private Question_Difficulty question_difficulty;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 }

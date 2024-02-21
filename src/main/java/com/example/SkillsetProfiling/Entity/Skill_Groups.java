@@ -17,6 +17,6 @@ import lombok.Setter;
 public class Skill_Groups {
     @Id
     private Integer SkillGroupID;
-    private String group_name;
-    private String group_description;
+    private String groupName;
+    private String groupDescription;
 }

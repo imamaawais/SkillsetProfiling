@@ -19,5 +19,5 @@ public class Question_Difficulty {
     @Id
     private Integer DifficultyID;
     private Integer marks;
-    private Integer time_allotted; //in minutes
+    private Integer timeAllotted; //in minutes
 }

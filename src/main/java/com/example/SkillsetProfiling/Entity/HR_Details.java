@@ -18,7 +18,7 @@ public class HR_Details {
     @OneToOne
     @JoinColumn(name = "userID")
     private User_Details user_details;
-    private String company_name;
+    private String companyName;
     @ManyToOne
     @JoinColumn(name = "industryID")
     private Industry industry;

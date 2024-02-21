@@ -19,5 +19,5 @@ public class Domain {
     @Id
     private Integer DomainID;
     @Column(unique = true)
-    private String domain_name;
+    private String domainName;
 }

@@ -20,10 +20,10 @@ public class Job_Postings {
     @ManyToOne
     @JoinColumn(name = "hrID")
     private HR_Details hr_details;
-    private String job_title;
-    private String job_description;
-    private Boolean required_industrial_experience;
-    private String posting_status;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_closed;
+    private String jobTitle;
+    private String jobDescription;
+    private Boolean requiredIndustrialExperience;
+    private String postingStatus;
+    private Timestamp timestampCreated;
+    private Timestamp timestampClosed;
 }

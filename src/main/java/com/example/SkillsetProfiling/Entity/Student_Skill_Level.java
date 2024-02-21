@@ -27,5 +27,5 @@ public class Student_Skill_Level {
     @JoinColumn(name = "levelID")
     private Skill_Level skill_level;
     private Integer progress;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampUpdated;
 }

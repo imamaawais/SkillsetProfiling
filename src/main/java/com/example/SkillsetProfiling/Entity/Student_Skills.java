@@ -25,8 +25,8 @@ public class Student_Skills {
     @ManyToOne
     @JoinColumn(name = "SkillID")
     private Skills SkillID;
-    private Integer self_level;
+    private Integer selfLevel;
     private Integer levelID;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampUpdated;
 
 }

@@ -18,9 +18,9 @@ public class Student_Details {
     @OneToOne
     @JoinColumn(name = "userID")
     private User_Details user_details;
-    private Integer enrollment_year;
+    private Integer enrollmentYear;
     @ManyToOne
     @JoinColumn(name = "domainID")
     private Domain domain;
-    private Integer expected_graduation;
+    private Integer expectedGraduation;
 }

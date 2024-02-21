@@ -60,16 +60,16 @@ public class Role_Service implements IRole_Service {
 
     }
 
-//    @Override
-//    public Role_DTO getRoleByRoleName(String role_name) throws RoleNotFoundException {
-//        Optional<Role> roleOptional = RoleRepo.findByRole__name(role_name);
-//
-//        if (roleOptional.isPresent()) {
-//            return mapper.map(roleOptional.get(), Role_DTO.class);
-//        } else {
-//            throw new RoleNotFoundException("Role not found with name: " + role_name);
-//        }
-//    }
+    @Override
+    public Role_DTO getRoleByRoleName(String role_name) throws RoleNotFoundException {
+        Optional<Role> roleOptional = RoleRepo.findByRoleName(role_name);
+
+        if (roleOptional.isPresent()) {
+            return mapper.map(roleOptional.get(), Role_DTO.class);
+        } else {
+            throw new RoleNotFoundException("Role not found with name: " + role_name);
+        }
+    }
 
 
     @Override
@@ -80,7 +80,7 @@ public class Role_Service implements IRole_Service {
             Role existingRole = roleOptional.get();
 
             // Update the properties of the existing role with the values from the updatedRoleDTO
-            existingRole.setRole_name(updatedRoleDTO.getRole_name());
+            existingRole.setRoleName(updatedRoleDTO.getRoleName());
             // Add other properties as needed
 
             // Save the updated role

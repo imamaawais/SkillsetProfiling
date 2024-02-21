@@ -23,7 +23,7 @@ public class Test_Attempt_History {
     @ManyToOne
     @JoinColumn(name = "AssessmentID")
     private Assessment AssessmentID;
-    private Integer attempt_number;
+    private Integer attemptNumber;
 
 
 }

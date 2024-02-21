@@ -14,9 +14,9 @@ import lombok.Setter;
 public class Badges {
     @Id
     private Integer BadgeID;
-    private String badge_name;
+    private String badgeName;
     @ManyToOne
-    @JoinColumn(name = "badgeGroupID")
+    @JoinColumn(name = "badge_GroupID")
     private Badge_Groups badge_groups;
 
 }

@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Domain_DTO {
     private Integer DomainID;
-    private String domain_name;
+    private String domainName;
 }

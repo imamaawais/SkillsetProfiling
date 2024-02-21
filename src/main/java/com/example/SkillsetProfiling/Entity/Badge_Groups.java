@@ -17,6 +17,6 @@ public class Badge_Groups {
 
     @Id
     private Integer BadgeGroupID;
-    private String badge_group_name;
-    private String badge_group_description;
+    private String badgeGroupName;
+    private String badgeGroupDescription;
 }
