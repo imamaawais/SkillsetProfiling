@@ -2,7 +2,7 @@ package com.example.SkillsetProfiling.Controller;
 
 
 import com.example.SkillsetProfiling.Dto.Industry_DTO;
-import com.example.SkillsetProfiling.Service.Implementation.IndustryNotFoundException;
+import com.example.SkillsetProfiling.Exception.IndustryNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Industry_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

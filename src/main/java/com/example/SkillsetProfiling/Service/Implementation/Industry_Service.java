@@ -3,6 +3,7 @@ package com.example.SkillsetProfiling.Service.Implementation;
 import com.example.SkillsetProfiling.Dto.Industry_DTO;
 import com.example.SkillsetProfiling.Entity.Industry;
 import com.example.SkillsetProfiling.Exception.DuplicateIndustryException;
+import com.example.SkillsetProfiling.Exception.IndustryNotFoundException;
 import com.example.SkillsetProfiling.Repository.Industry_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IIndustry_Service;
 import jakarta.transaction.Transactional;
