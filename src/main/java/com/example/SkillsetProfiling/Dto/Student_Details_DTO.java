@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Student_Details_DTO {
     private Integer StudentID;
     private User_Details user_details;
-    private Integer enrollment_year;
+    private Integer enrollmentYear;
     private Domain domain;
-    private Integer expected_graduation;
+    private Integer expectedGraduation;
 }
