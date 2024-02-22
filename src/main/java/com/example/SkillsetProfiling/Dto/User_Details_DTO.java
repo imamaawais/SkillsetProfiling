@@ -18,12 +18,12 @@ import java.util.Date;
 public class User_Details_DTO {
     private Integer UserID;
     private Auth auth;
-    private String first_name;
-    private String last_name;
-    private Date date_of_birth;
+    private String firstName;
+    private String lastName;
+    private Date dateOfBirth;
     @Lob
-    private byte[] profile_picture;
+    private byte[] profilePicture;
     private Role role;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 }

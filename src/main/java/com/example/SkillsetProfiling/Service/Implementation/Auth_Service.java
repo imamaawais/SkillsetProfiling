@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Auth_Service implements IAuth_Service {
 
-    private Auth_Repo AuthRepo;
+    private Auth_Repo authRepo;
     private ModelMapper mapper;
 
     @Override
@@ -27,19 +27,19 @@ public class Auth_Service implements IAuth_Service {
         Auth auth = mapper.map(AuthDTO, Auth.class);
 
         // Check if an Auth with the same ID already exists
-        if (AuthRepo.findById(auth.getEmail()).isPresent()) {
+        if (authRepo.findById(auth.getEmail()).isPresent()) {
             throw new DuplicateAuthException("Auth with the same ID already exists: " + auth.getEmail());
         }
 
         //save to database
-        Auth savedAuth = AuthRepo.save(auth);
+        Auth savedAuth = authRepo.save(auth);
         Auth_DTO savedAuthDTO = mapper.map(savedAuth, Auth_DTO.class);
         return savedAuthDTO;
     }
 
     @Override
     public Auth_DTO getUserByEmail(String email) {
-        Optional<Auth> user = AuthRepo.findByEmail(email);
+        Optional<Auth> user = authRepo.findByEmail(email);
 
         if (user.isPresent()) {
             return mapper.map(user, Auth_DTO.class);
@@ -55,7 +55,7 @@ public class Auth_Service implements IAuth_Service {
 
     @Override
     public List<Auth_DTO> getAllUsers() {
-        List<Auth> allUsers = AuthRepo.findAll();
+        List<Auth> allUsers = authRepo.findAll();
         return allUsers.stream()
                 .map(user -> mapper.map(user, Auth_DTO.class))
                 .collect(Collectors.toList());
@@ -63,7 +63,7 @@ public class Auth_Service implements IAuth_Service {
 
     @Override
     public Auth_DTO updateUser(String email, Auth_DTO updatedAuthDTO) {
-        Auth existingUser = AuthRepo.findByEmail(email).orElse(null);
+        Auth existingUser = authRepo.findByEmail(email).orElse(null);
 
         if (existingUser == null) {
             return null; // User not found
@@ -74,18 +74,18 @@ public class Auth_Service implements IAuth_Service {
         existingUser.setPassword(updatedAuthDTO.getPassword());
         existingUser.setPhoneNumber(updatedAuthDTO.getPhoneNumber());
 
-        Auth updatedUser = AuthRepo.save(existingUser);
+        Auth updatedUser = authRepo.save(existingUser);
         return mapper.map(updatedUser, Auth_DTO.class);
     }
 
     @Override
     @Transactional
     public boolean deleteUser(String email) throws UserNotFoundException {
-        Optional<Auth> userOptional = AuthRepo.findByEmail(email);
+        Optional<Auth> userOptional = authRepo.findByEmail(email);
 
         if (userOptional.isPresent()) {
             Auth userToDelete = userOptional.get();
-            AuthRepo.delete(userToDelete);
+            authRepo.delete(userToDelete);
             return true; // Deletion successful
         } else {
             throw new UserNotFoundException("User not found with email: " + email);

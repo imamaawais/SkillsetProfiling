@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Role_Service implements IRole_Service {
 
-    private Role_Repo RoleRepo;
+    private Role_Repo roleRepo;
     private ModelMapper mapper;
 
     @Override
@@ -28,12 +28,12 @@ public class Role_Service implements IRole_Service {
         Role role = mapper.map(roleDTO, Role.class);
 
         // Check if a role with the same ID already exists
-        if (RoleRepo.findById(role.getRoleID()).isPresent()) {
+        if (roleRepo.findById(role.getRoleID()).isPresent()) {
             throw new DuplicateRoleException("Role with the same ID already exists: " + role.getRoleID());
         }
 
         // No role with the same ID, proceed to save the new role
-        Role savedRole = RoleRepo.save(role);
+        Role savedRole = roleRepo.save(role);
         Role_DTO savedRoleDTO = mapper.map(savedRole, Role_DTO.class);
         // Map the saved Role entity back to RoleDTO
         return savedRoleDTO;
@@ -42,7 +42,7 @@ public class Role_Service implements IRole_Service {
 
     @Override
     public List<Role_DTO> getAllRoles() {
-        List<Role> roles = RoleRepo.findAll();
+        List<Role> roles = roleRepo.findAll();
         return roles.stream()
                 .map(role -> mapper.map(role, Role_DTO.class))
                 .collect(Collectors.toList());
@@ -50,7 +50,7 @@ public class Role_Service implements IRole_Service {
 
     @Override
     public Role_DTO getRoleByRoleID(Integer roleId) throws RoleNotFoundException {
-        Optional<Role> roleOptional = RoleRepo.findById(roleId);
+        Optional<Role> roleOptional = roleRepo.findById(roleId);
 
         if (roleOptional.isPresent()) {
             return mapper.map(roleOptional.get(), Role_DTO.class);
@@ -62,7 +62,7 @@ public class Role_Service implements IRole_Service {
 
     @Override
     public Role_DTO getRoleByRoleName(String role_name) throws RoleNotFoundException {
-        Optional<Role> roleOptional = RoleRepo.findByRoleName(role_name);
+        Optional<Role> roleOptional = roleRepo.findByRoleName(role_name);
 
         if (roleOptional.isPresent()) {
             return mapper.map(roleOptional.get(), Role_DTO.class);
@@ -74,7 +74,7 @@ public class Role_Service implements IRole_Service {
 
     @Override
     public Role_DTO updateRole(Integer roleId, Role_DTO updatedRoleDTO) throws RoleNotFoundException{
-    Optional<Role> roleOptional = RoleRepo.findById(roleId);
+    Optional<Role> roleOptional = roleRepo.findById(roleId);
 
         if (roleOptional.isPresent()) {
             Role existingRole = roleOptional.get();
@@ -84,7 +84,7 @@ public class Role_Service implements IRole_Service {
             // Add other properties as needed
 
             // Save the updated role
-            Role updatedRole = RoleRepo.save(existingRole);
+            Role updatedRole = roleRepo.save(existingRole);
 
             // Map the updated role to Role_DTO and return
             return mapper.map(updatedRole, Role_DTO.class);
@@ -96,11 +96,11 @@ public class Role_Service implements IRole_Service {
     @Override
     @Transactional
     public boolean deleteRole(Integer roleId) throws RoleNotFoundException {
-        Optional<Role> roleOptional = RoleRepo.findById(roleId);
+        Optional<Role> roleOptional = roleRepo.findById(roleId);
 
         if (roleOptional.isPresent()) {
             Role roleToDelete = roleOptional.get();
-            RoleRepo.delete(roleToDelete);
+            roleRepo.delete(roleToDelete);
             return true; // Deletion successful
         } else {
             throw new RoleNotFoundException("Role not found with ID: " + roleId);

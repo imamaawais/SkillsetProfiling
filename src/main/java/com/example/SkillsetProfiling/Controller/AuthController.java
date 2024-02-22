@@ -19,11 +19,6 @@ public class AuthController {
 
     private Auth_Service service;
 
-    @GetMapping("/health")
-    public String healthCheck() {
-        return "API is working!!!!";
-    }
-
     @PostMapping("/register")
     public ResponseEntity<Auth_DTO> registerUser(@RequestBody Auth_DTO authDTO) {
         Auth_DTO savedAuth = service.addAuth(authDTO);

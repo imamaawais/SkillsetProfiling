@@ -19,25 +19,25 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Industry_Service implements IIndustry_Service {
 
-    private Industry_Repo IndustryRepo;
+    private Industry_Repo industryRepo;
     private ModelMapper mapper;
 
     @Override
     public Industry_DTO addIndustry(Industry_DTO industryDTO) {
         Industry industry = mapper.map(industryDTO, Industry.class);
 
-        if (IndustryRepo.findById(industry.getIndustryID()).isPresent()) {
+        if (industryRepo.findById(industry.getIndustryID()).isPresent()) {
             throw new DuplicateIndustryException("Industry with the same ID already exists: " + industry.getIndustryID());
         }
 
-        Industry savedIndustry = IndustryRepo.save(industry);
+        Industry savedIndustry = industryRepo.save(industry);
         Industry_DTO savedIndustryDTO = mapper.map(savedIndustry, Industry_DTO.class);
         return savedIndustryDTO;
     }
 
     @Override
     public List<Industry_DTO> getAllIndustries() {
-        List<Industry> industries = IndustryRepo.findAll();
+        List<Industry> industries = industryRepo.findAll();
         return industries.stream()
                 .map(industry -> mapper.map(industry, Industry_DTO.class))
                 .collect(Collectors.toList());
@@ -45,7 +45,7 @@ public class Industry_Service implements IIndustry_Service {
 
     @Override
     public Industry_DTO getIndustryByID(Integer industryID) throws IndustryNotFoundException {
-        Optional<Industry> industryOptional = IndustryRepo.findById(industryID);
+        Optional<Industry> industryOptional = industryRepo.findById(industryID);
 
         if (industryOptional.isPresent()) {
             return mapper.map(industryOptional.get(), Industry_DTO.class);
@@ -56,7 +56,7 @@ public class Industry_Service implements IIndustry_Service {
 
     @Override
     public Industry_DTO getIndustryByName(String industryName) throws IndustryNotFoundException {
-        Optional<Industry> industryOptional = IndustryRepo.findByIndustryName(industryName);
+        Optional<Industry> industryOptional = industryRepo.findByIndustryName(industryName);
 
         if (industryOptional.isPresent()) {
             return mapper.map(industryOptional.get(), Industry_DTO.class);
@@ -67,7 +67,7 @@ public class Industry_Service implements IIndustry_Service {
 
     @Override
     public Industry_DTO updateIndustry(Integer industryID, Industry_DTO updatedIndustryDTO) throws IndustryNotFoundException {
-        Optional<Industry> industryOptional = IndustryRepo.findById(industryID);
+        Optional<Industry> industryOptional = industryRepo.findById(industryID);
 
         if (industryOptional.isPresent()) {
             Industry existingIndustry = industryOptional.get();
@@ -75,7 +75,7 @@ public class Industry_Service implements IIndustry_Service {
             existingIndustry.setIndustryName(updatedIndustryDTO.getIndustryName());
             // Add other properties as needed
 
-            Industry updatedIndustry = IndustryRepo.save(existingIndustry);
+            Industry updatedIndustry = industryRepo.save(existingIndustry);
             return mapper.map(updatedIndustry, Industry_DTO.class);
         } else {
             throw new IndustryNotFoundException("Industry not found with ID: " + industryID);
@@ -85,11 +85,11 @@ public class Industry_Service implements IIndustry_Service {
     @Override
     @Transactional
     public boolean deleteIndustry(Integer industryID) throws IndustryNotFoundException {
-        Optional<Industry> industryOptional = IndustryRepo.findById(industryID);
+        Optional<Industry> industryOptional = industryRepo.findById(industryID);
 
         if (industryOptional.isPresent()) {
             Industry industryToDelete = industryOptional.get();
-            IndustryRepo.delete(industryToDelete);
+            industryRepo.delete(industryToDelete);
             return true;
         } else {
             throw new IndustryNotFoundException("Industry not found with ID: " + industryID);

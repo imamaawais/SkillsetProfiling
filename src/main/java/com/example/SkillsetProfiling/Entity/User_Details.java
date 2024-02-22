@@ -17,6 +17,7 @@ import java.util.Date;
 @Table(name = "User_Details")
 public class User_Details {
     @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY for auto-increment
     private Integer UserID;
     @OneToOne
     @JoinColumn(name = "email")
@@ -31,4 +32,17 @@ public class User_Details {
     private Role role;
     private Timestamp timestampCreated;
     private Timestamp timestampUpdated;
+
+
+    @PrePersist
+    protected void onCreate() {
+        timestampCreated = new Timestamp(System.currentTimeMillis());
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
 }

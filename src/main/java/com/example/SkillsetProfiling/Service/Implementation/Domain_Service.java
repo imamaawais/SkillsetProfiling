@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Domain_Service implements IDomain_Service {
 
-    private Domain_Repo DomainRepo;
+    private Domain_Repo domainRepo;
     private ModelMapper mapper;
     @Override
     public Domain_DTO addDomain(Domain_DTO domainDTO) {
@@ -27,12 +27,12 @@ public class Domain_Service implements IDomain_Service {
         Domain domain = mapper.map(domainDTO, Domain.class);
 
         // Check if a domain with the same ID already exists
-        if (DomainRepo.findById(domain.getDomainID()).isPresent()) {
+        if (domainRepo.findById(domain.getDomainID()).isPresent()) {
             throw new DuplicateDomainException("Domain with the same ID already exists: " + domain.getDomainID());
         }
 
         // No domain with the same ID, proceed to save the new domain
-        Domain savedDomain = DomainRepo.save(domain);
+        Domain savedDomain = domainRepo.save(domain);
         Domain_DTO savedDomainDTO = mapper.map(savedDomain, Domain_DTO.class);
         // Map the saved Domain entity back to DomainDTO
         return savedDomainDTO;
@@ -40,7 +40,7 @@ public class Domain_Service implements IDomain_Service {
 
     @Override
     public List<Domain_DTO> getAllDomains() {
-        List<Domain> domains = DomainRepo.findAll();
+        List<Domain> domains = domainRepo.findAll();
         return domains.stream()
                 .map(domain -> mapper.map(domain, Domain_DTO.class))
                 .collect(Collectors.toList());
@@ -48,7 +48,7 @@ public class Domain_Service implements IDomain_Service {
 
     @Override
     public Domain_DTO getDomainByDomainID(Integer domainID)  {
-        Optional<Domain> domainOptional = DomainRepo.findById(domainID);
+        Optional<Domain> domainOptional = domainRepo.findById(domainID);
 
         if (domainOptional.isPresent()) {
             return mapper.map(domainOptional.get(), Domain_DTO.class);
@@ -60,7 +60,7 @@ public class Domain_Service implements IDomain_Service {
 
     @Override
     public Domain_DTO getDomainByDomainName(String domainName) {
-        Optional<Domain> domainOptional = DomainRepo.findByDomainName(domainName);
+        Optional<Domain> domainOptional = domainRepo.findByDomainName(domainName);
 
         if (domainOptional.isPresent()) {
             return mapper.map(domainOptional.get(), Domain_DTO.class);
@@ -71,7 +71,7 @@ public class Domain_Service implements IDomain_Service {
 
     @Override
     public Domain_DTO updateDomain(Integer domainID, Domain_DTO updatedDomainDTO) throws DomainNotFoundException {
-        Optional<Domain> domainOptional = DomainRepo.findById(domainID);
+        Optional<Domain> domainOptional = domainRepo.findById(domainID);
 
         if (domainOptional.isPresent()) {
             Domain existingDomain = domainOptional.get();
@@ -81,7 +81,7 @@ public class Domain_Service implements IDomain_Service {
             // Add other properties as needed
 
             // Save the updated domain
-            Domain updatedDomain = DomainRepo.save(existingDomain);
+            Domain updatedDomain = domainRepo.save(existingDomain);
 
             // Map the updated domain to Domain_DTO and return
             return mapper.map(updatedDomain, Domain_DTO.class);
@@ -94,11 +94,11 @@ public class Domain_Service implements IDomain_Service {
     @Override
     @Transactional
     public boolean deleteDomain(Integer domainID) throws DomainNotFoundException {
-        Optional<Domain> domainOptional = DomainRepo.findById(domainID);
+        Optional<Domain> domainOptional = domainRepo.findById(domainID);
 
         if (domainOptional.isPresent()) {
             Domain domainToDelete = domainOptional.get();
-            DomainRepo.delete(domainToDelete);
+            domainRepo.delete(domainToDelete);
             return true; // Deletion successful
         } else {
             throw new DomainNotFoundException("Domain not found with ID: " + domainID);
