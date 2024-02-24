@@ -14,7 +14,7 @@ import lombok.Setter;
 @Table(name = "HR_Details")
 public class HR_Details {
     @Id
-    private Integer HRID;
+    private Integer HrID;
     @OneToOne
     @JoinColumn(name = "userID")
     private User_Details user_details;
