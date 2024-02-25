@@ -2,7 +2,6 @@ package com.example.SkillsetProfiling.Dto;
 
 import com.example.SkillsetProfiling.Entity.Domain;
 import com.example.SkillsetProfiling.Entity.User_Details;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

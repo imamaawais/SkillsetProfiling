@@ -3,8 +3,6 @@ package com.example.SkillsetProfiling.Dto;
 import com.example.SkillsetProfiling.Entity.Domain;
 import com.example.SkillsetProfiling.Entity.Mentor_Details;
 import com.example.SkillsetProfiling.Entity.Qualification;
-import com.example.SkillsetProfiling.Key.Mentor_Qualification_Key;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

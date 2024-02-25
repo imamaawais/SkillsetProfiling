@@ -1,6 +1,5 @@
 package com.example.SkillsetProfiling.Dto;
 import com.example.SkillsetProfiling.Entity.Question_Difficulty;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

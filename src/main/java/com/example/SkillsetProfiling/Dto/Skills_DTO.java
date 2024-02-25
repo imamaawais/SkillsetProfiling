@@ -1,7 +1,6 @@
 package com.example.SkillsetProfiling.Dto;
 
 import com.example.SkillsetProfiling.Entity.Skill_Groups;
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

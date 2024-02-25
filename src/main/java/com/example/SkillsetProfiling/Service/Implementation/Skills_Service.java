@@ -5,7 +5,6 @@ import com.example.SkillsetProfiling.Exception.DuplicateSkillException;
 import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Repository.Skills_Repo;
 import com.example.SkillsetProfiling.Service.Interface.ISkills_Service;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

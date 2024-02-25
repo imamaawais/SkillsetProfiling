@@ -73,8 +73,4 @@ public class JobPostingsController {
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }
          }
-
-
-
-
 }

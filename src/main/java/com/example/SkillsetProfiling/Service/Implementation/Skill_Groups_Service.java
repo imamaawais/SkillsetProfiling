@@ -1,12 +1,9 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
-import com.example.SkillsetProfiling.Dto.Role_DTO;
 import com.example.SkillsetProfiling.Dto.Skill_Groups_DTO;
-import com.example.SkillsetProfiling.Entity.Role;
 import com.example.SkillsetProfiling.Entity.Skill_Groups;
 import com.example.SkillsetProfiling.Exception.DuplicateSkillGroupException;
 import com.example.SkillsetProfiling.Exception.SkillGroupNotFoundException;
-import com.example.SkillsetProfiling.Exception.UserNotFoundException;
 import com.example.SkillsetProfiling.Repository.Skill_Groups_Repo;
 import com.example.SkillsetProfiling.Service.Interface.ISkill_Groups_Service;
 import jakarta.transaction.Transactional;
@@ -14,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import javax.management.relation.RoleNotFoundException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;

@@ -1,7 +1,5 @@
 package com.example.SkillsetProfiling.Controller;
 
-import com.example.SkillsetProfiling.Dto.Auth_DTO;
-import com.example.SkillsetProfiling.Dto.Role_DTO;
 import com.example.SkillsetProfiling.Dto.Skill_Groups_DTO;
 import com.example.SkillsetProfiling.Exception.SkillGroupNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Skill_Groups_Service;
@@ -10,7 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.management.relation.RoleNotFoundException;
 import java.util.List;
 
 @AllArgsConstructor

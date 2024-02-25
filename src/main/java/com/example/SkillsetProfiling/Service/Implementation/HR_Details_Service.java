@@ -8,7 +8,6 @@ import com.example.SkillsetProfiling.Repository.HR_Details_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IHR_Details_Service;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

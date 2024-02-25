@@ -2,9 +2,6 @@ package com.example.SkillsetProfiling.Dto;
 
 import com.example.SkillsetProfiling.Entity.Industry;
 import com.example.SkillsetProfiling.Entity.User_Details;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

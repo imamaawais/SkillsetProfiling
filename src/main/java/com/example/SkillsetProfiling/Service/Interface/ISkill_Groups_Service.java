@@ -1,9 +1,7 @@
 package com.example.SkillsetProfiling.Service.Interface;
 
-import com.example.SkillsetProfiling.Dto.Auth_DTO;
 import com.example.SkillsetProfiling.Dto.Skill_Groups_DTO;
 import com.example.SkillsetProfiling.Exception.SkillGroupNotFoundException;
-import com.example.SkillsetProfiling.Exception.UserNotFoundException;
 
 import java.util.List;
 
