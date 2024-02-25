@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Job_Skills_Requirement_Key implements Serializable {
+public class Job_Skills_Requirements_Key implements Serializable {
     private Integer JobID;
     private Integer SkillID;
     private Integer LevelID;

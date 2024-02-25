@@ -1,0 +1,16 @@
+package com.example.SkillsetProfiling.Service.Interface;
+
+import com.example.SkillsetProfiling.Dto.Job_Skills_Requirements_DTO;
+import com.example.SkillsetProfiling.Exception.DuplicateJobSkillsRequirementsException;
+import com.example.SkillsetProfiling.Exception.JobSkillsRequirementsNotFoundException;
+import com.example.SkillsetProfiling.Key.Job_Skills_Requirements_Key;
+
+import java.util.List;
+
+public interface IJob_Skills_Requirements_Service {
+    Job_Skills_Requirements_DTO addJobSkillsRequirements(Job_Skills_Requirements_DTO jobSkillsRequirementsDto) throws DuplicateJobSkillsRequirementsException;
+    Job_Skills_Requirements_DTO getJobSkillsRequirementsByID(Job_Skills_Requirements_Key jobSkillsRequirementsKey) throws JobSkillsRequirementsNotFoundException;
+    List<Job_Skills_Requirements_DTO> getAllJobSkillsRequirements();
+    Job_Skills_Requirements_DTO updateJobSkillsRequirements(Job_Skills_Requirements_Key jobSkillsRequirementsKey, Job_Skills_Requirements_DTO updatedJobSkillsRequirementsDTO) throws JobSkillsRequirementsNotFoundException;
+    boolean deleteJobSkillsRequirements(Job_Skills_Requirements_Key jobSkillsRequirementsKey);
+}

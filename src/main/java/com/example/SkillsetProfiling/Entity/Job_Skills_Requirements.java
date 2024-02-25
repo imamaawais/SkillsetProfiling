@@ -1,6 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
-import com.example.SkillsetProfiling.Key.Job_Skills_Requirement_Key;
+import com.example.SkillsetProfiling.Key.Job_Skills_Requirements_Key;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Entity
 @Table(name = "Job_Skills_Requirements")
-@IdClass(Job_Skills_Requirement_Key.class)
+@IdClass(Job_Skills_Requirements_Key.class)
 public class Job_Skills_Requirements {
 
     @Id
