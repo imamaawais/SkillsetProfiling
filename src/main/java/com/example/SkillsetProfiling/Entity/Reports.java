@@ -27,4 +27,16 @@ public class Reports {
     private String reportStatus;
     private Timestamp timestampReported;
     private Timestamp timestampStatusModified;
+
+    @PrePersist
+    protected void onCreate() {
+        timestampReported = new Timestamp(System.currentTimeMillis());
+        timestampStatusModified = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampStatusModified = new Timestamp(System.currentTimeMillis());
+    }
+
 }

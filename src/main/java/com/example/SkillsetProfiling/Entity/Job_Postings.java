@@ -26,4 +26,15 @@ public class Job_Postings {
     private String postingStatus;
     private Timestamp timestampCreated;
     private Timestamp timestampClosed;
+
+    @PrePersist
+    protected void onCreate() {
+        timestampCreated = new Timestamp(System.currentTimeMillis());
+        timestampClosed = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampClosed= new Timestamp(System.currentTimeMillis());
+    }
 }

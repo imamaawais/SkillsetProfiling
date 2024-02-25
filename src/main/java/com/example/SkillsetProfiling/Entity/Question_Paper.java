@@ -26,4 +26,15 @@ public class Question_Paper {
     private Timestamp timestampCreated;
     private Timestamp timestampUpdated;
 
+    @PrePersist
+    protected void onCreate() {
+        timestampCreated = new Timestamp(System.currentTimeMillis());
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
 }

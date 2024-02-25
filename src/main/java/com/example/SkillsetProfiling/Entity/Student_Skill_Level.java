@@ -28,4 +28,14 @@ public class Student_Skill_Level {
     private Skill_Level skillLevel;
     private Integer progress;
     private Timestamp timestampUpdated;
+
+    @PrePersist
+    protected void onCreate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
 }
