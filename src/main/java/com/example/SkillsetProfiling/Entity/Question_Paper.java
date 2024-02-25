@@ -19,7 +19,7 @@ public class Question_Paper {
     private Integer QuestionPaperID;
     @ManyToOne
     @JoinColumn(name = "levelID")
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
     @ManyToOne
     @JoinColumn(name = "skillID")
     private Skills skillID;

@@ -62,7 +62,7 @@ public class HR_Details_Service implements IHR_Details_Service {
         if (existingHRDetailsOptional.isPresent()) {
             HR_Details existingHRDetails = existingHRDetailsOptional.get();
             // Update hr details based on updatedHRDetailsDTO
-            existingHRDetails.setUser_details(updatedHRDetailsDTO.getUserDetails());
+            existingHRDetails.setUserDetails(updatedHRDetailsDTO.getUserDetails());
             existingHRDetails.setCompanyName(updatedHRDetailsDTO.getCompanyName());
             existingHRDetails.setIndustry(updatedHRDetailsDTO.getIndustry());
 

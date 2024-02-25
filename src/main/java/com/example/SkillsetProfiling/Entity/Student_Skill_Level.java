@@ -19,13 +19,13 @@ public class Student_Skill_Level {
     private Integer StudentSkillLevelID;
     @ManyToOne
     @JoinColumn(name = "studentID")
-    private Student_Details student_details;
+    private Student_Details studentDetails;
     @ManyToOne
     @JoinColumn(name = "skillID")
     private Skills skills;
     @ManyToOne
     @JoinColumn(name = "levelID")
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
     private Integer progress;
     private Timestamp timestampUpdated;
 }

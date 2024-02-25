@@ -17,11 +17,11 @@ public class Question_Bank {
 
     @Id
     private Integer QuestionID;
-    private String question_text;
+    private String questionText;
     private String answer;
     @ManyToOne
     @JoinColumn(name = "difficultyID")
-    private Question_Difficulty question_difficulty;
+    private Question_Difficulty questionDifficulty;
     private Timestamp timestampCreated;
     private Timestamp timestampUpdated;
 }

@@ -18,5 +18,5 @@ public class Placement_Coordinator_Details {
     private Integer CoordinatorID;
     @OneToOne
     @JoinColumn(name = "userID")
-    private User_Details user_details;
+    private User_Details userDetails;
 }

@@ -17,7 +17,7 @@ public class Test {
     private Integer TestID;
     @ManyToOne
     @JoinColumn(name = "student_Skill_LevelID")
-    private Student_Skill_Level student_skill_level;
+    private Student_Skill_Level studentSkillLevel;
     private Integer testNumber;
     private Boolean isPassed;
     private Integer noOfAttempts;

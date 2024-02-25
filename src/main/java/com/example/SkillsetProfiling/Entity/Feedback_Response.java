@@ -19,7 +19,7 @@ public class Feedback_Response {
     private Integer FeedbackID;
     @ManyToOne
     @JoinColumn(name = "mentorID")
-    private Mentor_Details mentor_details;
+    private Mentor_Details mentorDetails;
     private String responseMessage;
     private Timestamp responseTimestamp;
 }

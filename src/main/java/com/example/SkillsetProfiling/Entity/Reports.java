@@ -19,11 +19,11 @@ public class Reports {
     private Integer ReportID;
     @ManyToOne
     @JoinColumn(name = "report_TypeID")
-    private Report_Types report_types;
+    private Report_Types reportTypes;
     private String reportDescription;
     @ManyToOne
     @JoinColumn(name = "userID")
-    private User_Details user_details;
+    private User_Details userDetails;
     private String reportStatus;
     private Timestamp timestampReported;
     private Timestamp timestampStatusModified;

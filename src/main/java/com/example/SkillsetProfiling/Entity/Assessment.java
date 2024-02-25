@@ -19,7 +19,7 @@ public class Assessment {
     private Integer AssessmentID;
     @ManyToOne
     @JoinColumn(name = "question_PaperID")
-    private Question_Paper question_paper;
+    private Question_Paper questionPaper;
     @ManyToOne
     @JoinColumn(name = "studentID")
     private Student_Details studentDetails;

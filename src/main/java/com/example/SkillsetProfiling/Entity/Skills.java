@@ -16,7 +16,7 @@ public class Skills {
     private String skillName;
     @ManyToOne
     @JoinColumn(name = "skill_GroupID")
-    private Skill_Groups skill_group;
+    private Skill_Groups skillGroup;
     private String skillDescription;
 
 }

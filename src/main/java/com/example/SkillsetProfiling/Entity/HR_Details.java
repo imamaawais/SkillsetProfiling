@@ -18,7 +18,7 @@ public class HR_Details {
     private Integer HrID;
     @OneToOne
     @JoinColumn(name = "userID")
-    private User_Details user_details;
+    private User_Details userDetails;
     private String companyName;
     @ManyToOne
     @JoinColumn(name = "industryID")

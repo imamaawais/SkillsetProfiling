@@ -50,7 +50,7 @@ public class Skill_Groups_Service implements ISkill_Groups_Service {
 
         System.out.println(skillGroups);
         return skillGroups.stream()
-                .map(skillGroup-> mapper.map(skillGroups, Skill_Groups_DTO.class))
+                .map(skillGroup-> mapper.map(skillGroup, Skill_Groups_DTO.class))
                 .collect(Collectors.toList());
     }
 

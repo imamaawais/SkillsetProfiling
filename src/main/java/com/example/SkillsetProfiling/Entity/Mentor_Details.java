@@ -17,5 +17,5 @@ public class Mentor_Details {
 
     @OneToOne
     @JoinColumn(name = "userID")
-    private User_Details user_details;
+    private User_Details userDetails;
 }

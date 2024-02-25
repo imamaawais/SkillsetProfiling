@@ -24,7 +24,7 @@ public class Feedback_Request {
     private Question_Bank question_bank;
     @ManyToOne
     @JoinColumn(name = "studentID")
-    private Student_Details student_details;
+    private Student_Details studentDetails;
     private String requestMessage;
     private Timestamp requestTimestamp;
     private String requestStatus;

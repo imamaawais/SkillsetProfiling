@@ -19,7 +19,7 @@ public class Job_Postings {
     private Integer JobID;
     @ManyToOne
     @JoinColumn(name = "hrID")
-    private HR_Details hr_details;
+    private HR_Details hrDetails;
     private String jobTitle;
     private String jobDescription;
     private Boolean requiredIndustrialExperience;

@@ -16,5 +16,5 @@ public class Administrator_Details {
     private Integer AdministratorID;
     @OneToOne
     @JoinColumn(name = "userID")
-    private User_Details user_details;
+    private User_Details userDetails;
 }

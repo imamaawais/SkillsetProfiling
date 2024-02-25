@@ -17,6 +17,6 @@ public class Badges {
     private String badgeName;
     @ManyToOne
     @JoinColumn(name = "badge_GroupID")
-    private Badge_Groups badge_groups;
+    private Badge_Groups badgeGroups;
 
 }
