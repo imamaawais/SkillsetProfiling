@@ -1,7 +1,6 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
 import com.example.SkillsetProfiling.Dto.User_Details_DTO;
-import com.example.SkillsetProfiling.Entity.Role;
 import com.example.SkillsetProfiling.Entity.User_Details;
 import com.example.SkillsetProfiling.Exception.DuplicateUserDetailsException;
 import com.example.SkillsetProfiling.Exception.UserDetailsNotFoundException;
@@ -67,8 +66,9 @@ public class User_Details_Service implements IUser_Details_Service {
             existingUserDetails.setLastName(updatedUserDetailsDTO.getLastName());
             existingUserDetails.setDateOfBirth(updatedUserDetailsDTO.getDateOfBirth());
             existingUserDetails.setProfilePicture(updatedUserDetailsDTO.getProfilePicture());
-            existingUserDetails.setRole(mapper.map(updatedUserDetailsDTO.getRole(), Role.class));
-
+            //existingUserDetails.setRole(mapper.map(updatedUserDetailsDTO.getRole(), Role.class));
+            existingUserDetails.setRole(updatedUserDetailsDTO.getRole());
+            existingUserDetails.setAuth(updatedUserDetailsDTO.getAuth());
 
             User_Details updatedUserDetails = userDetailsRepo.save(existingUserDetails);
             return mapper.map(updatedUserDetails, User_Details_DTO.class);
