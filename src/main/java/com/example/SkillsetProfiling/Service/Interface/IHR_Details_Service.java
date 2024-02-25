@@ -4,6 +4,7 @@ import com.example.SkillsetProfiling.Dto.HR_Details_DTO;
 
 import java.util.List;
 
+
 public interface IHR_Details_Service {
     HR_Details_DTO addHRDetails(HR_Details_DTO hrDetailsDto);
     HR_Details_DTO getHRDetailsByHRID(Integer hrID);

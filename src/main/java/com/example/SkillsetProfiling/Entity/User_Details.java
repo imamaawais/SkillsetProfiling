@@ -21,7 +21,6 @@ public class User_Details {
     private Integer UserID;
     @OneToOne
     @JoinColumn(name = "email")
-
     private Auth auth;
     private String firstName;
     private String lastName;

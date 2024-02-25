@@ -56,6 +56,7 @@ public class HRDetailsController {
         }
     }
 
+
     @DeleteMapping("/{hrID}")
     public ResponseEntity<Void> deleteHRDetails(@PathVariable Integer hrID) {
         try {

@@ -74,6 +74,7 @@ public class HR_Details_Service implements IHR_Details_Service {
         }
     }
 
+
     @Override
     public boolean deleteHRDetails(Integer hrID) {
         Optional<HR_Details> hrDetailsOptional = hrDetailsRepo.findById(hrID);
