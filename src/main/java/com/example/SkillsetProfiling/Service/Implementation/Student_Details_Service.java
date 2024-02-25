@@ -65,7 +65,8 @@ public class Student_Details_Service implements IStudent_Details_Service {
             // Update student details based on updatedStudentDetailsDTO
             existingStudentDetails.setEnrollmentYear(updatedStudentDetailsDTO.getEnrollmentYear());
             existingStudentDetails.setExpectedGraduation(updatedStudentDetailsDTO.getExpectedGraduation());
-            // Update other fields as needed
+            existingStudentDetails.setUserDetails(updatedStudentDetailsDTO.getUserDetails());
+            existingStudentDetails.setDomain(updatedStudentDetailsDTO.getDomain());
 
             Student_Details updatedStudentDetails = studentDetailsRepo.save(existingStudentDetails);
             return mapper.map(updatedStudentDetails, Student_Details_DTO.class);
