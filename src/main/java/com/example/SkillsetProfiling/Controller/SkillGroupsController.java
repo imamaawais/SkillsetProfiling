@@ -60,7 +60,7 @@ public class SkillGroupsController {
         try {
             boolean deleted = service.deleteSkillGroup(SkillGroupId);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

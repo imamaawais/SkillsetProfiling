@@ -31,7 +31,6 @@ public class Skill_Groups_Service implements ISkill_Groups_Service {
 
         Skill_Groups skillGroup = mapper.map(skillGroupsDTO, Skill_Groups.class);
 
-        //check if skill group with this id already present
         if(skillGroupsRepo.findById(skillGroup.getSkillGroupID()).isPresent()){
             throw new DuplicateSkillGroupException("Skill Group with the same Id already exists: "+ skillGroup.getSkillGroupID());
         }
@@ -72,6 +71,7 @@ public class Skill_Groups_Service implements ISkill_Groups_Service {
             Skill_Groups existingSkillGroup = skillGroupsOptional.get();
 
             existingSkillGroup.setGroupName(updatedSkillGroupsDTO.getGroupName());
+            existingSkillGroup.setGroupDescription(updatedSkillGroupsDTO.getGroupDescription());
 
             Skill_Groups updatedSkillGroup = skillGroupsRepo.save(existingSkillGroup);
 
