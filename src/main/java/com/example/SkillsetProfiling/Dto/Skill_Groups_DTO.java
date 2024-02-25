@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Skill_Group_DTO {
+public class Skill_Groups_DTO {
     private Integer SkillGroupID;
     private String group_name;
     private String group_description;
