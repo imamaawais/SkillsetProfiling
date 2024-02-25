@@ -28,4 +28,14 @@ public class Feedback_Request {
     private String requestMessage;
     private Timestamp requestTimestamp;
     private String requestStatus;
+
+    @PrePersist
+    protected void onCreate() {
+        requestTimestamp = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        requestTimestamp = new Timestamp(System.currentTimeMillis());
+    }
 }

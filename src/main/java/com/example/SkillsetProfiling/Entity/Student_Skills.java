@@ -29,4 +29,13 @@ public class Student_Skills {
     private Integer levelID;
     private Timestamp timestampUpdated;
 
+    @PrePersist
+    protected void onCreate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampUpdated = new Timestamp(System.currentTimeMillis());
+    }
 }

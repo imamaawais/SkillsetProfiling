@@ -22,4 +22,14 @@ public class Feedback_Response {
     private Mentor_Details mentorDetails;
     private String responseMessage;
     private Timestamp responseTimestamp;
+
+    @PrePersist
+    protected void onCreate() {
+        responseTimestamp = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        responseTimestamp = new Timestamp(System.currentTimeMillis());
+    }
 }

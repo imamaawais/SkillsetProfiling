@@ -36,7 +36,7 @@ public class SkillsController {
     }
 
     @GetMapping("/getFromId/{SkillId}")
-    public ResponseEntity<Skills_DTO> getSkillGroupById(@PathVariable int SkillId) throws SkillNotFoundException {
+    public ResponseEntity<Skills_DTO> getSkillById(@PathVariable int SkillId) throws SkillNotFoundException {
         Skills_DTO skillsDTO = service.getSkillById(SkillId);
 
         return new ResponseEntity<>(skillsDTO, HttpStatus.OK);

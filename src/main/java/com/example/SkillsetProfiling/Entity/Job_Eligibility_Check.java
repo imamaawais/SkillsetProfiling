@@ -29,4 +29,16 @@ public class Job_Eligibility_Check {
     private Boolean eligible;
     private Boolean applied;
     private Timestamp timestampApplied;
+
+    @PrePersist
+    protected void onCreate() {
+        timestampChecked = new Timestamp(System.currentTimeMillis());
+        timestampApplied = new Timestamp(System.currentTimeMillis());
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        timestampApplied = new Timestamp(System.currentTimeMillis());
+    }
+
 }
