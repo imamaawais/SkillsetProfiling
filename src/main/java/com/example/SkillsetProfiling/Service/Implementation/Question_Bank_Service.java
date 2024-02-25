@@ -5,7 +5,6 @@ import com.example.SkillsetProfiling.Entity.Question_Bank;
 import com.example.SkillsetProfiling.Exception.DuplicateQuestionBankException;
 import com.example.SkillsetProfiling.Exception.QuestionBankNotFoundException;
 import com.example.SkillsetProfiling.Repository.Question_Bank_Repo;
-import com.example.SkillsetProfiling.Repository.Question_Difficulty_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IQuestion_Bank_Service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
