@@ -63,6 +63,8 @@ public class Mentor_Details_Service implements IMentor_Details_Service {
             // Update mentor details based on updatedMentorDetailsDTO
             // Update other fields as needed
 
+            existingMentorDetails.setUserDetails(updatedMentorDetailsDTO.getUserDetails());
+
             Mentor_Details updatedMentorDetails = mentorDetailsRepo.save(existingMentorDetails);
             return mapper.map(updatedMentorDetails, Mentor_Details_DTO.class);
         } else {
