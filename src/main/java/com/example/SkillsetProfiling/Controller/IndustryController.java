@@ -19,13 +19,13 @@ public class IndustryController {
 
     private Industry_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Industry_DTO> addIndustry(@RequestBody Industry_DTO industryDTO) {
         Industry_DTO addedIndustry = service.addIndustry(industryDTO);
         return new ResponseEntity<>(addedIndustry, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Industry_DTO>> getAllIndustries() {
         List<Industry_DTO> industries = service.getAllIndustries();
 
@@ -35,13 +35,13 @@ public class IndustryController {
         return new ResponseEntity<>(industries, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{industryID}")
+    @GetMapping("/getFromId/{industryID}")
     public ResponseEntity<Industry_DTO> getIndustryByID(@PathVariable Integer industryID) throws IndustryNotFoundException {
         Industry_DTO industryDTO = service.getIndustryByID(industryID);
         return new ResponseEntity<>(industryDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/name/{industryName}")
+    @GetMapping("/getFromName/{industryName}")
     public ResponseEntity<Industry_DTO> getIndustryByName(@PathVariable String industryName) {
         try {
             Industry_DTO industryDTO = service.getIndustryByName(industryName);
@@ -51,7 +51,7 @@ public class IndustryController {
         }
     }
 
-    @PutMapping("/{industryID}")
+    @PutMapping("/update/{industryID}")
     public ResponseEntity<Industry_DTO> updateIndustry(@PathVariable Integer industryID, @RequestBody Industry_DTO updatedIndustryDTO) {
         try {
             Industry_DTO updatedIndustry = service.updateIndustry(industryID, updatedIndustryDTO);
@@ -61,12 +61,12 @@ public class IndustryController {
         }
     }
 
-    @DeleteMapping("/{industryID}")
+    @DeleteMapping("/delete/{industryID}")
     public ResponseEntity<Void> deleteIndustry(@PathVariable Integer industryID) {
         try {
             boolean deleted = service.deleteIndustry(industryID);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 // Handle case where deletion was not successful
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

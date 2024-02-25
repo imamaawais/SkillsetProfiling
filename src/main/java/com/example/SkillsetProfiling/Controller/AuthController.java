@@ -27,7 +27,7 @@ public class AuthController {
 
 
 
-    @GetMapping("/users")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Auth_DTO>> getAllUsers() {
         List<Auth_DTO> userList = service.getAllUsers();
 
@@ -38,7 +38,7 @@ public class AuthController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{email}")
+    @GetMapping("/GetFromEmail/{email}")
     public ResponseEntity<Auth_DTO> getUserByEmail(@PathVariable String email) {
         Auth_DTO user = service.getUserByEmail(email);
 
@@ -49,7 +49,7 @@ public class AuthController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PutMapping("/users/{email}")
+    @PutMapping("/update/{email}")
     public ResponseEntity<Auth_DTO> updateUser(@PathVariable String email, @RequestBody Auth_DTO updatedAuthDTO) {
         Auth_DTO updatedAuth = service.updateUser(email, updatedAuthDTO);
 
@@ -60,7 +60,7 @@ public class AuthController {
         return new ResponseEntity<>(updatedAuth, HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{email}")
+    @DeleteMapping("/delete/{email}")
     public ResponseEntity<Void> deleteUser(@PathVariable String email) {
        try{
            boolean deleted = service.deleteUser(email);
@@ -73,12 +73,5 @@ public class AuthController {
            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
        }
 
-
-
-
-         }
-
-
-
-
+    }
 }
