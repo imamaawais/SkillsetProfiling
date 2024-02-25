@@ -19,15 +19,15 @@ public class JobPostingsController {
 
     private Job_Posting_Service service;
 
-    @PostMapping("/register")
-    public ResponseEntity<Job_Postings_DTO> registerUser(@RequestBody Job_Postings_DTO jobPosting) {
+    @PostMapping("/add")
+    public ResponseEntity<Job_Postings_DTO> addJobPosting(@RequestBody Job_Postings_DTO jobPosting) {
         Job_Postings_DTO savedJobPosting = service.addJobPosting(jobPosting);
         return new ResponseEntity<>(savedJobPosting, HttpStatus.CREATED);
     }
 
 
 
-    @GetMapping("/users")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Job_Postings_DTO>> getAllJobPostings() {
         List<Job_Postings_DTO> userList = service.getAllJobPostings();
 
@@ -38,7 +38,7 @@ public class JobPostingsController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
-    @GetMapping("/users/{jobPostingID}")
+    @GetMapping("/getFromId/{jobPostingID}")
     public ResponseEntity<Job_Postings_DTO> getJobPostingByID(@PathVariable Integer jobPostingID) {
         Job_Postings_DTO user = service.getJobPostingByID(jobPostingID);
 
@@ -49,7 +49,7 @@ public class JobPostingsController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @PutMapping("/users/{jobPostingID}")
+    @PutMapping("/update/{jobPostingID}")
     public ResponseEntity<Job_Postings_DTO> updateJobPosting(@PathVariable Integer jobPostingID, @RequestBody Job_Postings_DTO updatedjobPosting) {
         Job_Postings_DTO updatedJobPosting = service.updateJobPosting(jobPostingID, updatedjobPosting);
 
@@ -60,12 +60,12 @@ public class JobPostingsController {
         return new ResponseEntity<>(updatedJobPosting, HttpStatus.OK);
     }
 
-    @DeleteMapping("/users/{jobPostingID}")
+    @DeleteMapping("/delete/{jobPostingID}")
     public ResponseEntity<Void> deleteJobPosting(@PathVariable Integer jobPostingID) {
        try{
            boolean deleted = service.deleteJobPosting(jobPostingID);
            if (deleted){
-               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+               return new ResponseEntity<>(HttpStatus.OK);
            }else{
                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
            }
