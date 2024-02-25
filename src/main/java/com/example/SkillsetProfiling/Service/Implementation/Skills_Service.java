@@ -48,7 +48,6 @@ public class Skills_Service implements ISkills_Service {
     public List<Skills_DTO> getAllSkills() {
         List<Skills> skills = skillsRepo.findAll();
 
-        System.out.println(skills);
         return skills.stream()
                 .map(skill -> mapper.map(skill, Skills_DTO.class))
                 .collect(Collectors.toList());
