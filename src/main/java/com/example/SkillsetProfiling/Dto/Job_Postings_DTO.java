@@ -15,12 +15,12 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Job_Postings_DTO {
     private Integer JobID;
-    private HR_Details hr_details;
-    private String job_title;
-    private String job_description;
-    private Boolean required_industrial_experience;
-    private String posting_status;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_closed;
+    private HR_Details hrDetails;
+    private String jobTitle;
+    private String jobDescription;
+    private Boolean requiredIndustrialExperience;
+    private String postingStatus;
+    private Timestamp timestampCreated;
+    private Timestamp timestampClosed;
 }
 

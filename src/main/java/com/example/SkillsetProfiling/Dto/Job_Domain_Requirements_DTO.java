@@ -14,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Job_Domain_Requirements_DTO {
-    private Job_Postings job_postings;
+    private Job_Postings jobPostings;
     private Domain domain;
 }
 

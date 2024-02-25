@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Administrator_Details_DTO {
     private Integer AdministratorID;
-    private User_Details user_details;
+    private User_Details userDetails;
 }
 

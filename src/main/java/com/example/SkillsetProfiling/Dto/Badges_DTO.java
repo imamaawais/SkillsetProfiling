@@ -11,6 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Badges_DTO {
     private Integer BadgeID;
-    private String badge_name;
-    private Badge_Groups badge_groups;
+    private String badgeName;
+    private Badge_Groups badgeGroups;
 }

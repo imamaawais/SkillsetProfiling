@@ -18,8 +18,8 @@ import java.sql.Timestamp;
 public class Student_Skills_DTO {
     private Student_Details student_details;
     private Skills skills;
-    private Integer self_level;
+    private Integer selfLevel;
     private Integer levelID;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampUpdated;
 
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Mentor_Specialization_DTO {
-    private Mentor_Details mentor_details;
+    private Mentor_Details mentorDetails;
     private Skills skills;
 }
 

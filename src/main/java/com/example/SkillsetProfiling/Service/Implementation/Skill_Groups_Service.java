@@ -47,6 +47,8 @@ public class Skill_Groups_Service implements ISkill_Groups_Service {
     @Override
     public List<Skill_Groups_DTO> getAllSkillGroups() {
         List<Skill_Groups> skillGroups = skillGroupsRepo.findAll();
+
+        System.out.println(skillGroups);
         return skillGroups.stream()
                 .map(role -> mapper.map(skillGroups, Skill_Groups_DTO.class))
                 .collect(Collectors.toList());

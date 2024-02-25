@@ -11,5 +11,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Experience_DTO {
     private Integer ExperienceID;
-    private String experience_name;
+    private String experienceName;
 }

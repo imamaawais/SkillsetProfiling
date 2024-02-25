@@ -13,5 +13,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Placement_Coordinator_Details_DTO {
     private Integer CoordinatorID;
-    private User_Details user_details;
+    private User_Details userDetails;
 }

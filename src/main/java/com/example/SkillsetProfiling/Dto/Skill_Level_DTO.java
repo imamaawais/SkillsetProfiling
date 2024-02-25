@@ -14,6 +14,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Skill_Level_DTO {
     private Integer LevelID;
-    private String level_name;
-    private Integer no_tests_required;
+    private String levelName;
+    private Integer noTestsRequired;
 }

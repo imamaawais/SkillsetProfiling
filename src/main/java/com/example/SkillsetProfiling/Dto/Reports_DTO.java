@@ -15,10 +15,10 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Reports_DTO {
     private Integer ReportID;
-    private Report_Types report_types;
-    private String report_description;
-    private User_Details user_details;
-    private String report_status;
-    private Timestamp timestamp_reported;
-    private Timestamp timestamp_status_modified;
+    private Report_Types reportTypes;
+    private String reportDescription;
+    private User_Details userDetails;
+    private String reportStatus;
+    private Timestamp timestampReported;
+    private Timestamp timestampStatusModified;
 }

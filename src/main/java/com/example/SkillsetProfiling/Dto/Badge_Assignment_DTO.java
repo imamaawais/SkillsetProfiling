@@ -14,6 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Badge_Assignment_DTO {
     private Badges badges;
-    private Student_Details student_details;
+    private Student_Details studentDetails;
     private Skills skills;
 }

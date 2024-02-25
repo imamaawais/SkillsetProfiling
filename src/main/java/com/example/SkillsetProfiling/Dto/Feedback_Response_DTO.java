@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Feedback_Response_DTO {
     private Integer FeedbackID;
-    private Mentor_Details mentor_details;
-    private String response_message;
-    private Timestamp response_timestamp;
+    private Mentor_Details mentorDetails;
+    private String responseMessage;
+    private Timestamp responseTimestamp;
 }

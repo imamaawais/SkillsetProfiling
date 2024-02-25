@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Test_Attempt_History_DTO {
     private Test test;
     private Assessment assessment;
-    private Integer attempt_number;
+    private Integer attemptNumber;
 
 
 }

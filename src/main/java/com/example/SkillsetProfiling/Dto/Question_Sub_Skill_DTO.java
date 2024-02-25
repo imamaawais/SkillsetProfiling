@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question_Sub_Skill_DTO {
-    private Question_Bank question_bank;
-    private Sub_Skills sub_skills;
+    private Question_Bank questionBank;
+    private Sub_Skills subSkills;
 
 }

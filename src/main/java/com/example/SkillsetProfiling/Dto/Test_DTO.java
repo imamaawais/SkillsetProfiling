@@ -12,9 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Test_DTO {
     private Integer TestID;
-    private Student_Skill_Level student_skill_level;
-    private Integer test_number;
-    private Boolean is_passed;
-    private Integer no_of_attempts;
+    private Student_Skill_Level studentSkillLevel;
+    private Integer testNumber;
+    private Boolean isPassed;
+    private Integer noOfAttempts;
 
 }

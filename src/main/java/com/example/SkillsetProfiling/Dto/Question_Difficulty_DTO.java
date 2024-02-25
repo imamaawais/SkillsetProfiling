@@ -15,5 +15,5 @@ import lombok.Setter;
 public class Question_Difficulty_DTO {
     private Integer DifficultyID;
     private Integer marks;
-    private Integer time_allotted; //in minutes
+    private Integer timeAllotted; //in minutes
 }

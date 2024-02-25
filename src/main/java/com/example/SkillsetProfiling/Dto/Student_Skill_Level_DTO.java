@@ -17,9 +17,9 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 public class Student_Skill_Level_DTO {
     private Integer StudentSkillLevelID;
-    private Student_Details student_details;
+    private Student_Details studentDetails;
     private Skills skills;
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
     private Integer progress;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampUpdated;
 }

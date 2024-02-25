@@ -15,9 +15,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Question_Paper_DTO {
     private Integer QuestionPaperID;
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
     private Skills skillID;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 
 }

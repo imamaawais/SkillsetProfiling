@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Question_Paper_Questions_DTO {
-    private Question_Paper question_paper;
-    private Question_Bank question_bank;
+    private Question_Paper questionPaper;
+    private Question_Bank questionBank;
 
 }

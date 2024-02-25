@@ -17,7 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HR_Details_DTO {
     private Integer HrID;
-    private User_Details user_details;
-    private String company_name;
+    private User_Details userDetails;
+    private String companyName;
     private Industry industry;
 }

@@ -14,9 +14,9 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class Question_Bank_DTO {
     private Integer QuestionID;
-    private String question_text;
+    private String questionText;
     private String answer;
-    private Question_Difficulty question_difficulty;
-    private Timestamp timestamp_created;
-    private Timestamp timestamp_updated;
+    private Question_Difficulty questionDifficulty;
+    private Timestamp timestampCreated;
+    private Timestamp timestampUpdated;
 }

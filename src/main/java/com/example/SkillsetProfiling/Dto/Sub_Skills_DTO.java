@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Sub_Skills_DTO {
     private Integer SubSkillID;
-    private String sub_skill_name;
-    private String sub_skill_description;
+    private String subSkillName;
+    private String subSkillDescription;
     private Skills skills;
 
 }

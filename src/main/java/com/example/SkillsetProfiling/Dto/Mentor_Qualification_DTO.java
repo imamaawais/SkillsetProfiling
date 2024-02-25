@@ -15,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Mentor_Qualification_DTO {
-    private Mentor_Details mentor_details;
+    private Mentor_Details mentorDetails;
     private Qualification qualification;
     private Domain domain;
     private Boolean completed;

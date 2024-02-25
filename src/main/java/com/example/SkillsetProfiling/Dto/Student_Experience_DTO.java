@@ -13,7 +13,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Student_Experience_DTO {
-    private Student_Details student_details;
+    private Student_Details studentDetails;
     private Experience experience;
-    private Integer no_of_years;
+    private Integer noOfYears;
 }

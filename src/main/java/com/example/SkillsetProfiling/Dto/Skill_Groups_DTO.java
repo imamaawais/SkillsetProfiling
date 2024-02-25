@@ -14,6 +14,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Skill_Groups_DTO {
     private Integer SkillGroupID;
-    private String group_name;
-    private String group_description;
+    private String groupName;
+    private String groupDescription;
 }

@@ -17,9 +17,9 @@ import java.sql.Timestamp;
 public class Feedback_Request_DTO {
     private Integer FeedbackID;
     private Assessment assessment;
-    private Question_Bank question_bank;
-    private Student_Details student_details;
-    private String request_message;
-    private Timestamp request_timestamp;
-    private String request_status;
+    private Question_Bank questionBank;
+    private Student_Details studentDetails;
+    private String requestMessage;
+    private Timestamp requestTimestamp;
+    private String requestStatus;
 }

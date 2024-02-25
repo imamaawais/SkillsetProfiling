@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Student_Details_DTO {
     private Integer StudentID;
-    private User_Details user_details;
+    private User_Details userDetails;
     private Integer enrollmentYear;
     private Domain domain;
     private Integer expectedGraduation;

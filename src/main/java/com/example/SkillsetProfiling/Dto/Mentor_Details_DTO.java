@@ -12,5 +12,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Mentor_Details_DTO {
     private Integer MentorID;
-    private User_Details user_details;
+    private User_Details userDetails;
 }

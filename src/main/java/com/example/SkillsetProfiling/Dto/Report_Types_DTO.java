@@ -14,5 +14,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Report_Types_DTO {
     private Integer ReportTypeID;
-    private String type_name;
+    private String typeName;
 }

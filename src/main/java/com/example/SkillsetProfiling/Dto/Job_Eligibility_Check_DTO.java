@@ -16,11 +16,11 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Job_Eligibility_Check_DTO {
-    private Job_Postings job_posting;
-    private Student_Details student_details;
-    private Timestamp timestamp_checked;
+    private Job_Postings jobPosting;
+    private Student_Details studentDetails;
+    private Timestamp timestampChecked;
     private Boolean eligible;
     private Boolean applied;
-    private Timestamp timestamp_applied;
+    private Timestamp timestampApplied;
 }
 

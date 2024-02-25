@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Job_Skills_Requirements_DTO {
-    private Job_Postings job_postings;
+    private Job_Postings jobPostings;
     private Skills skills;
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
 }
 
