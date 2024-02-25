@@ -19,13 +19,13 @@ public class UserDetailsController {
     private User_Details_Service service;
 
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<User_Details_DTO> addUserDetails(@RequestBody User_Details_DTO userDetailsDTO) {
         User_Details_DTO addedUserDetails = service.addUserDetails(userDetailsDTO);
         return new ResponseEntity<>(addedUserDetails, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{userDetailsID}")
+    @GetMapping("/getFromId/{userDetailsID}")
     public ResponseEntity<User_Details_DTO> getUserDetailsByUserID(@PathVariable Integer userDetailsID) {
         User_Details_DTO userDetailsDTO = service.getUserDetailsByUserID(userDetailsID);
 
@@ -36,7 +36,7 @@ public class UserDetailsController {
         return new ResponseEntity<>(userDetailsDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getAll")
     public ResponseEntity<List<User_Details_DTO>> getAllUserDetails() {
         List<User_Details_DTO> userDetailsList = service.getAllUserDetails();
 
@@ -47,7 +47,7 @@ public class UserDetailsController {
         return new ResponseEntity<>(userDetailsList, HttpStatus.OK);
     }
 
-    @PutMapping("/{userID}")
+    @PutMapping("/update/{userID}")
     public ResponseEntity<User_Details_DTO> updateUserDetails(@PathVariable Integer userID,
                                                               @RequestBody User_Details_DTO updatedUserDetailsDTO) {
         try {
@@ -58,12 +58,12 @@ public class UserDetailsController {
         }
     }
 
-    @DeleteMapping("/{userID}")
+    @DeleteMapping("/delete/{userID}")
     public ResponseEntity<Void> deleteUserDetails(@PathVariable Integer userID) {
         try {
             boolean deleted = service.deleteUserDetails(userID);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

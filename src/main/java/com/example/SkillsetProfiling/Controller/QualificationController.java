@@ -17,7 +17,7 @@ import java.util.List;
 public class QualificationController {
     private Qualification_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Qualification_DTO> addQualification(@RequestBody Qualification_DTO qualificationDTO) {
         Qualification_DTO addedQualification = service.addQualification(qualificationDTO);
         return new ResponseEntity<>(addedQualification, HttpStatus.CREATED);
@@ -25,7 +25,7 @@ public class QualificationController {
 
 
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Qualification_DTO>> getAllQualifications() {
         List<Qualification_DTO> qualifications = service.getAllQualifications();
 
@@ -35,13 +35,13 @@ public class QualificationController {
         return new ResponseEntity<>(qualifications, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{qualificationID}")
+    @GetMapping("/getFromId/{qualificationID}")
     public ResponseEntity<Qualification_DTO> getQualificationByID(@PathVariable Integer qualificationID) throws QualificationNotFoundException {
         Qualification_DTO qualificationDTO = service.getQualificationByID(qualificationID);
         return new ResponseEntity<>(qualificationDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/name/{qualificationName}")
+    @GetMapping("/getFromName/{qualificationName}")
     public ResponseEntity<Qualification_DTO> getQualificationByName(@PathVariable String qualificationName) {
         try {
             Qualification_DTO qualificationDTO = service.getQualificationByName(qualificationName);
@@ -51,7 +51,7 @@ public class QualificationController {
         }
     }
 
-    @PutMapping("/{qualificationID}")
+    @PutMapping("/update/{qualificationID}")
     public ResponseEntity<Qualification_DTO> updateQualification(@PathVariable Integer qualificationID, @RequestBody Qualification_DTO updatedQualificationDTO) {
         try {
             Qualification_DTO updatedQualification = service.updateQualification(qualificationID, updatedQualificationDTO);
@@ -61,12 +61,12 @@ public class QualificationController {
         }
     }
 
-    @DeleteMapping("/{qualificationID}")
+    @DeleteMapping("/delete/{qualificationID}")
     public ResponseEntity<Void> deleteQualification(@PathVariable Integer qualificationID) {
         try {
             boolean deleted = service.deleteQualification(qualificationID);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 // Handle case where deletion was not successful
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

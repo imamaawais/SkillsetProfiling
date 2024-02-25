@@ -19,13 +19,13 @@ public class RoleController {
 
     private Role_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Role_DTO> addRole(@RequestBody Role_DTO roleDTO) {
         Role_DTO addedRole = service.addRole(roleDTO);
         return new ResponseEntity<>(addedRole, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Role_DTO>> getAllRoles() {
         List<Role_DTO> roles = service.getAllRoles();
 
@@ -35,14 +35,14 @@ public class RoleController {
         return new ResponseEntity<>(roles, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{RoleID}")
+    @GetMapping("/getFromId/{RoleID}")
     public ResponseEntity<Role_DTO> getRoleByRoleID(@PathVariable int RoleID) throws RoleNotFoundException {
         Role_DTO roleDTO = service.getRoleByRoleID(RoleID);
 
         return new ResponseEntity<>(roleDTO, HttpStatus.OK);
     }
 
-    @GetMapping("/name/{roleName}")
+    @GetMapping("/getFromName/{roleName}")
     public ResponseEntity<Role_DTO> getRoleByRoleName(@PathVariable String roleName) {
         try {
             Role_DTO roleDTO = service.getRoleByRoleName(roleName);
@@ -53,7 +53,7 @@ public class RoleController {
     }
 
 
-    @PutMapping("/{RoleId}")
+    @PutMapping("/update/{RoleId}")
     public ResponseEntity<Role_DTO> updateRole(@PathVariable Integer RoleId, @RequestBody Role_DTO updatedRoleDTO) {
         try {
             Role_DTO updatedRole = service.updateRole(RoleId, updatedRoleDTO);
@@ -63,12 +63,12 @@ public class RoleController {
         }
     }
 
-    @DeleteMapping("/{RoleId}")
+    @DeleteMapping("/delete/{RoleId}")
     public ResponseEntity<Void> deleteRole(@PathVariable Integer RoleId) {
         try {
             boolean deleted = service.deleteRole(RoleId);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 // Handle case where deletion was not successful
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

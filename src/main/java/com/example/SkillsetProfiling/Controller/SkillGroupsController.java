@@ -21,13 +21,13 @@ public class SkillGroupsController {
 
     private Skill_Groups_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Skill_Groups_DTO> addSkillGroup(@RequestBody Skill_Groups_DTO skillGroupsDTO) {
         Skill_Groups_DTO savedSkillGroup = service.addSkillGroup(skillGroupsDTO);
         return new ResponseEntity<>(savedSkillGroup, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Skill_Groups_DTO>> getAllSkillGroups() {
         List<Skill_Groups_DTO> skillGroups = service.getAllSkillGroups();
 
@@ -38,7 +38,7 @@ public class SkillGroupsController {
         return new ResponseEntity<>(skillGroups, HttpStatus.OK);
     }
 
-    @GetMapping("/id/{SkillGroupId}")
+    @GetMapping("/getFromId/{SkillGroupId}")
     public ResponseEntity<Skill_Groups_DTO> getSkillGroupById(@PathVariable int SkillGroupId) throws SkillGroupNotFoundException {
         Skill_Groups_DTO skillGroupsDTO = service.getSkillGroupById(SkillGroupId);
 

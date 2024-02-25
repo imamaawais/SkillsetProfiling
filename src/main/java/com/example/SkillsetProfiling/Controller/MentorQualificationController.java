@@ -24,12 +24,12 @@ MentorQualificationController {
     private final Mentor_Qualification_Service service;
     private static final Logger logger = LoggerFactory.getLogger(Mentor_Qualification_Service.class);
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Mentor_Qualification_DTO> addMentorQualification(@RequestBody Mentor_Qualification_DTO mentorQualificationDTO) {
         Mentor_Qualification_DTO savedDTO = service.addMentorQualification(mentorQualificationDTO);
         return new ResponseEntity<>(savedDTO, HttpStatus.CREATED);
     }
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<Mentor_Qualification_DTO>> getAllMentorQualifications() {
         List<Mentor_Qualification_DTO> mentorQualificationList = service.getAllMentorQualifications();
 
@@ -40,7 +40,7 @@ MentorQualificationController {
         return new ResponseEntity<>(mentorQualificationList, HttpStatus.OK);
     }
 
-    @GetMapping("/{mentorID}/{qualificationID}/{domainID}")
+    @GetMapping("/getFromId/{mentorID}/{qualificationID}/{domainID}")
     public ResponseEntity<Mentor_Qualification_DTO> getMentorQualificationById(
             @PathVariable Integer mentorID,
             @PathVariable Integer qualificationID,
@@ -56,7 +56,7 @@ MentorQualificationController {
 
     }
 
-    @PutMapping("/{mentorID}/{qualificationID}/{domainID}")
+    @PutMapping("/update/{mentorID}/{qualificationID}/{domainID}")
     public ResponseEntity<Mentor_Qualification_DTO> updateMentorQualification(
             @PathVariable Integer mentorID,
             @PathVariable Integer qualificationID,
@@ -74,7 +74,7 @@ MentorQualificationController {
     }
 
 
-    @DeleteMapping("/{mentorID}/{qualificationID}/{domainID}")
+    @DeleteMapping("/delete/{mentorID}/{qualificationID}/{domainID}")
     public ResponseEntity<Void> deleteMentorQualification(
             @PathVariable Integer mentorID,
             @PathVariable Integer qualificationID,

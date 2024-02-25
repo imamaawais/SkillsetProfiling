@@ -19,13 +19,13 @@ public class MentorDetailsController {
 
     private IMentor_Details_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Mentor_Details_DTO> addMentorDetails(@RequestBody Mentor_Details_DTO mentorDetailsDTO) {
         Mentor_Details_DTO addedMentorDetails = service.addMentorDetails(mentorDetailsDTO);
         return new ResponseEntity<>(addedMentorDetails, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{mentorDetailsID}")
+    @GetMapping("/getFromId/{mentorDetailsID}")
     public ResponseEntity<Mentor_Details_DTO> getMentorDetailsByMentorID(@PathVariable Integer mentorDetailsID) {
         try {
             Mentor_Details_DTO mentorDetailsDTO = service.getMentorDetailsByMentorID(mentorDetailsID);
@@ -35,7 +35,7 @@ public class MentorDetailsController {
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Mentor_Details_DTO>> getAllMentorDetails() {
         List<Mentor_Details_DTO> mentorDetailsList = service.getAllMentorDetails();
 
@@ -46,7 +46,7 @@ public class MentorDetailsController {
         return new ResponseEntity<>(mentorDetailsList, HttpStatus.OK);
     }
 
-    @PutMapping("/{mentorID}")
+    @PutMapping("/update/{mentorID}")
     public ResponseEntity<Mentor_Details_DTO> updateMentorDetails(@PathVariable Integer mentorID,
                                                                   @RequestBody Mentor_Details_DTO updatedMentorDetailsDTO) {
         try {
@@ -57,12 +57,12 @@ public class MentorDetailsController {
         }
     }
 
-    @DeleteMapping("/{mentorID}")
+    @DeleteMapping("/delete/{mentorID}")
     public ResponseEntity<Void> deleteMentorDetails(@PathVariable Integer mentorID) {
         try {
             boolean deleted = service.deleteMentorDetails(mentorID);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }

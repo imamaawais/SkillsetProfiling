@@ -19,13 +19,13 @@ public class StudentDetailsController {
 
     private Student_Details_Service service;
 
-    @PostMapping
+    @PostMapping("/add")
     public ResponseEntity<Student_Details_DTO> addStudentDetails(@RequestBody Student_Details_DTO studentDetailsDTO) {
         Student_Details_DTO addedStudentDetails = service.addStudentDetails(studentDetailsDTO);
         return new ResponseEntity<>(addedStudentDetails, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{studentDetailsID}")
+    @GetMapping("/getFromId/{studentDetailsID}")
     public ResponseEntity<Student_Details_DTO> getStudentDetailsByStudentID(@PathVariable Integer studentDetailsID) {
         try {
             Student_Details_DTO studentDetailsDTO = service.getStudentDetailsByStudentID(studentDetailsID);
@@ -35,7 +35,7 @@ public class StudentDetailsController {
         }
     }
 
-    @GetMapping("/all")
+    @GetMapping("/getAll")
     public ResponseEntity<List<Student_Details_DTO>> getAllStudentDetails() {
         List<Student_Details_DTO> studentDetailsList = service.getAllStudentDetails();
 
@@ -46,7 +46,7 @@ public class StudentDetailsController {
         return new ResponseEntity<>(studentDetailsList, HttpStatus.OK);
     }
 
-    @PutMapping("/{studentID}")
+    @PutMapping("/update/{studentID}")
     public ResponseEntity<Student_Details_DTO> updateStudentDetails(@PathVariable Integer studentID,
                                                                     @RequestBody Student_Details_DTO updatedStudentDetailsDTO) {
         try {
@@ -57,12 +57,12 @@ public class StudentDetailsController {
         }
     }
 
-    @DeleteMapping("/{studentID}")
+    @DeleteMapping("/delete/{studentID}")
     public ResponseEntity<Void> deleteStudentDetails(@PathVariable Integer studentID) {
         try {
             boolean deleted = service.deleteStudentDetails(studentID);
             if (deleted) {
-                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+                return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
