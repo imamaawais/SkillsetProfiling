@@ -2,15 +2,21 @@ package com.example.SkillsetProfiling.Service.Implementation;
 
 import com.example.SkillsetProfiling.Dto.Job_Postings_DTO;
 import com.example.SkillsetProfiling.Entity.Job_Postings;
+import com.example.SkillsetProfiling.Exception.DuplicateJobPostingException;
+import com.example.SkillsetProfiling.Exception.JobPostingNotFoundException;
 import com.example.SkillsetProfiling.Exception.QualificationNotFoundException;
 import com.example.SkillsetProfiling.Repository.Job_Postings_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IJob_Posting_Service;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
+@AllArgsConstructor
 public class Job_Posting_Service implements IJob_Posting_Service {
 
     private Job_Postings_Repo jobPostingsRepo;

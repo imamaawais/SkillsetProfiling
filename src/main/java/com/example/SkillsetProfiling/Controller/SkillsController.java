@@ -1,8 +1,6 @@
 package com.example.SkillsetProfiling.Controller;
 
-import com.example.SkillsetProfiling.Dto.Skill_Groups_DTO;
 import com.example.SkillsetProfiling.Dto.Skills_DTO;
-import com.example.SkillsetProfiling.Exception.SkillGroupNotFoundException;
 import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Skills_Service;
 import lombok.AllArgsConstructor;

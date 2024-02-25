@@ -65,7 +65,7 @@ public class AuthController {
        try{
            boolean deleted = service.deleteUser(email);
            if (deleted){
-               return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+               return new ResponseEntity<>(HttpStatus.OK);
            }else{
                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
            }

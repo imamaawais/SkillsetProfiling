@@ -1,8 +1,8 @@
 package com.example.SkillsetProfiling.Service.Interface;
 
 import com.example.SkillsetProfiling.Dto.Job_Postings_DTO;
-import com.example.SkillsetProfiling.Service.Implementation.DuplicateJobPostingException;
-import com.example.SkillsetProfiling.Service.Implementation.JobPostingNotFoundException;
+import com.example.SkillsetProfiling.Exception.DuplicateJobPostingException;
+import com.example.SkillsetProfiling.Exception.JobPostingNotFoundException;
 
 import java.util.List;
 
