@@ -27,7 +27,8 @@ public class Student_Skills {
     private Skills SkillID;
     private Integer selfLevel;
     @ManyToOne
-    private Skill_Level levelID;
+    @JoinColumn(name="LevelID")
+    private Skill_Level LevelID;
     private Timestamp timestampUpdated;
 
     @PrePersist

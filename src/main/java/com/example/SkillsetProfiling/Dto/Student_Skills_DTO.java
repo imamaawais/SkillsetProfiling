@@ -18,7 +18,7 @@ public class Student_Skills_DTO {
     private Student_Details student_details;
     private Skills skills;
     private Integer selfLevel;
-    private Skill_Level levelID;
+    private Skill_Level skill_level;
     private Timestamp timestampUpdated;
 
 }

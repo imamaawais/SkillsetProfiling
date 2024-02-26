@@ -68,7 +68,7 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
 
             // Update student skills details based on updatedStudentSkillsDTO
             existingStudentSkills.setSelfLevel(updatedStudentSkillsDTO.getSelfLevel());
-            existingStudentSkills.setLevelID(updatedStudentSkillsDTO.getLevelID());
+            existingStudentSkills.setLevelID(updatedStudentSkillsDTO.getSkill_level());
 
             Student_Skills updatedStudentSkills = studentSkillsRepo.save(existingStudentSkills);
             return mapper.map(updatedStudentSkills, Student_Skills_DTO.class);
