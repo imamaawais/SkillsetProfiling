@@ -57,21 +57,21 @@ public class Student_Experience_Service implements IStudent_Experience_Service {
         }
     }
 
-    @Override
-    public List<Student_Experience_DTO> getStudentExperiencesByStudentID(Integer studentID) {
-        List<Student_Experience> studentExperiences = studentExperienceRepo.findByStudentID_StudentID(studentID);
-        return studentExperiences.stream()
-                .map(studentExperience -> mapper.map(studentExperience, Student_Experience_DTO.class))
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Student_Experience_DTO> getStudentExperiencesByExperienceID(Integer experienceID) {
-        List<Student_Experience> studentExperiences = studentExperienceRepo.findByExperienceID_ExperienceID(experienceID);
-        return studentExperiences.stream()
-                .map(studentExperience -> mapper.map(studentExperience, Student_Experience_DTO.class))
-                .collect(Collectors.toList());
-    }
+//    @Override
+//    public List<Student_Experience_DTO> getStudentExperiencesByStudentID(Integer studentID) {
+//        List<Student_Experience> studentExperiences = studentExperienceRepo.findByStudentID_StudentID(studentID);
+//        return studentExperiences.stream()
+//                .map(studentExperience -> mapper.map(studentExperience, Student_Experience_DTO.class))
+//                .collect(Collectors.toList());
+//    }
+//
+//    @Override
+//    public List<Student_Experience_DTO> getStudentExperiencesByExperienceID(Integer experienceID) {
+//        List<Student_Experience> studentExperiences = studentExperienceRepo.findByExperienceID_ExperienceID(experienceID);
+//        return studentExperiences.stream()
+//                .map(studentExperience -> mapper.map(studentExperience, Student_Experience_DTO.class))
+//                .collect(Collectors.toList());
+//    }
 
     @Override
     public Student_Experience_DTO updateStudentExperience(Student_Experience_Key studentExperienceKey, Student_Experience_DTO updatedStudentExperienceDTO) throws StudentExperienceNotFoundException {

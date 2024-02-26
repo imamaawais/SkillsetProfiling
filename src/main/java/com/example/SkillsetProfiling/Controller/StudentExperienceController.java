@@ -3,6 +3,7 @@ package com.example.SkillsetProfiling.Controller;
 import com.example.SkillsetProfiling.Dto.Student_Experience_DTO;
 import com.example.SkillsetProfiling.Exception.StudentExperienceNotFoundException;
 import com.example.SkillsetProfiling.Key.Student_Experience_Key;
+import com.example.SkillsetProfiling.Service.Implementation.Student_Experience_Service;
 import com.example.SkillsetProfiling.Service.Interface.IStudent_Experience_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import java.util.List;
 @RequestMapping("api/student_experience")
 public class StudentExperienceController {
 
-    private final IStudent_Experience_Service service;
+    private final Student_Experience_Service service;
 
     @PostMapping("/add")
     public ResponseEntity<Student_Experience_DTO> addStudentExperience(@RequestBody Student_Experience_DTO studentExperienceDTO) {
