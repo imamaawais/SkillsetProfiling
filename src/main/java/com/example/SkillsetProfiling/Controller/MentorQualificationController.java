@@ -5,6 +5,7 @@ import com.example.SkillsetProfiling.Dto.Mentor_Qualification_DTO;
 import com.example.SkillsetProfiling.Exception.MentorDetailsNotFoundException;
 import com.example.SkillsetProfiling.Key.Mentor_Qualification_Key;
 import com.example.SkillsetProfiling.Service.Implementation.Mentor_Qualification_Service;
+import com.example.SkillsetProfiling.Service.Interface.IMentor_Qualification_Service;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ import java.util.List;
 public class
 MentorQualificationController {
 
-    private final Mentor_Qualification_Service service;
+    private final IMentor_Qualification_Service service;
     private static final Logger logger = LoggerFactory.getLogger(Mentor_Qualification_Service.class);
 
     @PostMapping("/add")

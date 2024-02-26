@@ -13,7 +13,6 @@ public interface Mentor_Qualification_Repo extends JpaRepository<Mentor_Qualific
 //    @Query("DELETE FROM Mentor_Qualification m WHERE m.MentorID.id = :mentorID AND m.QualificationID.id = :qualificationID AND m.DomainID.id = :domainID")
 //    void deleteByIds(@Param("mentorID") Integer mentorID, @Param("qualificationID") Integer qualificationID, @Param("domainID") Integer domainID);
 //void deleteByIds(Integer mentorID, Integer qualificationID, Integer domainID);
-
     Optional<Mentor_Qualification> findById(Mentor_Qualification_Key id);
 
    void deleteById(Mentor_Qualification_Key id);

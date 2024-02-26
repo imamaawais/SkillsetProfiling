@@ -32,6 +32,7 @@ public class Mentor_Qualification_Key implements Serializable {
     public int hashCode() {
         return Objects.hash(MentorID, QualificationID, DomainID);
     }
+
     @Override
     public String toString() {
         return String.format("(%d, %d, %d)", MentorID, QualificationID, DomainID);
