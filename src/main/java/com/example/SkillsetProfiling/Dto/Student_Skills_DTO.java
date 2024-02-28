@@ -15,10 +15,10 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student_Skills_DTO {
-    private Student_Details student_details;
-    private Skills skills;
+    private Student_Details studentDetails;
+    private Skills skill;
     private Integer selfLevel;
-    private Skill_Level skill_level;
+    private Skill_Level skillLevel;
     private Timestamp timestampUpdated;
 
 }

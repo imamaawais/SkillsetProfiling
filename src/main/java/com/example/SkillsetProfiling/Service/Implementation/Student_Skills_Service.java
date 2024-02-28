@@ -29,10 +29,11 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
         studentSkillsKey.setStudentID(studentSkills.getStudentID().getStudentID());
         studentSkillsKey.setSkillID(studentSkills.getSkillID().getSkillID());
 
-        // Check if student skills with the same key already exist
+
+        // Check if student skills with the same key already exists
         Optional<Student_Skills> existingStudentSkills = studentSkillsRepo.findById(studentSkillsKey);
         if (existingStudentSkills.isPresent()) {
-            throw new DuplicateStudentSkillsException("Student skills with the same key already exist: " + studentSkillsKey);
+            throw new DuplicateStudentSkillsException("Student skills with the same key already exists: " + studentSkillsKey);
         }
 
         Student_Skills savedStudentSkills = studentSkillsRepo.save(studentSkills);
@@ -48,6 +49,7 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
                 .collect(Collectors.toList());
     }
 
+
     @Override
     public Student_Skills_DTO getStudentSkillsById(Student_Skills_Key key) {
         Optional<Student_Skills> studentSkillsOptional = studentSkillsRepo.findById(key);
@@ -55,10 +57,28 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
         if (studentSkillsOptional.isPresent()) {
             return mapper.map(studentSkillsOptional.get(), Student_Skills_DTO.class);
         } else {
-            throw new StudentSkillsNotFoundException("Student Skills not found with ID: " + key);
+            throw new StudentSkillsNotFoundException("Student skills not found with ID: " + key);
         }
     }
 
+
+//    @Override
+//    public Student_Skills_DTO updateStudentSkills(Student_Skills_Key key, Student_Skills_DTO updatedStudentSkillsDTO) {
+//        Optional<Student_Skills> existingStudentSkillsOptional = studentSkillsRepo.findById(key);
+//
+//        if (existingStudentSkillsOptional.isPresent()) {
+//            Student_Skills existingStudentSkills = existingStudentSkillsOptional.get();
+//
+//            // Update student skills details based on updatedStudentSkillsDTO
+//            existingStudentSkills.setSelfLevel(updatedStudentSkillsDTO.getSelfLevel());
+//            existingStudentSkills.setLevelID(updatedStudentSkillsDTO.getSkill_level());
+//
+//            Student_Skills updatedStudentSkills = studentSkillsRepo.save(existingStudentSkills);
+//            return mapper.map(updatedStudentSkills, Student_Skills_DTO.class);
+//        } else {
+//            throw new StudentSkillsNotFoundException("Student skills not found with key: " + key);
+//        }
+//    }
     @Override
     public Student_Skills_DTO updateStudentSkills(Student_Skills_Key key, Student_Skills_DTO updatedStudentSkillsDTO) {
         Optional<Student_Skills> existingStudentSkillsOptional = studentSkillsRepo.findById(key);
@@ -68,7 +88,7 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
 
             // Update student skills details based on updatedStudentSkillsDTO
             existingStudentSkills.setSelfLevel(updatedStudentSkillsDTO.getSelfLevel());
-            existingStudentSkills.setLevelID(updatedStudentSkillsDTO.getSkill_level());
+            existingStudentSkills.setLevelID(updatedStudentSkillsDTO.getSkillLevel());
 
             Student_Skills updatedStudentSkills = studentSkillsRepo.save(existingStudentSkills);
             return mapper.map(updatedStudentSkills, Student_Skills_DTO.class);
