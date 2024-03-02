@@ -1,11 +1,8 @@
 package com.example.SkillsetProfiling.Controller;
 
 import com.example.SkillsetProfiling.Dto.Skill_Level_DTO;
-import com.example.SkillsetProfiling.Dto.Skills_DTO;
 import com.example.SkillsetProfiling.Exception.SkillLevelNotFoundException;
-import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Skill_Level_Service;
-import com.example.SkillsetProfiling.Service.Implementation.Skills_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -21,7 +21,7 @@ public class Feedback_Request {
     private Assessment assessment;
     @ManyToOne
     @JoinColumn(name = "questionID")
-    private Question_Bank question_bank;
+    private Question_Bank questionBank;
     @ManyToOne
     @JoinColumn(name = "studentID")
     private Student_Details studentDetails;

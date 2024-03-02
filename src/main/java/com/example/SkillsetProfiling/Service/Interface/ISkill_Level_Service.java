@@ -1,9 +1,7 @@
 package com.example.SkillsetProfiling.Service.Interface;
 
 import com.example.SkillsetProfiling.Dto.Skill_Level_DTO;
-import com.example.SkillsetProfiling.Dto.Skill_Level_DTO;
 import com.example.SkillsetProfiling.Exception.SkillLevelNotFoundException;
-import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 
 import java.util.List;
 

@@ -8,7 +8,6 @@ import com.example.SkillsetProfiling.Repository.Question_Paper_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IQuestion_Paper_Service;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;

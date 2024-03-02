@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Assessment_Scores_DTO {
     private Assessment assessment;
-    private Question_Bank question_bank;
-    private String user_answer;
-    private Boolean is_attempted;
+    private Question_Bank questionBank;
+    private String userAnswer;
+    private Boolean isAttempted;
 }

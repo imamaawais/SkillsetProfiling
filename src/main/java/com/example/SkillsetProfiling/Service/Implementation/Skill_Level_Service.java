@@ -1,13 +1,9 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
 import com.example.SkillsetProfiling.Dto.Skill_Level_DTO;
-import com.example.SkillsetProfiling.Dto.Skills_DTO;
 import com.example.SkillsetProfiling.Entity.Skill_Level;
-import com.example.SkillsetProfiling.Entity.Skills;
-import com.example.SkillsetProfiling.Exception.DuplicateSkillException;
 import com.example.SkillsetProfiling.Exception.DuplicateSkillLevelException;
 import com.example.SkillsetProfiling.Exception.SkillLevelNotFoundException;
-import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Repository.Skill_Level_Repo;
 import com.example.SkillsetProfiling.Service.Interface.ISkill_Level_Service;
 import lombok.AllArgsConstructor;

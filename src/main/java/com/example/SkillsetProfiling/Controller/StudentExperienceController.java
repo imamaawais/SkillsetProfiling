@@ -4,7 +4,6 @@ import com.example.SkillsetProfiling.Dto.Student_Experience_DTO;
 import com.example.SkillsetProfiling.Exception.StudentExperienceNotFoundException;
 import com.example.SkillsetProfiling.Key.Student_Experience_Key;
 import com.example.SkillsetProfiling.Service.Implementation.Student_Experience_Service;
-import com.example.SkillsetProfiling.Service.Interface.IStudent_Experience_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

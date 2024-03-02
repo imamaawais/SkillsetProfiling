@@ -1,8 +1,6 @@
 package com.example.SkillsetProfiling.Service.Interface;
 
-import com.example.SkillsetProfiling.Dto.Skills_DTO;
 import com.example.SkillsetProfiling.Dto.Sub_Skills_DTO;
-import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Exception.SubSkillNotFoundException;
 
 import java.util.List;

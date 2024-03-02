@@ -1,12 +1,8 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
-import com.example.SkillsetProfiling.Dto.Skills_DTO;
 import com.example.SkillsetProfiling.Dto.Sub_Skills_DTO;
-import com.example.SkillsetProfiling.Entity.Skills;
 import com.example.SkillsetProfiling.Entity.Sub_Skills;
-import com.example.SkillsetProfiling.Exception.DuplicateSkillException;
 import com.example.SkillsetProfiling.Exception.DuplicateSubSkillException;
-import com.example.SkillsetProfiling.Exception.SkillNotFoundException;
 import com.example.SkillsetProfiling.Exception.SubSkillNotFoundException;
 import com.example.SkillsetProfiling.Repository.Sub_Skills_Repo;
 import com.example.SkillsetProfiling.Service.Interface.ISub_Skills_Service;
