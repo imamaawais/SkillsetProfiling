@@ -29,7 +29,7 @@ public class Job_Eligibility_Check_Service implements IJob_Eligibility_Check_Ser
 
         Job_Eligibility_Check_Key jobEligibilityCheckKey = new Job_Eligibility_Check_Key();
         
-        jobEligibilityCheckKey.setJobID(jobEligibilityCheckDto.getJobPosting().getJobID());
+        jobEligibilityCheckKey.setJobID(jobEligibilityCheckDto.getJobPostings().getJobID());
         jobEligibilityCheckKey.setStudentID(jobEligibilityCheckDto.getStudentDetails().getStudentID());
 
         if(jobEligibilityChecksRepo.findById(jobEligibilityCheckKey).isPresent()) {
@@ -68,7 +68,7 @@ public class Job_Eligibility_Check_Service implements IJob_Eligibility_Check_Ser
 
             existingJobEligibilityCheck.setEligible(updatedJobEligibilityCheckDTO.getEligible());
             existingJobEligibilityCheck.setTimestampChecked(updatedJobEligibilityCheckDTO.getTimestampChecked());
-            existingJobEligibilityCheck.setJobID(updatedJobEligibilityCheckDTO.getJobPosting());
+            existingJobEligibilityCheck.setJobID(updatedJobEligibilityCheckDTO.getJobPostings());
             existingJobEligibilityCheck.setStudentID(updatedJobEligibilityCheckDTO.getStudentDetails());
             existingJobEligibilityCheck.setApplied(updatedJobEligibilityCheckDTO.getApplied());
             existingJobEligibilityCheck.setTimestampApplied(updatedJobEligibilityCheckDTO.getTimestampApplied());
