@@ -30,11 +30,11 @@ public class Job_Postings {
     @PrePersist
     protected void onCreate() {
         timestampCreated = new Timestamp(System.currentTimeMillis());
-        timestampClosed = new Timestamp(System.currentTimeMillis());
+//        timestampClosed = new Timestamp(System.currentTimeMillis());
     }
 
-    @PreUpdate
-    protected void onUpdate() {
-        timestampClosed= new Timestamp(System.currentTimeMillis());
-    }
+//    @PreUpdate
+//    protected void onUpdate() {
+//        timestampClosed= new Timestamp(System.currentTimeMillis());
+//    }
 }

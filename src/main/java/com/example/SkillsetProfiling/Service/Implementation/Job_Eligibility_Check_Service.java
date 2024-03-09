@@ -68,8 +68,8 @@ public class Job_Eligibility_Check_Service implements IJob_Eligibility_Check_Ser
 
             existingJobEligibilityCheck.setEligible(updatedJobEligibilityCheckDTO.getEligible());
             existingJobEligibilityCheck.setTimestampChecked(updatedJobEligibilityCheckDTO.getTimestampChecked());
-            existingJobEligibilityCheck.setJobID(updatedJobEligibilityCheckDTO.getJobPostings());
-            existingJobEligibilityCheck.setStudentID(updatedJobEligibilityCheckDTO.getStudentDetails());
+//            existingJobEligibilityCheck.setJobID(updatedJobEligibilityCheckDTO.getJobPostings());
+//            existingJobEligibilityCheck.setStudentID(updatedJobEligibilityCheckDTO.getStudentDetails());
             existingJobEligibilityCheck.setApplied(updatedJobEligibilityCheckDTO.getApplied());
             existingJobEligibilityCheck.setTimestampApplied(updatedJobEligibilityCheckDTO.getTimestampApplied());
 
