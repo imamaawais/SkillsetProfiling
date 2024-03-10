@@ -20,23 +20,24 @@ import java.util.stream.Collectors;
 public class Badge_Assignment_Service implements IBadge_Assignment_Service {
 
     private final Badge_Assignment_Repo badgeAssignmentRepo;
-    private final ModelMapper modelMapper;
+//    private final ModelMapper modelMapper;
 
     @Override
     public Badge_Assignment_DTO addBadgeAssignment(Badge_Assignment_DTO badgeAssignmentDTO) {
-        Badge_Assignment badgeAssignment = modelMapper.map(badgeAssignmentDTO, Badge_Assignment.class);
+        Badge_Assignment badgeAssignment = new Badge_Assignment(badgeAssignmentDTO.getBadges(),badgeAssignmentDTO.getStudentDetails(),badgeAssignmentDTO.getSkills());
         if (badgeAssignmentRepo.findById(new Badge_Assignment_Key(badgeAssignment.getStudentID().getStudentID(), badgeAssignment.getSkillID().getSkillID(), badgeAssignment.getBadgeID().getBadgeID())).isPresent()) {
             throw new DuplicateBadgeAssignmentException("Badge assignment already exists with IDs: " + badgeAssignment.getBadgeID().getBadgeID() + ", " + badgeAssignment.getStudentID().getStudentID() + ", " + badgeAssignment.getSkillID().getSkillID());
         }
         Badge_Assignment savedBadgeAssignment = badgeAssignmentRepo.save(badgeAssignment);
-        return modelMapper.map(savedBadgeAssignment, Badge_Assignment_DTO.class);
+        return new Badge_Assignment_DTO(savedBadgeAssignment.getBadgeID(),savedBadgeAssignment.getStudentID(),savedBadgeAssignment.getSkillID());
     }
 
     @Override
     public Badge_Assignment_DTO getBadgeAssignmentByIds(Integer badgeId, Integer studentId, Integer skillId) throws BadgeAssignmentNotFoundException {
         Optional<Badge_Assignment> badgeAssignmentOptional = badgeAssignmentRepo.findById(new Badge_Assignment_Key(studentId, skillId, badgeId));
         if (badgeAssignmentOptional.isPresent()) {
-            return modelMapper.map(badgeAssignmentOptional.get(), Badge_Assignment_DTO.class);
+            return new Badge_Assignment_DTO(badgeAssignmentOptional.get().getBadgeID(),badgeAssignmentOptional.get().getStudentID(),badgeAssignmentOptional.get().getSkillID());
+
         } else {
             throw new BadgeAssignmentNotFoundException("Badge assignment not found with IDs: " + badgeId + ", " + studentId + ", " + skillId);
         }
@@ -46,7 +47,7 @@ public class Badge_Assignment_Service implements IBadge_Assignment_Service {
     public List<Badge_Assignment_DTO> getAllBadgeAssignments() {
         List<Badge_Assignment> badgeAssignments = badgeAssignmentRepo.findAll();
         return badgeAssignments.stream()
-                .map(assignment -> modelMapper.map(assignment, Badge_Assignment_DTO.class))
+                .map(assignment -> new Badge_Assignment_DTO(assignment.getBadgeID(),assignment.getStudentID(),assignment.getSkillID()))
                 .collect(Collectors.toList());
     }
 
@@ -55,11 +56,9 @@ public class Badge_Assignment_Service implements IBadge_Assignment_Service {
         Optional<Badge_Assignment> badgeAssignmentOptional = badgeAssignmentRepo.findById(new Badge_Assignment_Key(studentId, skillId, badgeId));
         if (badgeAssignmentOptional.isPresent()) {
             Badge_Assignment existingBadgeAssignment = badgeAssignmentOptional.get();
-            existingBadgeAssignment.setBadgeID(updatedBadgeAssignmentDTO.getBadges());
-            existingBadgeAssignment.setStudentID(updatedBadgeAssignmentDTO.getStudentDetails());
-            existingBadgeAssignment.setSkillID(updatedBadgeAssignmentDTO.getSkills());
+
             Badge_Assignment updatedBadgeAssignment = badgeAssignmentRepo.save(existingBadgeAssignment);
-            return modelMapper.map(updatedBadgeAssignment, Badge_Assignment_DTO.class);
+            return new Badge_Assignment_DTO(updatedBadgeAssignment.getBadgeID(),updatedBadgeAssignment.getStudentID(),updatedBadgeAssignment.getSkillID());
         } else {
             throw new BadgeAssignmentNotFoundException("Badge assignment not found with IDs: " + badgeId + ", " + studentId + ", " + skillId);
         }
