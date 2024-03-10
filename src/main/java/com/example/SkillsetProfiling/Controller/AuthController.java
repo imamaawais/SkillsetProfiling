@@ -38,7 +38,7 @@ public class AuthController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
-    @GetMapping("/GetFromEmail/{email}")
+    @GetMapping("/getFromId/{email}")
     public ResponseEntity<Auth_DTO> getUserByEmail(@PathVariable String email) {
         Auth_DTO user = service.getUserByEmail(email);
 

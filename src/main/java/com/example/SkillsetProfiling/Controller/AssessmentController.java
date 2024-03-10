@@ -40,7 +40,7 @@ public class AssessmentController {
         return new ResponseEntity<>(assessments, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{assessmentId}")
+    @GetMapping("/getFromId/{assessmentId}")
     public ResponseEntity<Assessment_DTO> getAssessmentById(@PathVariable Integer assessmentId) {
         try {
             Assessment_DTO assessmentDTO = service.getAssessmentById(assessmentId);

@@ -41,7 +41,7 @@ public class FeedbackRequestController {
         return new ResponseEntity<>(feedbackRequests, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{feedbackId}")
+    @GetMapping("/getFromId/{feedbackId}")
     public ResponseEntity<Feedback_Request_DTO> getFeedbackRequestById(@PathVariable Integer feedbackId) {
         try {
             Feedback_Request_DTO feedbackRequestDTO = feedbackRequestService.getFeedbackRequestById(feedbackId);

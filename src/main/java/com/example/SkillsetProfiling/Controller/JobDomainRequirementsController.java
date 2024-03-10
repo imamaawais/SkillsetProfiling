@@ -30,7 +30,7 @@ public class JobDomainRequirementsController {
         }
     }
 
-    @GetMapping("/get/{jobID}/{domainID}")
+    @GetMapping("/getFromId/{jobID}/{domainID}")
     public ResponseEntity<Job_Domain_Requirements_DTO> getJobDomainRequirementsByID(@PathVariable Integer jobID, @PathVariable Integer domainID) {
         Job_Domain_Requirements_Key jobDomainRequirementsKey = new Job_Domain_Requirements_Key(jobID, domainID);
         try {

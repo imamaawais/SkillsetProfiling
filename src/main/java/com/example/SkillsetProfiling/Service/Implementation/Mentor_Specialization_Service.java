@@ -7,6 +7,7 @@ import com.example.SkillsetProfiling.Exception.MentorSpecializationNotFoundExcep
 import com.example.SkillsetProfiling.Key.Mentor_Specialization_Key;
 import com.example.SkillsetProfiling.Repository.Mentor_Specialization_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IMentor_Specialization_Service;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -15,31 +16,30 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@AllArgsConstructor
 public class Mentor_Specialization_Service implements IMentor_Specialization_Service {
 
     private final Mentor_Specialization_Repo mentorSpecializationRepo;
-    private final ModelMapper modelMapper;
-
-    public Mentor_Specialization_Service(Mentor_Specialization_Repo mentorSpecializationRepo, ModelMapper modelMapper) {
-        this.mentorSpecializationRepo = mentorSpecializationRepo;
-        this.modelMapper = modelMapper;
-    }
+//    private final ModelMapper modelMapper;
 
     @Override
     public Mentor_Specialization_DTO addMentorSpecialization(Mentor_Specialization_DTO mentorSpecializationDTO) {
-        Mentor_Specialization mentorSpecialization = modelMapper.map(mentorSpecializationDTO, Mentor_Specialization.class);
+        System.out.println(mentorSpecializationDTO.getSkills().getSkillID());
+        // Mapper was giving error for some reason so updated manually here
+        Mentor_Specialization mentorSpecialization = new Mentor_Specialization(mentorSpecializationDTO.getMentorDetails(), mentorSpecializationDTO.getSkills());
+        System.out.println("After map: "+mentorSpecialization.getSkillID());
         if (mentorSpecializationRepo.findById(new Mentor_Specialization_Key(mentorSpecialization.getMentorID().getMentorID(), mentorSpecialization.getSkillID().getSkillID())).isPresent()) {
             throw new DuplicateMentorSpecializationException("Mentor specialization already exists with ID: " + mentorSpecialization.getMentorID().getMentorID());
         }
         Mentor_Specialization savedMentorSpecialization = mentorSpecializationRepo.save(mentorSpecialization);
-        return modelMapper.map(savedMentorSpecialization, Mentor_Specialization_DTO.class);
+        return new Mentor_Specialization_DTO(savedMentorSpecialization.getMentorID(),savedMentorSpecialization.getSkillID());
     }
 
     @Override
     public Mentor_Specialization_DTO getMentorSpecializationByIds(Integer mentorId, Integer skillId) throws MentorSpecializationNotFoundException {
         Optional<Mentor_Specialization> mentorSpecializationOptional = mentorSpecializationRepo.findById(new Mentor_Specialization_Key(mentorId, skillId));
         if (mentorSpecializationOptional.isPresent()) {
-            return modelMapper.map(mentorSpecializationOptional.get(), Mentor_Specialization_DTO.class);
+            return new Mentor_Specialization_DTO(mentorSpecializationOptional.get().getMentorID(),mentorSpecializationOptional.get().getSkillID());
         } else {
             throw new MentorSpecializationNotFoundException("Mentor specialization not found with IDs: " + mentorId + ", " + skillId);
         }
@@ -49,7 +49,7 @@ public class Mentor_Specialization_Service implements IMentor_Specialization_Ser
     public List<Mentor_Specialization_DTO> getAllMentorSpecializations() {
         List<Mentor_Specialization> mentorSpecializations = mentorSpecializationRepo.findAll();
         return mentorSpecializations.stream()
-                .map(mentorSpecialization -> modelMapper.map(mentorSpecialization, Mentor_Specialization_DTO.class))
+                .map(mentorSpecialization -> new Mentor_Specialization_DTO(mentorSpecialization.getMentorID(),mentorSpecialization.getSkillID()))
                 .collect(Collectors.toList());
     }
 
@@ -58,10 +58,10 @@ public class Mentor_Specialization_Service implements IMentor_Specialization_Ser
         Optional<Mentor_Specialization> mentorSpecializationOptional = mentorSpecializationRepo.findById(new Mentor_Specialization_Key(mentorId, skillId));
         if (mentorSpecializationOptional.isPresent()) {
             Mentor_Specialization existingMentorSpecialization = mentorSpecializationOptional.get();
-            existingMentorSpecialization.setMentorID(updatedMentorSpecializationDTO.getMentorDetails());
-            existingMentorSpecialization.setSkillID(updatedMentorSpecializationDTO.getSkills());
+//            existingMentorSpecialization.setMentorID(updatedMentorSpecializationDTO.getMentorDetails());
+//            existingMentorSpecialization.setSkillID(updatedMentorSpecializationDTO.getSkills());
             Mentor_Specialization updatedMentorSpecialization = mentorSpecializationRepo.save(existingMentorSpecialization);
-            return modelMapper.map(updatedMentorSpecialization, Mentor_Specialization_DTO.class);
+            return new Mentor_Specialization_DTO(updatedMentorSpecialization.getMentorID(),updatedMentorSpecialization.getSkillID());
         } else {
             throw new MentorSpecializationNotFoundException("Mentor specialization not found with IDs: " + mentorId + ", " + skillId);
         }

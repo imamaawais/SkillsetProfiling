@@ -38,7 +38,7 @@ public class TestAttemptHistoryController {
         return new ResponseEntity<>(testAttemptHistoryList, HttpStatus.OK);
     }
 
-    @GetMapping("/getByIds/{testId}/{assessmentId}")
+    @GetMapping("/getFromId/{testId}/{assessmentId}")
     public ResponseEntity<Test_Attempt_History_DTO> getTestAttemptHistoryByIds(@PathVariable Integer testId, @PathVariable Integer assessmentId) {
         try {
             Test_Attempt_History_DTO testAttemptHistoryDTO = testAttemptHistoryService.getTestAttemptHistoryByIds(testId, assessmentId);

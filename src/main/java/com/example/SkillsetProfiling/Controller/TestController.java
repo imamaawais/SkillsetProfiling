@@ -35,7 +35,7 @@ public class TestController {
         return new ResponseEntity<>(tests, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{testId}")
+    @GetMapping("/getFromId/{testId}")
     public ResponseEntity<Test_DTO> getTestById(@PathVariable Integer testId) {
         try {
             Test_DTO testDTO = testService.getTestById(testId);

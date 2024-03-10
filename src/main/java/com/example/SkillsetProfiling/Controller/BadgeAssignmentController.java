@@ -40,8 +40,8 @@ public class BadgeAssignmentController {
         return new ResponseEntity<>(badgeAssignments, HttpStatus.OK);
     }
 
-    @GetMapping("/getByIds")
-    public ResponseEntity<Badge_Assignment_DTO> getBadgeAssignmentByIds(@RequestParam Integer badgeId, @RequestParam Integer studentId, @RequestParam Integer skillId) {
+    @GetMapping("/getFromId/{badgeId}/{studentId}/{skillId}")
+    public ResponseEntity<Badge_Assignment_DTO> getBadgeAssignmentByIds(@PathVariable Integer badgeId, @PathVariable Integer studentId, @PathVariable Integer skillId) {
         try {
             Badge_Assignment_DTO badgeAssignmentDTO = service.getBadgeAssignmentByIds(badgeId, studentId, skillId);
             return new ResponseEntity<>(badgeAssignmentDTO, HttpStatus.OK);

@@ -40,7 +40,7 @@ public class MentorSpecializationController {
         return new ResponseEntity<>(mentorSpecializations, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{mentorId}/{skillId}")
+    @GetMapping("/getFromId/{mentorId}/{skillId}")
     public ResponseEntity<Mentor_Specialization_DTO> getMentorSpecializationByIds(@PathVariable Integer mentorId, @PathVariable Integer skillId) {
         try {
             Mentor_Specialization_DTO mentorSpecializationDTO = mentorSpecializationService.getMentorSpecializationByIds(mentorId, skillId);

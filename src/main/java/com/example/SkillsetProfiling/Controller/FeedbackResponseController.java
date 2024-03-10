@@ -40,7 +40,7 @@ public class FeedbackResponseController {
         return new ResponseEntity<>(feedbackResponses, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{feedbackId}")
+    @GetMapping("/getFromId/{feedbackId}")
     public ResponseEntity<Feedback_Response_DTO> getFeedbackResponseById(@PathVariable Integer feedbackId) {
         try {
             Feedback_Response_DTO feedbackResponseDTO = feedbackResponseService.getFeedbackResponseById(feedbackId);

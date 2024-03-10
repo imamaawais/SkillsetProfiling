@@ -30,7 +30,7 @@ public class JobSkillsRequirementsController {
         }
     }
 
-    @GetMapping("/get/{jobID}/{skillID}/{levelID}")
+    @GetMapping("/getFromId/{jobID}/{skillID}/{levelID}")
     public ResponseEntity<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByID(@PathVariable Integer jobID, @PathVariable Integer skillID, @PathVariable Integer levelID) {
         Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID, levelID);
         try {
