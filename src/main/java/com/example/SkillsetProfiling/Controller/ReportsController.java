@@ -1,8 +1,8 @@
 package com.example.SkillsetProfiling.Controller;
 
-import com.example.SkillsetProfiling.Dto.Report_Types_DTO;
+import com.example.SkillsetProfiling.Dto.Reports_DTO;
 import com.example.SkillsetProfiling.Exception.ReportsNotFoundException;
-import com.example.SkillsetProfiling.Service.Implementation.Report_Types_Service;
+import com.example.SkillsetProfiling.Service.Implementation.Reports_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,51 +16,51 @@ import java.util.List;
 @RequestMapping("api/reports")
 public class ReportsController {
 
-    private final Report_Types_Service service;
+    private final Reports_Service service;
 
     @PostMapping("/add")
-    public ResponseEntity<Report_Types_DTO> addReportType(@RequestBody Report_Types_DTO reportTypesDTO) {
+    public ResponseEntity<Reports_DTO> addReport(@RequestBody Reports_DTO reportsDTO) {
         try {
-            Report_Types_DTO savedReportType = service.addReportType(reportTypesDTO);
-            return new ResponseEntity<>(savedReportType, HttpStatus.CREATED);
+            Reports_DTO savedReport = service.addReport(reportsDTO);
+            return new ResponseEntity<>(savedReport, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Report_Types_DTO>> getAllReportTypes() {
-        List<Report_Types_DTO> reportTypes = service.getAllReportTypes();
-        if (reportTypes.isEmpty()) {
+    public ResponseEntity<List<Reports_DTO>> getAllReports() {
+        List<Reports_DTO> reports = service.getAllReports();
+        if (reports.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        return new ResponseEntity<>(reportTypes, HttpStatus.OK);
+        return new ResponseEntity<>(reports, HttpStatus.OK);
     }
 
-    @GetMapping("/getFromId/{ReportTypeID}")
-    public ResponseEntity<Report_Types_DTO> getReportTypeById(@PathVariable int ReportTypeID) {
+    @GetMapping("/getFromId/{ReportID}")
+    public ResponseEntity<Reports_DTO> getReportById(@PathVariable int ReportID) {
         try {
-            Report_Types_DTO reportTypesDTO = service.getReportTypeById(ReportTypeID);
-            return new ResponseEntity<>(reportTypesDTO, HttpStatus.OK);
+            Reports_DTO reportsDTO = service.getReportById(ReportID);
+            return new ResponseEntity<>(reportsDTO, HttpStatus.OK);
         } catch (ReportsNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @PutMapping("/update/{ReportTypeID}")
-    public ResponseEntity<Report_Types_DTO> updateReportType(@PathVariable Integer ReportTypeID, @RequestBody Report_Types_DTO updatedReportTypesDTO) {
+    @PutMapping("/update/{ReportID}")
+    public ResponseEntity<Reports_DTO> updateReport(@PathVariable Integer ReportID, @RequestBody Reports_DTO updatedReportDTO) {
         try {
-            Report_Types_DTO updatedReportType = service.updateReportType(ReportTypeID, updatedReportTypesDTO);
-            return new ResponseEntity<>(updatedReportType, HttpStatus.OK);
+            Reports_DTO updatedReport = service.updateReport(ReportID, updatedReportDTO);
+            return new ResponseEntity<>(updatedReport, HttpStatus.OK);
         } catch (ReportsNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @DeleteMapping("/delete/{ReportTypeID}")
-    public ResponseEntity<Void> deleteReportType(@PathVariable Integer ReportTypeID) {
+    @DeleteMapping("/delete/{ReportID}")
+    public ResponseEntity<Void> deleteReport(@PathVariable Integer ReportID) {
         try {
-            boolean deleted = service.deleteReportType(ReportTypeID);
+            boolean deleted = service.deleteReport(ReportID);
             if (deleted) {
                 return new ResponseEntity<>(HttpStatus.OK);
             } else {

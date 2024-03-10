@@ -18,7 +18,7 @@ public class Reports {
     @Id
     private Integer ReportID;
     @ManyToOne
-    @JoinColumn(name = "report_TypeID")
+    @JoinColumn(name = "reportTypeID")
     private Report_Types reportTypes;
     private String reportDescription;
     @ManyToOne

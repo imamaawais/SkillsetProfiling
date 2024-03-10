@@ -61,8 +61,6 @@ public class Reports_Service implements IReports_Service {
             existingReport.setReportDescription(updatedReportsDTO.getReportDescription());
             existingReport.setReportStatus(updatedReportsDTO.getReportStatus());
             existingReport.setReportTypes(updatedReportsDTO.getReportTypes());
-            existingReport.setTimestampReported(updatedReportsDTO.getTimestampReported());
-            existingReport.setTimestampStatusModified(updatedReportsDTO.getTimestampStatusModified());
             existingReport.setUserDetails(updatedReportsDTO.getUserDetails());
 
             // Set other fields as needed
