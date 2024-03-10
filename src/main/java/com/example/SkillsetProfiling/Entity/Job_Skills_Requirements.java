@@ -24,7 +24,6 @@ public class Job_Skills_Requirements {
     @ManyToOne
     @JoinColumn(name = "SkillID")
     private Skills SkillID;
-    @Id
     @ManyToOne
     @JoinColumn(name = "LevelID")
     private Skill_Level LevelID;

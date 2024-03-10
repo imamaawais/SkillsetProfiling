@@ -20,19 +20,19 @@ import java.util.stream.Collectors;
 public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements_Service {
 
     private Job_Skills_Requirements_Repo jobSkillsRequirementsRepo;
-    private ModelMapper mapper;
+//    private ModelMapper mapper;
 
     @Override
     public Job_Skills_Requirements_DTO addJobSkillsRequirements(Job_Skills_Requirements_DTO jobSkillsRequirementsDto) throws DuplicateJobSkillsRequirementsException {
-        Job_Skills_Requirements jobSkillsRequirements = mapper.map(jobSkillsRequirementsDto, Job_Skills_Requirements.class);
-        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobSkillsRequirements.getJobID().getJobID(), jobSkillsRequirements.getSkillID().getSkillID(), jobSkillsRequirements.getLevelID().getLevelID());
+        Job_Skills_Requirements jobSkillsRequirements = new Job_Skills_Requirements(jobSkillsRequirementsDto.getJobPostings(), jobSkillsRequirementsDto.getSkills(), jobSkillsRequirementsDto.getSkillLevel());
+        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobSkillsRequirements.getJobID().getJobID(), jobSkillsRequirements.getSkillID().getSkillID());
 
         if (jobSkillsRequirementsRepo.findById(jobSkillsRequirementsKey).isPresent()) {
             throw new DuplicateJobSkillsRequirementsException("Job Skills Requirements with the same ID already exists: " + jobSkillsRequirementsKey);
         }
 
         Job_Skills_Requirements savedJobSkillsRequirements = jobSkillsRequirementsRepo.save(jobSkillsRequirements);
-        return mapper.map(savedJobSkillsRequirements, Job_Skills_Requirements_DTO.class);
+        return new Job_Skills_Requirements_DTO(savedJobSkillsRequirements.getJobID(), savedJobSkillsRequirements.getSkillID(), savedJobSkillsRequirements.getLevelID());
     }
 
     @Override
@@ -40,7 +40,7 @@ public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements
         Optional<Job_Skills_Requirements> jobSkillsRequirementsOptional = jobSkillsRequirementsRepo.findById(jobSkillsRequirementsKey);
 
         if (jobSkillsRequirementsOptional.isPresent()) {
-            return mapper.map(jobSkillsRequirementsOptional.get(), Job_Skills_Requirements_DTO.class);
+            return new Job_Skills_Requirements_DTO(jobSkillsRequirementsOptional.get().getJobID(), jobSkillsRequirementsOptional.get().getSkillID(), jobSkillsRequirementsOptional.get().getLevelID());
         } else {
             throw new JobSkillsRequirementsNotFoundException("Job Skills Requirements not found with ID: " + jobSkillsRequirementsKey);
         }
@@ -50,7 +50,7 @@ public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements
     public List<Job_Skills_Requirements_DTO> getAllJobSkillsRequirements() {
         List<Job_Skills_Requirements> jobSkillsRequirements = jobSkillsRequirementsRepo.findAll();
         return jobSkillsRequirements.stream()
-                .map(jobSkillsRequirement -> mapper.map(jobSkillsRequirement, Job_Skills_Requirements_DTO.class))
+                .map(jobSkillsRequirement -> new Job_Skills_Requirements_DTO(jobSkillsRequirement.getJobID(), jobSkillsRequirement.getSkillID(), jobSkillsRequirement.getLevelID()))
                 .collect(Collectors.toList());
     }
 
@@ -61,8 +61,9 @@ public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements
         if (jobSkillsRequirementsOptional.isPresent()) {
             Job_Skills_Requirements existingJobSkillsRequirements = jobSkillsRequirementsOptional.get();
             // Update properties if needed
+            existingJobSkillsRequirements.setLevelID(updatedJobSkillsRequirementsDTO.getSkillLevel());
             Job_Skills_Requirements updatedJobSkillsRequirements = jobSkillsRequirementsRepo.save(existingJobSkillsRequirements);
-            return mapper.map(updatedJobSkillsRequirements, Job_Skills_Requirements_DTO.class);
+            return new Job_Skills_Requirements_DTO(updatedJobSkillsRequirements.getJobID(), updatedJobSkillsRequirements.getSkillID(), updatedJobSkillsRequirements.getLevelID());
         } else {
             throw new JobSkillsRequirementsNotFoundException("Job Skills Requirements not found with ID: " + jobSkillsRequirementsKey);
         }

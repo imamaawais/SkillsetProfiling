@@ -30,9 +30,9 @@ public class JobSkillsRequirementsController {
         }
     }
 
-    @GetMapping("/getFromId/{jobID}/{skillID}/{levelID}")
-    public ResponseEntity<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByID(@PathVariable Integer jobID, @PathVariable Integer skillID, @PathVariable Integer levelID) {
-        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID, levelID);
+    @GetMapping("/getFromId/{jobID}/{skillID}")
+    public ResponseEntity<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByID(@PathVariable Integer jobID, @PathVariable Integer skillID) {
+        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID);
         try {
             Job_Skills_Requirements_DTO jobSkillsRequirements = service.getJobSkillsRequirementsByID(jobSkillsRequirementsKey);
             return new ResponseEntity<>(jobSkillsRequirements, HttpStatus.OK);
@@ -50,9 +50,9 @@ public class JobSkillsRequirementsController {
         return new ResponseEntity<>(jobSkillsRequirementsList, HttpStatus.OK);
     }
 
-    @PutMapping("/update/{jobID}/{skillID}/{levelID}")
-    public ResponseEntity<Job_Skills_Requirements_DTO> updateJobSkillsRequirements(@PathVariable Integer jobID, @PathVariable Integer skillID, @PathVariable Integer levelID, @RequestBody Job_Skills_Requirements_DTO updatedJobSkillsRequirements) {
-        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID, levelID);
+    @PutMapping("/update/{jobID}/{skillID}")
+    public ResponseEntity<Job_Skills_Requirements_DTO> updateJobSkillsRequirements(@PathVariable Integer jobID, @PathVariable Integer skillID, @RequestBody Job_Skills_Requirements_DTO updatedJobSkillsRequirements) {
+        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID);
         try {
             Job_Skills_Requirements_DTO updatedJobSkillsRequirementsResult = service.updateJobSkillsRequirements(jobSkillsRequirementsKey, updatedJobSkillsRequirements);
             return new ResponseEntity<>(updatedJobSkillsRequirementsResult, HttpStatus.OK);
@@ -61,9 +61,9 @@ public class JobSkillsRequirementsController {
         }
     }
 
-    @DeleteMapping("/delete/{jobID}/{skillID}/{levelID}")
-    public ResponseEntity<Void> deleteJobSkillsRequirements(@PathVariable Integer jobID, @PathVariable Integer skillID, @PathVariable Integer levelID) {
-        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID, levelID);
+    @DeleteMapping("/delete/{jobID}/{skillID}")
+    public ResponseEntity<Void> deleteJobSkillsRequirements(@PathVariable Integer jobID, @PathVariable Integer skillID) {
+        Job_Skills_Requirements_Key jobSkillsRequirementsKey = new Job_Skills_Requirements_Key(jobID, skillID);
         boolean deleted = service.deleteJobSkillsRequirements(jobSkillsRequirementsKey);
         if (deleted) {
             return new ResponseEntity<>(HttpStatus.OK);
