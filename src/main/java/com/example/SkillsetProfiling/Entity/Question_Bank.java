@@ -24,6 +24,7 @@ public class Question_Bank {
     private Question_Difficulty questionDifficulty;
     private Timestamp timestampCreated;
     private Timestamp timestampUpdated;
+    boolean isMCQ;
 
     @PrePersist
     protected void onCreate() {

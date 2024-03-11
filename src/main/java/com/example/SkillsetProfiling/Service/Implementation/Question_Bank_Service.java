@@ -68,6 +68,7 @@ public class Question_Bank_Service implements IQuestion_Bank_Service {
             existingQuestionBank.setQuestionText(updatedQuestionBankDTO.getQuestionText());
             existingQuestionBank.setAnswer(updatedQuestionBankDTO.getAnswer());
             existingQuestionBank.setQuestionDifficulty(updatedQuestionBankDTO.getQuestionDifficulty());
+            existingQuestionBank.setMCQ(updatedQuestionBankDTO.isMCQ());
 
             Question_Bank updatedQuestionBank = questionBankRepo.save(existingQuestionBank);
             return mapper.map(updatedQuestionBank, Question_Bank_DTO.class);
