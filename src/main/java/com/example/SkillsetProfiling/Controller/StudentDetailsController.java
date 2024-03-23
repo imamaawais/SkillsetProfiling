@@ -35,6 +35,16 @@ public class StudentDetailsController {
         }
     }
 
+    @GetMapping("/getFromEmail/{email}")
+    public ResponseEntity<Integer> getStudentIDByEmail(@PathVariable String email) {
+        try {
+            Integer id = service.findStudentIdByEmail(email);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (StudentDetailsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Student_Details_DTO>> getAllStudentDetails() {
         List<Student_Details_DTO> studentDetailsList = service.getAllStudentDetails();

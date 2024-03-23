@@ -76,6 +76,17 @@ public class Student_Details_Service implements IStudent_Details_Service {
     }
 
     @Override
+    public Integer findStudentIdByEmail(String email) {
+        Optional<Integer> studentDetailsOptional = studentDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (studentDetailsOptional.isPresent()) {
+            return studentDetailsOptional.get();
+        } else {
+            throw new StudentDetailsNotFoundException("Student details not found with email: " + email);
+        }
+    }
+
+    @Override
     @Transactional
     public boolean deleteStudentDetails(Integer studentID) {
         Optional<Student_Details> studentDetailsOptional = studentDetailsRepo.findById(studentID);

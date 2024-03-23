@@ -10,4 +10,5 @@ public interface IStudent_Details_Service {
     List<Student_Details_DTO> getAllStudentDetails();
     Student_Details_DTO updateStudentDetails(Integer studentID, Student_Details_DTO updatedStudentDetailsDTO);
     boolean deleteStudentDetails(Integer studentID);
+    Integer findStudentIdByEmail(String email);
 }
