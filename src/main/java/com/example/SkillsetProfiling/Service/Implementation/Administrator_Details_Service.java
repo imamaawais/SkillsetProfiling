@@ -4,6 +4,7 @@ import com.example.SkillsetProfiling.Dto.Administrator_Details_DTO;
 import com.example.SkillsetProfiling.Entity.Administrator_Details;
 import com.example.SkillsetProfiling.Exception.AdministratorDetailsNotFoundException;
 import com.example.SkillsetProfiling.Exception.DuplicateAdministratorDetailsException;
+import com.example.SkillsetProfiling.Exception.StudentDetailsNotFoundException;
 import com.example.SkillsetProfiling.Repository.Administrator_Details_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IAdministrator_Details_Service;
 import jakarta.transaction.Transactional;
@@ -44,6 +45,17 @@ public class Administrator_Details_Service implements IAdministrator_Details_Ser
             return mapper.map(administratorDetailsOptional.get(), Administrator_Details_DTO.class);
         } else {
             throw new AdministratorDetailsNotFoundException("Administrator details not found with ID: " + administratorID);
+        }
+    }
+
+    @Override
+    public Integer getAdministratorIDByEmail(String email) {
+        Optional<Integer> administratorDetailsOptional = administratorDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (administratorDetailsOptional.isPresent()) {
+            return administratorDetailsOptional.get();
+        } else {
+            throw new StudentDetailsNotFoundException("Administrator details not found with email: " + email);
         }
     }
 

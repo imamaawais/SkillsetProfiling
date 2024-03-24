@@ -1,6 +1,5 @@
 package com.example.SkillsetProfiling.Key;
 
-import com.example.SkillsetProfiling.Entity.Skill_Level;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

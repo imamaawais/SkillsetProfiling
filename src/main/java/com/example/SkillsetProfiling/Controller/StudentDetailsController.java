@@ -38,7 +38,7 @@ public class StudentDetailsController {
     @GetMapping("/getFromEmail/{email}")
     public ResponseEntity<Integer> getStudentIDByEmail(@PathVariable String email) {
         try {
-            Integer id = service.findStudentIdByEmail(email);
+            Integer id = service.getStudentIDByEmail(email);
             return new ResponseEntity<>(id, HttpStatus.OK);
         } catch (StudentDetailsNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

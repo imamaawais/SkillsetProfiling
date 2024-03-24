@@ -47,6 +47,17 @@ public class HR_Details_Service implements IHR_Details_Service {
     }
 
     @Override
+    public Integer getHRIDByEmail(String email) {
+        Optional<Integer> hrDetailsOptional = hrDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (hrDetailsOptional.isPresent()) {
+            return hrDetailsOptional.get();
+        } else {
+            throw new HRDetailsNotFoundException("HR details not found with email: " + email);
+        }
+    }
+
+    @Override
     public List<HR_Details_DTO> getAllHRDetails() {
         List<HR_Details> allHRDetails = hrDetailsRepo.findAll();
         return allHRDetails.stream()

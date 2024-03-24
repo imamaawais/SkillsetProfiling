@@ -8,7 +8,6 @@ import com.example.SkillsetProfiling.Key.Mentor_Specialization_Key;
 import com.example.SkillsetProfiling.Repository.Mentor_Specialization_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IMentor_Specialization_Service;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

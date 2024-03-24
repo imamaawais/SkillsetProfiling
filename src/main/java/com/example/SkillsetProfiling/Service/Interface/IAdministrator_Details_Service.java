@@ -8,6 +8,7 @@ public interface IAdministrator_Details_Service {
     Administrator_Details_DTO addAdministratorDetails(Administrator_Details_DTO administratorDetailsDTO);
 
     Administrator_Details_DTO getAdministratorDetailsByAdministratorID(Integer administratorID);
+    Integer getAdministratorIDByEmail(String email);
 
     List<Administrator_Details_DTO> getAllAdministratorDetails();
 

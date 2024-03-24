@@ -36,6 +36,16 @@ public class AdministratorDetailsController {
         }
     }
 
+    @GetMapping("/getFromEmail/{email}")
+    public ResponseEntity<Integer> getAdministratorIDByEmail(@PathVariable String email) {
+        try {
+            Integer id = service.getAdministratorIDByEmail(email);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (AdministratorDetailsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Administrator_Details_DTO>> getAllAdministratorDetails() {
         List<Administrator_Details_DTO> administratorDetailsList = service.getAllAdministratorDetails();

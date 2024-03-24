@@ -47,6 +47,17 @@ public class Placement_Coordinator_Details_Service implements IPlacement_Coordin
     }
 
     @Override
+    public Integer getCoordinatorIDByEmail(String email) {
+        Optional<Integer> coordinatorDetailsOptional = placementCoordinatorDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (coordinatorDetailsOptional.isPresent()) {
+            return coordinatorDetailsOptional.get();
+        } else {
+            throw new CoordinatorDetailsNotFoundException("Student details not found with email: " + email);
+        }
+    }
+
+    @Override
     public List<Placement_Coordinator_Details_DTO> getAllCoordinatorDetails() {
         List<Placement_Coordinator_Details> allCoordinatorDetails = placementCoordinatorDetailsRepo.findAll();
         return allCoordinatorDetails.stream()

@@ -4,7 +4,6 @@ import com.example.SkillsetProfiling.Dto.Feedback_Request_DTO;
 import com.example.SkillsetProfiling.Exception.DuplicateFeedbackRequestException;
 import com.example.SkillsetProfiling.Exception.FeedbackRequestNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.Feedback_Request_Service;
-import com.example.SkillsetProfiling.Service.Interface.IFeedback_Request_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

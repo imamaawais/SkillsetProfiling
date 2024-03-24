@@ -34,6 +34,16 @@ public class PlacementCoordinatorDetailsController {
         }
     }
 
+    @GetMapping("/getFromEmail/{email}")
+    public ResponseEntity<Integer> getCoordinatorIDByEmail(@PathVariable String email) {
+        try {
+            Integer id = service.getCoordinatorIDByEmail(email);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (CoordinatorDetailsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Placement_Coordinator_Details_DTO>> getAllCoordinatorDetails() {
         List<Placement_Coordinator_Details_DTO> coordinatorDetailsList = service.getAllCoordinatorDetails();

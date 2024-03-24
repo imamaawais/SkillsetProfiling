@@ -49,6 +49,17 @@ public class Student_Details_Service implements IStudent_Details_Service {
     }
 
     @Override
+    public Integer getStudentIDByEmail(String email) {
+        Optional<Integer> studentDetailsOptional = studentDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (studentDetailsOptional.isPresent()) {
+            return studentDetailsOptional.get();
+        } else {
+            throw new StudentDetailsNotFoundException("Student details not found with email: " + email);
+        }
+    }
+
+    @Override
     public List<Student_Details_DTO> getAllStudentDetails() {
         List<Student_Details> allStudentDetails = studentDetailsRepo.findAll();
         return allStudentDetails.stream()
@@ -72,17 +83,6 @@ public class Student_Details_Service implements IStudent_Details_Service {
             return mapper.map(updatedStudentDetails, Student_Details_DTO.class);
         } else {
             throw new StudentDetailsNotFoundException("Student details not found with ID: " + studentID);
-        }
-    }
-
-    @Override
-    public Integer findStudentIdByEmail(String email) {
-        Optional<Integer> studentDetailsOptional = studentDetailsRepo.findByUserDetails_Auth_Email(email);
-
-        if (studentDetailsOptional.isPresent()) {
-            return studentDetailsOptional.get();
-        } else {
-            throw new StudentDetailsNotFoundException("Student details not found with email: " + email);
         }
     }
 

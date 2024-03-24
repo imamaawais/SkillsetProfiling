@@ -8,7 +8,6 @@ import com.example.SkillsetProfiling.Key.Job_Skills_Requirements_Key;
 import com.example.SkillsetProfiling.Repository.Job_Skills_Requirements_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IJob_Skills_Requirements_Service;
 import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

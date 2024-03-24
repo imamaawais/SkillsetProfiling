@@ -47,6 +47,17 @@ public class Mentor_Details_Service implements IMentor_Details_Service {
     }
 
     @Override
+    public Integer getMentorIDByEmail(String email) {
+        Optional<Integer> mentorDetailsOptional = mentorDetailsRepo.findByUserDetails_Auth_Email(email);
+
+        if (mentorDetailsOptional.isPresent()) {
+            return mentorDetailsOptional.get();
+        } else {
+            throw new MentorDetailsNotFoundException("Mentor details not found with email: " + email);
+        }
+    }
+
+    @Override
     public List<Mentor_Details_DTO> getAllMentorDetails() {
         List<Mentor_Details> allMentorDetails = mentorDetailsRepo.findAll();
         return allMentorDetails.stream()

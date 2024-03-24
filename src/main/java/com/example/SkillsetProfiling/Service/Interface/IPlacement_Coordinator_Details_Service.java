@@ -10,6 +10,8 @@ public interface IPlacement_Coordinator_Details_Service {
 
     Placement_Coordinator_Details_DTO getCoordinatorDetailsByCoordinatorID(Integer coordinatorID);
 
+    Integer getCoordinatorIDByEmail(String email);
+
     List<Placement_Coordinator_Details_DTO> getAllCoordinatorDetails();
 
     Placement_Coordinator_Details_DTO updateCoordinatorDetails(Integer coordinatorID, Placement_Coordinator_Details_DTO updatedCoordinatorDetailsDTO);

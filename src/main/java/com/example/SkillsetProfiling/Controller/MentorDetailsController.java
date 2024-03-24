@@ -2,6 +2,7 @@ package com.example.SkillsetProfiling.Controller;
 
 
 import com.example.SkillsetProfiling.Dto.Mentor_Details_DTO;
+import com.example.SkillsetProfiling.Exception.AdministratorDetailsNotFoundException;
 import com.example.SkillsetProfiling.Exception.MentorDetailsNotFoundException;
 import com.example.SkillsetProfiling.Service.Interface.IMentor_Details_Service;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,16 @@ public class MentorDetailsController {
         try {
             Mentor_Details_DTO mentorDetailsDTO = service.getMentorDetailsByMentorID(mentorDetailsID);
             return new ResponseEntity<>(mentorDetailsDTO, HttpStatus.OK);
+        } catch (MentorDetailsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/getFromEmail/{email}")
+    public ResponseEntity<Integer> getMentorIDByEmail(@PathVariable String email) {
+        try {
+            Integer id = service.getMentorIDByEmail(email);
+            return new ResponseEntity<>(id, HttpStatus.OK);
         } catch (MentorDetailsNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

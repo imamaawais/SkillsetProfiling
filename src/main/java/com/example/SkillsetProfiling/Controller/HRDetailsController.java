@@ -2,6 +2,7 @@ package com.example.SkillsetProfiling.Controller;
 
 import com.example.SkillsetProfiling.Dto.HR_Details_DTO;
 import com.example.SkillsetProfiling.Exception.HRDetailsNotFoundException;
+import com.example.SkillsetProfiling.Exception.MentorDetailsNotFoundException;
 import com.example.SkillsetProfiling.Service.Implementation.HR_Details_Service;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,16 @@ public class HRDetailsController {
         }
 
         return new ResponseEntity<>(hrDetailsDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/getFromEmail/{email}")
+    public ResponseEntity<Integer> getHRIDByEmail(@PathVariable String email) {
+        try {
+            Integer id = service.getHRIDByEmail(email);
+            return new ResponseEntity<>(id, HttpStatus.OK);
+        } catch (HRDetailsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/getAll")
