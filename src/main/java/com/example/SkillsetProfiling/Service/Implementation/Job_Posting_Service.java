@@ -7,6 +7,7 @@ import com.example.SkillsetProfiling.Exception.JobPostingNotFoundException;
 import com.example.SkillsetProfiling.Exception.QualificationNotFoundException;
 import com.example.SkillsetProfiling.Repository.Job_Postings_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IJob_Posting_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,21 @@ public class Job_Posting_Service implements IJob_Posting_Service {
         } else {
             throw new JobPostingNotFoundException("Job not found with ID: " + jobPostingID);
         }
+    }
+
+    @Override
+    @Transactional
+    public List<Job_Postings_DTO> getJobPostingByHRID(Integer HrID) throws JobPostingNotFoundException {
+        Optional<List<Job_Postings>> jobPostings = jobPostingsRepo.findAllByHrDetails_HrID(HrID);
+
+        if (jobPostings.isPresent()) {
+            return jobPostings.get().stream()
+                    .map(jobPosting -> mapper.map(jobPosting, Job_Postings_DTO.class))
+                    .collect(Collectors.toList());
+        } else {
+            throw new JobPostingNotFoundException("Job not found with HR ID: " + HrID);
+        }
+
     }
 
     @Override

@@ -49,6 +49,17 @@ public class JobPostingsController {
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
+    @GetMapping("/getFromHRId/{hrID}")
+    public ResponseEntity<List<Job_Postings_DTO>> getJobPostingByHRID(@PathVariable Integer hrID) {
+        List<Job_Postings_DTO> user = service.getJobPostingByHRID(hrID);
+
+        if (user.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
+
     @PutMapping("/update/{jobPostingID}")
     public ResponseEntity<Job_Postings_DTO> updateJobPosting(@PathVariable Integer jobPostingID, @RequestBody Job_Postings_DTO updatedjobPosting) {
         Job_Postings_DTO updatedJobPosting = service.updateJobPosting(jobPostingID, updatedjobPosting);

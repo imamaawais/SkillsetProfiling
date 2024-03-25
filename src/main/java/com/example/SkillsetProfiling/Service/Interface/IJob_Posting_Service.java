@@ -10,6 +10,7 @@ public interface IJob_Posting_Service {
     Job_Postings_DTO addJobPosting (Job_Postings_DTO jobPostingsDto) throws DuplicateJobPostingException;
     Job_Postings_DTO getJobPostingByID (Integer jobPostingID) throws JobPostingNotFoundException;
     List<Job_Postings_DTO> getAllJobPostings ();
+    List<Job_Postings_DTO> getJobPostingByHRID(Integer HrID);
     Job_Postings_DTO updateJobPosting (Integer jobPostingID, Job_Postings_DTO updatedJobPostingDTO) throws JobPostingNotFoundException;
     boolean deleteJobPosting (Integer jobPostingID);
 }
