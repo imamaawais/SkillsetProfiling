@@ -50,6 +50,17 @@ public class StudentSkillsController {
 
     }
 
+    @GetMapping("/getFromStudentId/{studentID}")
+    public ResponseEntity<List<Student_Skills_DTO>> getStudentSkillsByStudentId(@PathVariable Integer studentID) {
+        try {
+            List<Student_Skills_DTO> studentSkillsDTO = service.getStudentSkillsByStudentId(studentID);
+            return new ResponseEntity<>(studentSkillsDTO, HttpStatus.OK);
+        } catch (StudentSkillsNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @PutMapping("/update/{studentID}/{skillID}")
     public ResponseEntity<Student_Skills_DTO> updateStudentSkills(
             @PathVariable Integer studentID,

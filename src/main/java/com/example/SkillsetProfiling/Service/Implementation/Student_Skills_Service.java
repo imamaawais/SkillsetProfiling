@@ -7,6 +7,7 @@ import com.example.SkillsetProfiling.Exception.StudentSkillsNotFoundException;
 import com.example.SkillsetProfiling.Key.Student_Skills_Key;
 import com.example.SkillsetProfiling.Repository.Student_Skills_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IStudent_Skills_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -58,6 +59,21 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
             return mapper.map(studentSkillsOptional.get(), Student_Skills_DTO.class);
         } else {
             throw new StudentSkillsNotFoundException("Student skills not found with ID: " + key);
+        }
+    }
+
+
+    @Transactional
+    @Override
+    public List<Student_Skills_DTO> getStudentSkillsByStudentId(Integer StudentID) {
+        Optional<List<Student_Skills>> studentSkillsOptional = studentSkillsRepo.findAllByStudentID_StudentID(StudentID);
+
+        if (studentSkillsOptional.isPresent()) {
+            return studentSkillsOptional.get().stream()
+                    .map(studentSkills -> mapper.map(studentSkills, Student_Skills_DTO.class))
+                    .collect(Collectors.toList());
+        } else {
+            throw new StudentSkillsNotFoundException("Student skills not found with student ID: " + StudentID);
         }
     }
 
