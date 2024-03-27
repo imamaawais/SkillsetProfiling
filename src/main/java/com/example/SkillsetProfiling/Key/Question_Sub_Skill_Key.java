@@ -13,5 +13,5 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Question_Sub_Skill_Key implements Serializable {
     private Integer QuestionID;
-    private Integer SubSkillID;
+    private Integer subSkills;
 }

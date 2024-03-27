@@ -19,4 +19,8 @@ public class Question_Bank_DTO {
     private Timestamp timestampCreated;
     private Timestamp timestampUpdated;
     boolean isMCQ;
+    private String optionA;
+    private String optionB;
+    private String optionC;
+    private String optionD;
 }

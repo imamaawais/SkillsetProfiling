@@ -22,6 +22,7 @@ public class Question_Sub_Skill {
     @Id
     @ManyToOne
     @JoinColumn(name = "SubSkillID")
-    private Sub_Skills SubSkillID;
+    // Inconsistent variable name cz was getting error with name "SubSkillID" -> Also changed in Question_Sub_Skill_Key
+    private Sub_Skills subSkills;
 
 }

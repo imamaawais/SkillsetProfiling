@@ -54,8 +54,8 @@ public class Question_Sub_Skill_Service implements IQuestion_Sub_Skill_Service {
         if (questionSubSkillOptional.isPresent()) {
             Question_Sub_Skill existingQuestionSubSkill = questionSubSkillOptional.get();
             // Update fields as needed
-            existingQuestionSubSkill.setQuestionID(updatedQuestionSubSkillDTO.getQuestionBank());
-            existingQuestionSubSkill.setSubSkillID(updatedQuestionSubSkillDTO.getSubSkills());
+//            existingQuestionSubSkill.setQuestionID(updatedQuestionSubSkillDTO.getQuestionBank());
+//            existingQuestionSubSkill.setSubSkills(updatedQuestionSubSkillDTO.getSubSkills());
 
             Question_Sub_Skill updatedQuestionSubSkill = questionSubSkillRepo.save(existingQuestionSubSkill);
             return mapper.map(updatedQuestionSubSkill, Question_Sub_Skill_DTO.class);
