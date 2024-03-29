@@ -57,9 +57,7 @@ public class Assessment_Scores_Service implements IAssessment_Scores_Service {
         Optional<Assessment_Scores> assessmentScoresOptional = assessmentScoresRepo.findById(new Assessment_Scores_Key(assessmentId, questionId));
         if (assessmentScoresOptional.isPresent()) {
             Assessment_Scores existingAssessmentScores = assessmentScoresOptional.get();
-            existingAssessmentScores.setAssessmentID(updatedAssessmentScoresDTO.getAssessment());
             existingAssessmentScores.setIsAttempted(updatedAssessmentScoresDTO.getIsAttempted());
-            existingAssessmentScores.setQuestionID(updatedAssessmentScoresDTO.getQuestionBank());
             existingAssessmentScores.setUserAnswer(updatedAssessmentScoresDTO.getUserAnswer());
 
             Assessment_Scores updatedAssessmentScores = assessmentScoresRepo.save(existingAssessmentScores);
