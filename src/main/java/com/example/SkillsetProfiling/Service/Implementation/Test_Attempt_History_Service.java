@@ -59,8 +59,6 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
         if (testAttemptHistoryOptional.isPresent()) {
             Test_Attempt_History existingTestAttemptHistory = testAttemptHistoryOptional.get();
             existingTestAttemptHistory.setAttemptNumber(updatedTestAttemptHistoryDTO.getAttemptNumber());
-            existingTestAttemptHistory.setTestID(updatedTestAttemptHistoryDTO.getTest());
-            existingTestAttemptHistory.setAssessmentID(updatedTestAttemptHistoryDTO.getAssessment());
 
             Test_Attempt_History updatedTestAttemptHistory = testAttemptHistoryRepo.save(existingTestAttemptHistory);
             return modelMapper.map(updatedTestAttemptHistory, Test_Attempt_History_DTO.class);
