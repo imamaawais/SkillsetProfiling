@@ -16,7 +16,10 @@ import java.sql.Timestamp;
 public class Feedback_Response {
 
     @Id
-    private Integer FeedbackID;
+    private Integer FeedbackResponseID;
+    @OneToOne
+    @JoinColumn(name = "FeedbackID")
+    private Feedback_Request feedbackID;
     @ManyToOne
     @JoinColumn(name = "mentorID")
     private Mentor_Details mentorDetails;

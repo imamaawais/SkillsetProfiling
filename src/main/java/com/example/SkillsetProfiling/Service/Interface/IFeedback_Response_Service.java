@@ -9,6 +9,8 @@ public interface IFeedback_Response_Service {
 
     Feedback_Response_DTO getFeedbackResponseById(Integer feedbackId);
 
+    Feedback_Response_DTO getFeedbackResponseByFeedbackId(Integer feedbackId);
+
     List<Feedback_Response_DTO> getAllFeedbackResponses();
 
     Feedback_Response_DTO updateFeedbackResponse(Integer feedbackId, Feedback_Response_DTO updatedFeedbackResponseDTO);

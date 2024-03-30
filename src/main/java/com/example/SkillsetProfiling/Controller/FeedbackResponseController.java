@@ -40,10 +40,20 @@ public class FeedbackResponseController {
         return new ResponseEntity<>(feedbackResponses, HttpStatus.OK);
     }
 
-    @GetMapping("/getFromId/{feedbackId}")
-    public ResponseEntity<Feedback_Response_DTO> getFeedbackResponseById(@PathVariable Integer feedbackId) {
+    @GetMapping("/getFromId/{responseId}")
+    public ResponseEntity<Feedback_Response_DTO> getFeedbackResponseById(@PathVariable Integer responseId) {
         try {
-            Feedback_Response_DTO feedbackResponseDTO = feedbackResponseService.getFeedbackResponseById(feedbackId);
+            Feedback_Response_DTO feedbackResponseDTO = feedbackResponseService.getFeedbackResponseById(responseId);
+            return new ResponseEntity<>(feedbackResponseDTO, HttpStatus.OK);
+        } catch (FeedbackResponseNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/getFromFeedbackId/{feedbackId}")
+    public ResponseEntity<Feedback_Response_DTO> getFeedbackResponseByFeedbackId(@PathVariable Integer feedbackId) {
+        try {
+            Feedback_Response_DTO feedbackResponseDTO = feedbackResponseService.getFeedbackResponseByFeedbackId(feedbackId);
             return new ResponseEntity<>(feedbackResponseDTO, HttpStatus.OK);
         } catch (FeedbackResponseNotFoundException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

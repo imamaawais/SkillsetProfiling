@@ -6,6 +6,7 @@ import com.example.SkillsetProfiling.Exception.DuplicateFeedbackResponseExceptio
 import com.example.SkillsetProfiling.Exception.FeedbackResponseNotFoundException;
 import com.example.SkillsetProfiling.Repository.Feedback_Response_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IFeedback_Response_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class Feedback_Response_Service implements IFeedback_Response_Service {
     @Override
     public Feedback_Response_DTO addFeedbackResponse(Feedback_Response_DTO feedbackResponseDTO) {
         Feedback_Response feedbackResponse = modelMapper.map(feedbackResponseDTO, Feedback_Response.class);
-        if (feedbackResponseRepo.findById(feedbackResponse.getFeedbackID()).isPresent()) {
+        if (feedbackResponseRepo.findById(feedbackResponse.getFeedbackID().getFeedbackID()).isPresent()) {
             throw new DuplicateFeedbackResponseException("Feedback response already exists with ID: " + feedbackResponse.getFeedbackID());
         }
         Feedback_Response savedFeedbackResponse = feedbackResponseRepo.save(feedbackResponse);
@@ -32,8 +33,19 @@ public class Feedback_Response_Service implements IFeedback_Response_Service {
     }
 
     @Override
-    public Feedback_Response_DTO getFeedbackResponseById(Integer feedbackId) throws FeedbackResponseNotFoundException {
-        Optional<Feedback_Response> feedbackResponseOptional = feedbackResponseRepo.findById(feedbackId);
+    public Feedback_Response_DTO getFeedbackResponseById(Integer responseId) throws FeedbackResponseNotFoundException {
+        Optional<Feedback_Response> feedbackResponseOptional = feedbackResponseRepo.findById(responseId);
+        if (feedbackResponseOptional.isPresent()) {
+            return modelMapper.map(feedbackResponseOptional.get(), Feedback_Response_DTO.class);
+        } else {
+            throw new FeedbackResponseNotFoundException("Feedback response not found with ID: " + responseId);
+        }
+    }
+
+    @Override
+    @Transactional
+    public Feedback_Response_DTO getFeedbackResponseByFeedbackId(Integer feedbackId) throws FeedbackResponseNotFoundException {
+        Optional<Feedback_Response> feedbackResponseOptional = feedbackResponseRepo.findByFeedbackID_FeedbackID(feedbackId);
         if (feedbackResponseOptional.isPresent()) {
             return modelMapper.map(feedbackResponseOptional.get(), Feedback_Response_DTO.class);
         } else {
