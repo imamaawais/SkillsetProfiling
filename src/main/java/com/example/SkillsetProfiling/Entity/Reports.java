@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 public class Reports {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ReportID;
     @ManyToOne
     @JoinColumn(name = "report_TypeID")
