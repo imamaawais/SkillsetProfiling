@@ -6,6 +6,7 @@ import com.example.SkillsetProfiling.Exception.AssessmentNotFoundException;
 import com.example.SkillsetProfiling.Exception.DuplicateAssessmentException;
 import com.example.SkillsetProfiling.Repository.Assessment_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IAssessment_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,19 @@ public class Assessment_Service implements IAssessment_Service {
             return mapper.map(assessmentOptional.get(), Assessment_DTO.class);
         } else {
             throw new AssessmentNotFoundException("Assessment not found with ID: " + assessmentId);
+        }
+    }
+
+    @Override
+    @Transactional
+    public List<Assessment_DTO> getAssessmentByStudentId(Integer studentId) throws AssessmentNotFoundException {
+        Optional<List<Assessment>> assessmentOptional = assessmentRepo.findAllByStudentID_StudentID(studentId);
+        if (assessmentOptional.isPresent()) {
+            return assessmentOptional.get().stream()
+                    .map(assessment -> mapper.map(assessment, Assessment_DTO.class))
+                    .collect(Collectors.toList());
+        } else {
+            throw new AssessmentNotFoundException("Assessment not found with ID: " + studentId);
         }
     }
 

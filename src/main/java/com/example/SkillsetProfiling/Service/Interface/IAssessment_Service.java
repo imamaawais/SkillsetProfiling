@@ -9,6 +9,8 @@ public interface IAssessment_Service {
 
     Assessment_DTO getAssessmentById(Integer assessmentId);
 
+    List<Assessment_DTO> getAssessmentByStudentId(Integer studentId);
+
     List<Assessment_DTO> getAllAssessments();
 
     Assessment_DTO updateAssessment(Integer assessmentId, Assessment_DTO updatedAssessmentDTO);

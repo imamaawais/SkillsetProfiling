@@ -50,6 +50,16 @@ public class AssessmentController {
         }
     }
 
+    @GetMapping("/getFromStudentId/{studentId}")
+    public ResponseEntity<List<Assessment_DTO>> getAssessmentByStudentId(@PathVariable Integer studentId) {
+        try {
+            List<Assessment_DTO> assessmentDTOs = service.getAssessmentByStudentId(studentId);
+            return new ResponseEntity<>(assessmentDTOs, HttpStatus.OK);
+        } catch (AssessmentNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/update/{assessmentId}")
     public ResponseEntity<Assessment_DTO> updateAssessment(@PathVariable Integer assessmentId, @RequestBody Assessment_DTO updatedAssessmentDTO) {
         try {
