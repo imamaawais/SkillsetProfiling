@@ -27,10 +27,7 @@ public class Experience_Service implements IExperience_Service {
         // Map the ExperienceDTO to the Experience entity
         Experience experience = mapper.map(experienceDTO, Experience.class);
 
-        // Check if an experience with the same ID already exists
-        if (experienceRepo.findById(experience.getExperienceID()).isPresent()) {
-            throw new DuplicateExperienceException("Experience with the same ID already exists: " + experience.getExperienceID());
-        }
+
 
         // No experience with the same ID, proceed to save the new experience
         Experience savedExperience = experienceRepo.save(experience);

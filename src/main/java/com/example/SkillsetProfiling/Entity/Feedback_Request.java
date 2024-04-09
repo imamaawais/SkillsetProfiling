@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 @Table(name = "Feedback_Request")
 public class Feedback_Request {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer FeedbackID;
     @ManyToOne
     @JoinColumn(name = "assessmentID")

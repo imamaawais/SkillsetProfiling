@@ -27,9 +27,7 @@ public class Badges_Service implements IBadges_Service {
 
         Badges badge = mapper.map(badgesDTO, Badges.class);
 
-        if(badgesRepo.findById(badge.getBadgeID()).isPresent()){
-            throw new DuplicateBadgeException("Badge with the same Id already exists: "+ badge.getBadgeID());
-        }
+
 
         //save to db
         Badges savedBadge = badgesRepo.save(badge);

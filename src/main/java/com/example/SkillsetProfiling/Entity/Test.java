@@ -14,6 +14,7 @@ import lombok.Setter;
 public class Test {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TestID;
     @ManyToOne
     @JoinColumn(name = "student_Skill_LevelID")

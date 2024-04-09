@@ -13,6 +13,7 @@ import lombok.Setter;
 @Table(name = "Badges")
 public class Badges {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer BadgeID;
     private String badgeName;
     @ManyToOne

@@ -24,9 +24,6 @@ public class Skill_Level_Service implements ISkill_Level_Service {
     public Skill_Level_DTO addSkillLevel(Skill_Level_DTO skillLevelDTO) {
         Skill_Level skillLevel = mapper.map(skillLevelDTO, Skill_Level.class);
 
-        if (skillLevelRepo.findById(skillLevel.getLevelID()).isPresent()) {
-            throw new DuplicateSkillLevelException("Skill Level with the same Id already exists: " + skillLevel.getLevelID());
-        }
 
         Skill_Level savedSkillLevel = skillLevelRepo.save(skillLevel);
         Skill_Level_DTO savedSkillLevelDTO = mapper.map(savedSkillLevel, Skill_Level_DTO.class);

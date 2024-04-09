@@ -23,10 +23,6 @@ public class Skills_Service implements ISkills_Service {
     public Skills_DTO addSkill(Skills_DTO skillsDTO) {
         Skills skill = mapper.map(skillsDTO, Skills.class);
 
-        if (skillsRepo.findById(skill.getSkillID()).isPresent()) {
-            throw new DuplicateSkillException("Skill with the same Id already exists: " + skill.getSkillID());
-        }
-
         Skills savedSkill = skillsRepo.save(skill);
         Skills_DTO savedSkillsDTO = mapper.map(savedSkill, Skills_DTO.class);
 

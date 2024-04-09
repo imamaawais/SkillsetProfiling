@@ -27,10 +27,7 @@ public class Role_Service implements IRole_Service {
         // Map the RoleDTO to the Role entity
         Role role = mapper.map(roleDTO, Role.class);
 
-        // Check if a role with the same ID already exists
-        if (roleRepo.findById(role.getRoleID()).isPresent()) {
-            throw new DuplicateRoleException("Role with the same ID already exists: " + role.getRoleID());
-        }
+
 
         // No role with the same ID, proceed to save the new role
         Role savedRole = roleRepo.save(role);

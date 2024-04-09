@@ -27,9 +27,6 @@ public class Question_Bank_Service implements IQuestion_Bank_Service {
     public Question_Bank_DTO addQuestionBank(Question_Bank_DTO questionBankDTO) {
         Question_Bank questionBank = mapper.map(questionBankDTO, Question_Bank.class);
 
-        // Check if a question with the same ID already exists
-        if (questionBankRepo.findById(questionBank.getQuestionID()).isPresent())
-            throw new DuplicateQuestionBankException("Question with the same ID already exists: " + questionBank.getQuestionID());
 
         // Save to the database
         Question_Bank savedQuestionBank = questionBankRepo.save(questionBank);

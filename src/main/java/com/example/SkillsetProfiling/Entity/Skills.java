@@ -12,6 +12,7 @@ import lombok.*;
 public class Skills {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer SkillID;
     private String skillName;
     @ManyToOne

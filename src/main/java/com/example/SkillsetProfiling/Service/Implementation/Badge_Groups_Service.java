@@ -28,9 +28,6 @@ public class Badge_Groups_Service implements IBadge_Groups_Service {
 
         Badge_Groups badgeGroup = mapper.map(badgeGroupsDTO, Badge_Groups.class);
 
-        if(badgeGroupsRepo.findById(badgeGroup.getBadgeGroupID()).isPresent()){
-            throw new DuplicateBadgeGroupException("Badge Group with the same Id already exists: "+ badgeGroup.getBadgeGroupID());
-        }
 
         //save to db
         Badge_Groups savedBadgeGroup = badgeGroupsRepo.save(badgeGroup);

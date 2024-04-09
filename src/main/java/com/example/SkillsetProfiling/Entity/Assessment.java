@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @Table(name = "Assessment")
 public class Assessment {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer AssessmentID;
     @ManyToOne
     @JoinColumn(name = "question_PaperID")

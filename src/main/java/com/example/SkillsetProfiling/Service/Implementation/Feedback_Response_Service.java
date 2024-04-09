@@ -25,9 +25,7 @@ public class Feedback_Response_Service implements IFeedback_Response_Service {
     @Override
     public Feedback_Response_DTO addFeedbackResponse(Feedback_Response_DTO feedbackResponseDTO) {
         Feedback_Response feedbackResponse = modelMapper.map(feedbackResponseDTO, Feedback_Response.class);
-        if (feedbackResponseRepo.findById(feedbackResponse.getFeedbackID().getFeedbackID()).isPresent()) {
-            throw new DuplicateFeedbackResponseException("Feedback response already exists with ID: " + feedbackResponse.getFeedbackID());
-        }
+
         Feedback_Response savedFeedbackResponse = feedbackResponseRepo.save(feedbackResponse);
         return modelMapper.map(savedFeedbackResponse, Feedback_Response_DTO.class);
     }

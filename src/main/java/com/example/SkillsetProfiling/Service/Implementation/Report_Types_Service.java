@@ -26,9 +26,7 @@ public class Report_Types_Service implements IReport_Types_Service {
 
         Report_Types reportTypes = mapper.map(reportTypesDTO, Report_Types.class);
 
-        if(reportTypesRepo.findById(reportTypes.getReportTypeID()).isPresent()){
-            throw new DuplicateReportTypeException("Report Type with the same Id already exists: "+ reportTypes.getReportTypeID());
-        }
+
 
         //save to db
         Report_Types savedReportType = reportTypesRepo.save(reportTypes);

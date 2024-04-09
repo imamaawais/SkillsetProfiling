@@ -13,6 +13,7 @@ import lombok.Setter;
 @Table(name = "Mentor_Details")
 public class Mentor_Details {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer MentorID;
 
     @OneToOne

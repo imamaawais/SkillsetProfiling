@@ -27,10 +27,7 @@ public class Qualification_Service implements IQualification_Service {
         // Map the QualificationDTO to the Qualification entity
         Qualification qualification = mapper.map(qualificationDTO, Qualification.class);
 
-        // Check if a qualification with the same ID already exists
-        if (qualificationRepo.findById(qualification.getQualificationID()).isPresent()) {
-            throw new DuplicateQualificationException("Qualification with the same ID already exists: " + qualification.getQualificationID());
-        }
+
 
         // No qualification with the same ID, proceed to save the new qualification
         Qualification savedQualification = qualificationRepo.save(qualification);

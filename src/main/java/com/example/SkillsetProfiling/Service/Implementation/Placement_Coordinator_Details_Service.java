@@ -25,9 +25,6 @@ public class Placement_Coordinator_Details_Service implements IPlacement_Coordin
     public Placement_Coordinator_Details_DTO addCoordinatorDetails(Placement_Coordinator_Details_DTO coordinatorDetailsDTO) {
         Placement_Coordinator_Details coordinatorDetails = mapper.map(coordinatorDetailsDTO, Placement_Coordinator_Details.class);
 
-        // Check if a coordinator with the same ID already exists
-        if (placementCoordinatorDetailsRepo.findById(coordinatorDetails.getCoordinatorID()).isPresent())
-            throw new DuplicateCoordinatorDetailsException("Coordinator with the same ID already exists: " + coordinatorDetails.getCoordinatorID());
 
         // Save to the database
         Placement_Coordinator_Details savedCoordinatorDetails = placementCoordinatorDetailsRepo.save(coordinatorDetails);

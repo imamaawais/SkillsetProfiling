@@ -26,9 +26,6 @@ public class Question_Difficulty_Service implements IQuestion_Difficulty_Service
     public Question_Difficulty_DTO addQuestionDifficulty(Question_Difficulty_DTO questionDifficultyDTO) {
         Question_Difficulty questionDifficulty = mapper.map(questionDifficultyDTO, Question_Difficulty.class);
 
-        // Check if a question difficulty with the same ID already exists
-        if (questionDifficultyRepo.findById(questionDifficulty.getDifficultyID()).isPresent())
-            throw new DuplicateQuestionDifficultyException("Question difficulty with the same ID already exists: " + questionDifficulty.getDifficultyID());
 
         // Save to the database
         Question_Difficulty savedQuestionDifficulty = questionDifficultyRepo.save(questionDifficulty);

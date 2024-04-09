@@ -1,8 +1,6 @@
 package com.example.SkillsetProfiling.Entity;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,6 +15,7 @@ import lombok.Setter;
 public class Question_Difficulty {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer DifficultyID;
     private Integer marks;
     private Integer timeAllotted; //in minutes

@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 @Table(name = "Student_Skill_Level")
 public class Student_Skill_Level {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer StudentSkillLevelID;
     @ManyToOne
     @JoinColumn(name = "studentID")

@@ -27,9 +27,6 @@ public class User_Details_Service implements IUser_Details_Service {
     public User_Details_DTO addUserDetails(User_Details_DTO UserDetailsDTO) {
         User_Details user_details = mapper.map(UserDetailsDTO, User_Details.class);
 
-        // Check if a user with the same ID already exists
-        if (userDetailsRepo.findById(user_details.getUserID()).isPresent())
-            throw new DuplicateUserDetailsException("User with the same ID already exists: " + user_details.getUserID());
 
         // Save to the database
         User_Details savedUserDetails = userDetailsRepo.save(user_details);

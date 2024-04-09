@@ -25,9 +25,7 @@ public class Test_Service implements ITest_Service {
     public Test_DTO addTest(Test_DTO testDTO) {
         Test test = modelMapper.map(testDTO, Test.class);
 
-        if(testRepository.findById(test.getTestID()).isPresent()){
-            throw new DuplicateTestException("Test already exists with ID: " + test.getTestID());
-        }
+
         Test savedTest = testRepository.save(test);
         return modelMapper.map(savedTest, Test_DTO.class);
     }

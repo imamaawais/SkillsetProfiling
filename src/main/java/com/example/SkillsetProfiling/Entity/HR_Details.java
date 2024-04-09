@@ -15,6 +15,7 @@ import lombok.Setter;
 @Table(name = "HR_Details")
 public class HR_Details {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer HrID;
     @OneToOne
     @JoinColumn(name = "userID")

@@ -25,9 +25,6 @@ public class HR_Details_Service implements IHR_Details_Service {
     public HR_Details_DTO addHRDetails(HR_Details_DTO hrDetailsDto) {
         HR_Details hr_details = mapper.map(hrDetailsDto, HR_Details.class);
 
-        // Check if an HR with the same ID already exists
-        if (hrDetailsRepo.findById(hr_details.getHrID()).isPresent())
-            throw new DuplicateHRDetailsException("HR with the same ID already exists: " + hr_details.getHrID());
 
         // Save to the database
         HR_Details savedHRDetails = hrDetailsRepo.save(hr_details);

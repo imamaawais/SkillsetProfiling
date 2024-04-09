@@ -26,10 +26,7 @@ public class Domain_Service implements IDomain_Service {
         // Map the DomainDTO to the Domain entity
         Domain domain = mapper.map(domainDTO, Domain.class);
 
-        // Check if a domain with the same ID already exists
-        if (domainRepo.findById(domain.getDomainID()).isPresent()) {
-            throw new DuplicateDomainException("Domain with the same ID already exists: " + domain.getDomainID());
-        }
+
 
         // No domain with the same ID, proceed to save the new domain
         Domain savedDomain = domainRepo.save(domain);

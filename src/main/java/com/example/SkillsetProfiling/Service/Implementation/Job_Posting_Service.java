@@ -27,9 +27,7 @@ public class Job_Posting_Service implements IJob_Posting_Service {
     public Job_Postings_DTO addJobPosting(Job_Postings_DTO jobPostingsDto) throws DuplicateJobPostingException {
         Job_Postings jobPosting = mapper.map(jobPostingsDto, Job_Postings.class);
 
-        if(jobPostingsRepo.findById(jobPosting.getJobID()).isPresent()) {
-            throw new DuplicateJobPostingException("Job with the same ID already exists: " + jobPosting.getJobID());
-        }
+
 
         Job_Postings savedJobPosting = jobPostingsRepo.save(jobPosting);
         return mapper.map(savedJobPosting, Job_Postings_DTO.class);

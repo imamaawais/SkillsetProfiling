@@ -13,6 +13,7 @@ import lombok.Setter;
 @Table(name = "Administrator_Details")
 public class Administrator_Details {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer AdministratorID;
     @OneToOne
     @JoinColumn(name = "userID")

@@ -15,6 +15,7 @@ import lombok.Setter;
 public class Sub_Skills {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer SubSkillID;
     private String subSkillName;
     private String subSkillDescription;

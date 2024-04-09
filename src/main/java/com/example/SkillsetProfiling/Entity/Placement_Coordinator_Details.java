@@ -15,6 +15,7 @@ import lombok.Setter;
 public class Placement_Coordinator_Details {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer CoordinatorID;
     @OneToOne
     @JoinColumn(name = "userID")

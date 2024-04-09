@@ -26,9 +26,6 @@ public class Assessment_Service implements IAssessment_Service {
     public Assessment_DTO addAssessment(Assessment_DTO assessmentDto) {
         Assessment assessment = mapper.map(assessmentDto, Assessment.class);
 
-        if(assessmentRepo.findById(assessment.getAssessmentID()).isPresent()){
-            throw new DuplicateAssessmentException("Assessment already exists with ID: " + assessment.getAssessmentID());
-        }
         Assessment savedAssessment = assessmentRepo.save(assessment);
         return mapper.map(savedAssessment, Assessment_DTO.class);
     }

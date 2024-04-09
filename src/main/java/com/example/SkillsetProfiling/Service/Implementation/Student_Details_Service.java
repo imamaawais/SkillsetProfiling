@@ -27,9 +27,6 @@ public class Student_Details_Service implements IStudent_Details_Service {
     public Student_Details_DTO addStudentDetails(Student_Details_DTO studentDetailsDTO) {
         Student_Details studentDetails = mapper.map(studentDetailsDTO, Student_Details.class);
 
-        // Check if a student with the same ID already exists
-        if (studentDetailsRepo.findById(studentDetails.getStudentID()).isPresent())
-            throw new DuplicateStudentDetailsException("Student with the same ID already exists: " + studentDetails.getStudentID());
 
         // Save to the database
         Student_Details savedStudentDetails = studentDetailsRepo.save(studentDetails);

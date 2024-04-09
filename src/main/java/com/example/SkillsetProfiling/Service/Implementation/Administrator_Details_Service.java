@@ -27,9 +27,6 @@ public class Administrator_Details_Service implements IAdministrator_Details_Ser
     public Administrator_Details_DTO addAdministratorDetails(Administrator_Details_DTO administratorDetailsDTO) {
         Administrator_Details administratorDetails = mapper.map(administratorDetailsDTO, Administrator_Details.class);
 
-        // Check if an administrator with the same ID already exists
-        if (administratorDetailsRepo.findById(administratorDetails.getAdministratorID()).isPresent())
-            throw new DuplicateAdministratorDetailsException("Administrator with the same ID already exists: " + administratorDetails.getAdministratorID());
 
         // Save to the database
         Administrator_Details savedAdministratorDetails = administratorDetailsRepo.save(administratorDetails);

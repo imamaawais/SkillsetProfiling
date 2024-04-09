@@ -26,9 +26,7 @@ public class Industry_Service implements IIndustry_Service {
     public Industry_DTO addIndustry(Industry_DTO industryDTO) {
         Industry industry = mapper.map(industryDTO, Industry.class);
 
-        if (industryRepo.findById(industry.getIndustryID()).isPresent()) {
-            throw new DuplicateIndustryException("Industry with the same ID already exists: " + industry.getIndustryID());
-        }
+
 
         Industry savedIndustry = industryRepo.save(industry);
         Industry_DTO savedIndustryDTO = mapper.map(savedIndustry, Industry_DTO.class);

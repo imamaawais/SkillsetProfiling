@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 public class Question_Bank {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer QuestionID;
     private String questionText;
     private String answer;

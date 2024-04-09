@@ -29,10 +29,7 @@ public class Question_Paper_Service implements IQuestion_Paper_Service {
         // Map the Question_Paper_DTO to the Question_Paper entity
         Question_Paper questionPaper = mapper.map(questionPaperDTO, Question_Paper.class);
 
-        // Check if a question paper with the same ID already exists
-        if (questionPaperRepo.findById(questionPaper.getQuestionPaperID()).isPresent()) {
-            throw new DuplicateQuestionPaperException("Question Paper with the same ID already exists: " + questionPaper.getQuestionPaperID());
-        }
+
 
         // No question paper with the same ID, proceed to save the new question paper
         Question_Paper savedQuestionPaper = questionPaperRepo.save(questionPaper);

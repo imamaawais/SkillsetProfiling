@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "User_Details")
 public class User_Details {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) // Use IDENTITY for auto-increment
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer UserID;
     @OneToOne
     @JoinColumn(name = "email")

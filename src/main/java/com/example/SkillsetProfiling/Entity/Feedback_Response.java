@@ -16,6 +16,7 @@ import java.sql.Timestamp;
 public class Feedback_Response {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer FeedbackResponseID;
     @OneToOne
     @JoinColumn(name = "FeedbackID")

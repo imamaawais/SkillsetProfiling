@@ -25,9 +25,7 @@ public class Sub_Skills_Service implements ISub_Skills_Service {
     public Sub_Skills_DTO addSubSkill(Sub_Skills_DTO subSkillsDTO) {
         Sub_Skills subSkill = mapper.map(subSkillsDTO, Sub_Skills.class);
 
-        if (subSkillsRepo.findById(subSkill.getSubSkillID()).isPresent()) {
-            throw new DuplicateSubSkillException("Sub Skill with the same Id already exists: " + subSkill.getSubSkillID());
-        }
+
 
         Sub_Skills savedSubSkill = subSkillsRepo.save(subSkill);
         Sub_Skills_DTO savedSubSkillsDTO = mapper.map(savedSubSkill, Sub_Skills_DTO.class);

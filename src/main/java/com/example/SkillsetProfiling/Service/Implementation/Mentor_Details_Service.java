@@ -25,9 +25,6 @@ public class Mentor_Details_Service implements IMentor_Details_Service {
     public Mentor_Details_DTO addMentorDetails(Mentor_Details_DTO mentorDetailsDTO) {
         Mentor_Details mentorDetails = mapper.map(mentorDetailsDTO, Mentor_Details.class);
 
-        // Check if a mentor with the same ID already exists
-        if (mentorDetailsRepo.findById(mentorDetails.getMentorID()).isPresent())
-            throw new DuplicateMentorDetailsException("Mentor with the same ID already exists: " + mentorDetails.getMentorID());
 
         // Save to the database
         Mentor_Details savedMentorDetails = mentorDetailsRepo.save(mentorDetails);

@@ -27,9 +27,7 @@ public class Feedback_Request_Service implements IFeedback_Request_Service {
     @Override
     public Feedback_Request_DTO addFeedbackRequest(Feedback_Request_DTO feedbackRequestDTO) {
         Feedback_Request feedbackRequest = modelMapper.map(feedbackRequestDTO, Feedback_Request.class);
-        if (feedbackRequestRepo.findById(feedbackRequest.getFeedbackID()).isPresent()) {
-            throw new DuplicateFeedbackRequestException("Feedback request already exists with ID: " + feedbackRequest.getFeedbackID());
-        }
+
         Feedback_Request savedFeedbackRequest = feedbackRequestRepo.save(feedbackRequest);
         return modelMapper.map(savedFeedbackRequest, Feedback_Request_DTO.class);
     }
