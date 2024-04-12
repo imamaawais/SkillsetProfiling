@@ -6,6 +6,7 @@ import com.example.SkillsetProfiling.Exception.DuplicateReportException;
 import com.example.SkillsetProfiling.Exception.ReportsNotFoundException;
 import com.example.SkillsetProfiling.Repository.Reports_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IReports_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,15 @@ public class Reports_Service implements IReports_Service {
     @Override
     public List<Reports_DTO> getAllReports() {
         List<Reports> reports = reportsRepo.findAll();
+        return reports.stream()
+                .map(report -> mapper.map(report, Reports_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public List<Reports_DTO> getAllPendingReports() {
+        List<Reports> reports = reportsRepo.getAllPendingCases();
         return reports.stream()
                 .map(report -> mapper.map(report, Reports_DTO.class))
                 .collect(Collectors.toList());

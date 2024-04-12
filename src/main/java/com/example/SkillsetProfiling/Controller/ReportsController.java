@@ -37,6 +37,15 @@ public class ReportsController {
         return new ResponseEntity<>(reports, HttpStatus.OK);
     }
 
+    @GetMapping("/getAllPending")
+    public ResponseEntity<List<Reports_DTO>> getAllPendingReports() {
+        List<Reports_DTO> reports = service.getAllPendingReports();
+        if (reports.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(reports, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{ReportID}")
     public ResponseEntity<Reports_DTO> getReportById(@PathVariable int ReportID) {
         try {

@@ -13,6 +13,8 @@ public interface IReports_Service {
 
     List<Reports_DTO> getAllReports();
 
+    List<Reports_DTO> getAllPendingReports();
+
     Reports_DTO updateReport(Integer reportId, Reports_DTO updatedReportsDTO);
 
     boolean deleteReport(Integer reportId);
