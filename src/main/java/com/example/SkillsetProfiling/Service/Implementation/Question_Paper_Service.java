@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,6 +48,24 @@ public class Question_Paper_Service implements IQuestion_Paper_Service {
         } else {
             throw new QuestionPaperNotFoundException("Question paper not found with ID: " + questionPaperId);
         }
+    }
+
+    @Override
+    public Question_Paper_DTO getRandomQuestionPaper(Integer skillID, Integer skillLevelID) throws QuestionPaperNotFoundException {
+        List<Question_Paper> questionPapers = questionPaperRepo.findAllBySkillIDAndSkillLevel(skillID, skillLevelID);
+
+        if (questionPapers.isEmpty()) {
+            throw new QuestionPaperNotFoundException("No question papers found for the provided skill ID and skill level ID");
+        }
+
+        // Generate a random index within the size of the questionPapers list
+        Random random = new Random();
+        int randomIndex = random.nextInt(questionPapers.size());
+
+        // Get the randomly selected question paper
+        Question_Paper randomQuestionPaper = questionPapers.get(randomIndex);
+
+        return mapper.map(randomQuestionPaper, Question_Paper_DTO.class);
     }
 
     @Override

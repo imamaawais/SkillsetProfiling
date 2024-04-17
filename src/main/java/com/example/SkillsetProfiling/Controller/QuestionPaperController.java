@@ -45,6 +45,17 @@ public class QuestionPaperController {
         }
     }
 
+    @GetMapping("/getRandom/{skillID}/{skillLevelID}")
+    public ResponseEntity<Question_Paper_DTO> getRandomQuestionPaper(@PathVariable int skillID, @PathVariable int skillLevelID) {
+        try {
+            Question_Paper_DTO questionPaperDTO = service.getRandomQuestionPaper(skillID, skillLevelID);
+            System.out.println(questionPaperDTO.getSkillID().getSkillName());
+            return new ResponseEntity<>(questionPaperDTO, HttpStatus.OK);
+        } catch (QuestionPaperNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PutMapping("/update/{QuestionPaperID}")
     public ResponseEntity<Question_Paper_DTO> updateQuestionPaper(@PathVariable Integer QuestionPaperID, @RequestBody Question_Paper_DTO updatedQuestionPaperDTO) {
         try {

@@ -11,6 +11,8 @@ public interface IQuestion_Paper_Service {
 
     Question_Paper_DTO getQuestionPaperById(Integer questionPaperId) throws QuestionPaperNotFoundException;
 
+    Question_Paper_DTO getRandomQuestionPaper(Integer skillID, Integer skillLevelID);
+
     List<Question_Paper_DTO> getAllQuestionPapers();
 
     Question_Paper_DTO updateQuestionPaper(Integer questionPaperId, Question_Paper_DTO updatedQuestionPaperDTO);
