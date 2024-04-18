@@ -52,6 +52,14 @@ public class Question_Paper_Questions_Service implements IQuestion_Paper_Questio
     }
 
     @Override
+    public List<Question_Paper_Questions_DTO> getQuestionPaperQuestionsByQuestionPaperId(Integer questionID) {
+        List<Question_Paper_Questions> questionPaperQuestions = questionPaperQuestionsRepo.findByQuestionPaperID(questionID);
+        return questionPaperQuestions.stream()
+                .map(questionPaperQuestion -> mapper.map(questionPaperQuestion, Question_Paper_Questions_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Question_Paper_Questions_DTO updateQuestionPaperQuestions(Integer questionPaperId, Integer questionId, Question_Paper_Questions_DTO updatedQuestionPaperQuestionsDTO) throws QuestionPaperQuestionsNotFoundException {
         Optional<Question_Paper_Questions> questionPaperQuestionsOptional = questionPaperQuestionsRepo.findById(new Question_Paper_Questions_Key(questionPaperId, questionId));
         if (questionPaperQuestionsOptional.isPresent()) {

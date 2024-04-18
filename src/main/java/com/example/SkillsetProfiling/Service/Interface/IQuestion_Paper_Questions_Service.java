@@ -9,6 +9,8 @@ public interface IQuestion_Paper_Questions_Service {
 
     Question_Paper_Questions_DTO getQuestionPaperQuestionsByIds(Integer questionPaperId, Integer questionId);
 
+    List<Question_Paper_Questions_DTO> getQuestionPaperQuestionsByQuestionPaperId(Integer questionID);
+
     List<Question_Paper_Questions_DTO> getAllQuestionPaperQuestions();
 
     Question_Paper_Questions_DTO updateQuestionPaperQuestions(Integer questionPaperId, Integer questionId, Question_Paper_Questions_DTO updatedQuestionPaperQuestionsDTO);

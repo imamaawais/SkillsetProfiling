@@ -50,6 +50,17 @@ public class QuestionPaperQuestionsController {
         }
     }
 
+    @GetMapping("/getFromQuestionPaperId/{questionPaperId}")
+    public ResponseEntity<List<Question_Paper_Questions_DTO>> getQuestionPaperQuestionsByQuestionPaperId(@PathVariable Integer questionPaperId) {
+        List<Question_Paper_Questions_DTO> questionPaperQuestions = service.getQuestionPaperQuestionsByQuestionPaperId(questionPaperId);
+
+        if (questionPaperQuestions.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(questionPaperQuestions, HttpStatus.OK);
+    }
+
     @PutMapping("/update/{questionPaperId}/{questionId}")
     public ResponseEntity<Question_Paper_Questions_DTO> updateQuestionPaperQuestions(@PathVariable Integer questionPaperId, @PathVariable Integer questionId, @RequestBody Question_Paper_Questions_DTO updatedQuestionPaperQuestionsDTO) {
         try {
