@@ -1,5 +1,6 @@
 package com.example.SkillsetProfiling.Controller;
 
+import com.example.SkillsetProfiling.Dto.Question_Bank_DTO;
 import com.example.SkillsetProfiling.Dto.Question_Paper_Questions_DTO;
 import com.example.SkillsetProfiling.Exception.DuplicateQuestionPaperQuesitonException;
 import com.example.SkillsetProfiling.Exception.QuestionPaperQuestionsNotFoundException;
@@ -51,8 +52,8 @@ public class QuestionPaperQuestionsController {
     }
 
     @GetMapping("/getFromQuestionPaperId/{questionPaperId}")
-    public ResponseEntity<List<Question_Paper_Questions_DTO>> getQuestionPaperQuestionsByQuestionPaperId(@PathVariable Integer questionPaperId) {
-        List<Question_Paper_Questions_DTO> questionPaperQuestions = service.getQuestionPaperQuestionsByQuestionPaperId(questionPaperId);
+    public ResponseEntity<List<Question_Bank_DTO>> getQuestionPaperQuestionsByQuestionPaperId(@PathVariable Integer questionPaperId) {
+        List<Question_Bank_DTO> questionPaperQuestions = service.getQuestionPaperQuestionsByQuestionPaperId(questionPaperId);
 
         if (questionPaperQuestions.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

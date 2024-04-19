@@ -1,6 +1,8 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
+import com.example.SkillsetProfiling.Dto.Question_Bank_DTO;
 import com.example.SkillsetProfiling.Dto.Question_Paper_Questions_DTO;
+import com.example.SkillsetProfiling.Entity.Question_Bank;
 import com.example.SkillsetProfiling.Entity.Question_Paper_Questions;
 import com.example.SkillsetProfiling.Exception.DuplicateQuestionPaperQuesitonException;
 import com.example.SkillsetProfiling.Exception.QuestionPaperQuestionsNotFoundException;
@@ -52,10 +54,10 @@ public class Question_Paper_Questions_Service implements IQuestion_Paper_Questio
     }
 
     @Override
-    public List<Question_Paper_Questions_DTO> getQuestionPaperQuestionsByQuestionPaperId(Integer questionID) {
-        List<Question_Paper_Questions> questionPaperQuestions = questionPaperQuestionsRepo.findByQuestionPaperID(questionID);
+    public List<Question_Bank_DTO> getQuestionPaperQuestionsByQuestionPaperId(Integer questionID) {
+        List<Question_Bank> questionPaperQuestions = questionPaperQuestionsRepo.findByQuestionPaperID(questionID);
         return questionPaperQuestions.stream()
-                .map(questionPaperQuestion -> mapper.map(questionPaperQuestion, Question_Paper_Questions_DTO.class))
+                .map(questionPaperQuestion -> mapper.map(questionPaperQuestion, Question_Bank_DTO.class))
                 .collect(Collectors.toList());
     }
 

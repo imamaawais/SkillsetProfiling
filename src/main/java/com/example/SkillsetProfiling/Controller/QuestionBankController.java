@@ -35,6 +35,17 @@ public class QuestionBankController {
         }
     }
 
+    @GetMapping("/getFromSkillAndLevel/{skillID}/{levelID}")
+    public ResponseEntity<List<Question_Bank_DTO>> getQuestionsBySkillAndLevel(@PathVariable Integer skillID, @PathVariable Integer levelID) {
+        List<Question_Bank_DTO> questions = service.getQuestionsBySkillAndLevel(skillID,levelID);
+
+        if (questions.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(questions, HttpStatus.OK);
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Question_Bank_DTO>> getAllQuestionBanks() {
         List<Question_Bank_DTO> questionBankList = service.getAllQuestionBanks();

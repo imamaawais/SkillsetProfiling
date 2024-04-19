@@ -9,6 +9,8 @@ public interface IQuestion_Bank_Service {
 
     Question_Bank_DTO getQuestionBankByQuestionID(Integer questionID);
 
+    List<Question_Bank_DTO> getQuestionsBySkillAndLevel(Integer skillID, Integer difficultyID);
+
     List<Question_Bank_DTO> getAllQuestionBanks();
 
     Question_Bank_DTO updateQuestionBank(Integer questionID, Question_Bank_DTO updatedQuestionBankDTO);

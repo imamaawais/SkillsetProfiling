@@ -5,14 +5,14 @@ import com.example.SkillsetProfiling.Entity.Question_Bank;
 import com.example.SkillsetProfiling.Exception.DuplicateQuestionBankException;
 import com.example.SkillsetProfiling.Exception.QuestionBankNotFoundException;
 import com.example.SkillsetProfiling.Repository.Question_Bank_Repo;
+import com.example.SkillsetProfiling.Repository.Question_Sub_Skill_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IQuestion_Bank_Service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 
@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Question_Bank_Service implements IQuestion_Bank_Service {
     private Question_Bank_Repo questionBankRepo;
+    private Question_Sub_Skill_Repo questionSubSkillRepo;
     private ModelMapper mapper;
 
 
@@ -43,6 +44,39 @@ public class Question_Bank_Service implements IQuestion_Bank_Service {
         } else {
             throw new QuestionBankNotFoundException("Question bank not found with ID: " + questionID);
         }
+    }
+
+    @Override
+    public List<Question_Bank_DTO> getQuestionsBySkillAndLevel(Integer skillID, Integer skillLevelID) {
+        // Retrieve questions for different difficulty levels
+        List<Question_Bank> questionsLevel1 = questionSubSkillRepo.findQuestionBySkillAndDifficulty(skillID, skillLevelID);
+        List<Question_Bank> questionsLevel2 = questionSubSkillRepo.findQuestionBySkillAndDifficulty(skillID, skillLevelID + 1);
+        List<Question_Bank> questionsLevel3 = questionSubSkillRepo.findQuestionBySkillAndDifficulty(skillID, skillLevelID + 2);
+
+        // Shuffle each list of questions
+        Collections.shuffle(questionsLevel1);
+        Collections.shuffle(questionsLevel2);
+        Collections.shuffle(questionsLevel3);
+
+        // Select the required number of questions from each list
+        List<Question_Bank> selectedQuestions = new ArrayList<>();
+        selectedQuestions.addAll(selectRandomQuestions(questionsLevel1, 6));
+        selectedQuestions.addAll(selectRandomQuestions(questionsLevel2, 8));
+        selectedQuestions.addAll(selectRandomQuestions(questionsLevel3, 6));
+
+        return selectedQuestions.stream()
+                .map(questionBank -> mapper.map(questionBank, Question_Bank_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    // Method to select random questions from a list without repetition
+    private List<Question_Bank> selectRandomQuestions(List<Question_Bank> questions, int count) {
+        Set<Question_Bank> selected = new HashSet<>();
+        while (selected.size() < count && !questions.isEmpty()) {
+            int randomIndex = (int) (Math.random() * questions.size());
+            selected.add(questions.remove(randomIndex));
+        }
+        return new ArrayList<>(selected);
     }
 
     @Override
