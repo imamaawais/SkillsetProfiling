@@ -11,6 +11,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface Question_Sub_Skill_Repo extends JpaRepository<Question_Sub_Skill, Question_Sub_Skill_Key> {
-    @Query("SELECT qs.QuestionID FROM Question_Sub_Skill qs WHERE qs.subSkills.skills.SkillID = :SkillID AND qs.QuestionID.questionDifficulty.DifficultyID = :DifficultyID")
+    @Query("SELECT DISTINCT qs.QuestionID FROM Question_Sub_Skill qs WHERE qs.subSkills.skills.SkillID = :SkillID AND qs.QuestionID.questionDifficulty.DifficultyID = :DifficultyID")
     List<Question_Bank> findQuestionBySkillAndDifficulty(@Param("SkillID") Integer SkillID, @Param("DifficultyID") Integer DifficultyID);
 }
