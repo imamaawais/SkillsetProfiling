@@ -1,5 +1,6 @@
 package com.example.SkillsetProfiling.Controller;
 
+import com.example.SkillsetProfiling.Dto.Test_Attempt_History_DTO;
 import com.example.SkillsetProfiling.Dto.Test_DTO;
 import com.example.SkillsetProfiling.Exception.DuplicateTestException;
 import com.example.SkillsetProfiling.Exception.TestNotFoundException;
@@ -27,6 +28,15 @@ public class TestController {
         } catch (DuplicateTestException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
+    }
+
+    @GetMapping("/getFromStudentSkillLevel/{studentId}/{skillId}/{levelId}")
+    public ResponseEntity<List<Test_DTO>> getTestByStudentSkillLevel(@PathVariable Integer studentId, @PathVariable Integer skillId, @PathVariable Integer levelId) {
+        List<Test_DTO> tests = testService.getTestByStudentSkillLevel(studentId,skillId,levelId);
+        if (tests.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(tests, HttpStatus.OK);
     }
 
     @GetMapping("/getAll")

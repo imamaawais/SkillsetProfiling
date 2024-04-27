@@ -10,6 +10,8 @@ public interface ITest_Service {
 
     Test_DTO getTestById(Integer testId) throws TestNotFoundException;
 
+    List<Test_DTO> getTestByStudentSkillLevel(Integer studentId, Integer skillId, Integer levelId);
+
     List<Test_DTO> getAllTests();
 
     Test_DTO updateTest(Integer testId, Test_DTO updatedTest_DTO) throws TestNotFoundException;

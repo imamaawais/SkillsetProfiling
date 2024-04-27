@@ -28,8 +28,10 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
     @Override
     public Test_Attempt_History_DTO addTestAttemptHistory(Test_Attempt_History_DTO testAttemptHistoryDTO) {
         Test_Attempt_History testAttemptHistory = modelMapper.map(testAttemptHistoryDTO, Test_Attempt_History.class);
-        if (testAttemptHistoryRepo.findById(new Test_Attempt_History_Key(testAttemptHistory.getTestID().getTestID(), testAttemptHistory.getAssessmentID().getAssessmentID())).isPresent()) {
-            throw new DuplicateTestAttemptHistoryException("Test attempt history already exists with ID: " + testAttemptHistory.getTestID().getTestID());
+        Optional<Test_Attempt_History> existingTest = testAttemptHistoryRepo.findById(new Test_Attempt_History_Key(testAttemptHistory.getTestID().getTestID(), testAttemptHistory.getAssessmentID().getAssessmentID()));
+        if (existingTest.isPresent()) {
+            Test_Attempt_History updatedTest = existingTest.get();
+            testAttemptHistory.setAttemptNumber(updatedTest.getAttemptNumber() + 1);
         }
         Test_Attempt_History savedTestAttemptHistory = testAttemptHistoryRepo.save(testAttemptHistory);
         return modelMapper.map(savedTestAttemptHistory, Test_Attempt_History_DTO.class);
