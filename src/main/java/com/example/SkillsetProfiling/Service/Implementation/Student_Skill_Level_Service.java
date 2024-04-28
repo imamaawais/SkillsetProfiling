@@ -23,11 +23,12 @@ public class Student_Skill_Level_Service implements IStudent_Skill_Level_Service
 
 
     @Override
+    @Transactional
     public Student_Skill_Level_DTO addStudentSkillLevel(Student_Skill_Level_DTO studentSkillLevelDTO) {
         Student_Skill_Level studentSkillLevel = mapper.map(studentSkillLevelDTO, Student_Skill_Level.class);
 
         // Check if a student skill level with the same ID already exists
-        if (studentSkillLevelRepo.findById(studentSkillLevel.getStudentSkillLevelID()).isPresent())
+        if (studentSkillLevelRepo.findByStudentSkillLevel(studentSkillLevelDTO.getStudentDetails().getStudentID(), studentSkillLevelDTO.getSkills().getSkillID(), studentSkillLevelDTO.getSkillLevel().getLevelID()).isPresent())
             throw new DuplicateStudentSkillLevelException("Student skill level with the same ID already exists: " + studentSkillLevel.getStudentSkillLevelID());
 
         // Save to the database
