@@ -7,6 +7,7 @@ import com.example.SkillsetProfiling.Exception.DuplicateAssessmentScoreException
 import com.example.SkillsetProfiling.Key.Assessment_Scores_Key;
 import com.example.SkillsetProfiling.Repository.Assessment_Scores_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IAssessment_Scores_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -42,6 +43,15 @@ public class Assessment_Scores_Service implements IAssessment_Scores_Service {
         } else {
             throw new AssessmentScoreNotFoundException("Assessment score not found with IDs: " + assessmentId + ", " + questionId);
         }
+    }
+
+    @Override
+    @Transactional
+    public List<Assessment_Scores_DTO> getAssessmentScoresByAssessmentID(Integer assessmentID) {
+        List<Assessment_Scores> assessmentScores = assessmentScoresRepo.findAllByAssessmentID(assessmentID);
+        return assessmentScores.stream()
+                .map(score -> mapper.map(score, Assessment_Scores_DTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override

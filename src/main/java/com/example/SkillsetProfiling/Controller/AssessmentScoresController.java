@@ -40,6 +40,17 @@ public class AssessmentScoresController {
         return new ResponseEntity<>(assessmentScores, HttpStatus.OK);
     }
 
+    @GetMapping("/getFromAssessmentId/{assessmentID}")
+    public ResponseEntity<List<Assessment_Scores_DTO>> getAssessmentScoresByAssessmentID(@PathVariable Integer assessmentID) {
+        List<Assessment_Scores_DTO> assessmentScores = service.getAssessmentScoresByAssessmentID(assessmentID);
+
+        if (assessmentScores.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(assessmentScores, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{assessmentId}/{questionId}")
     public ResponseEntity<Assessment_Scores_DTO> getAssessmentScoreByIds(@PathVariable Integer assessmentId, @PathVariable Integer questionId) {
         try {

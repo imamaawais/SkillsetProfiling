@@ -9,6 +9,8 @@ public interface IAssessment_Scores_Service {
 
     Assessment_Scores_DTO getAssessmentScoreByIds(Integer assessmentId, Integer questionId);
 
+    List<Assessment_Scores_DTO> getAssessmentScoresByAssessmentID(Integer assessmentID);
+
     List<Assessment_Scores_DTO> getAllAssessmentScores();
 
     Assessment_Scores_DTO updateAssessmentScore(Integer assessmentId, Integer questionId, Assessment_Scores_DTO updatedAssessmentScoresDTO);
