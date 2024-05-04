@@ -45,6 +45,15 @@ public class Sub_Skills_Service implements ISub_Skills_Service {
     }
 
     @Override
+    public List<Sub_Skills_DTO> getSubSkillsBySkillID(Integer skillID) throws SubSkillNotFoundException {
+        List<Sub_Skills> subSkills = subSkillsRepo.findBySkillID(skillID);
+
+        return subSkills.stream()
+                .map(subSkill -> mapper.map(subSkill, Sub_Skills_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Sub_Skills_DTO> getAllSubSkills() {
         List<Sub_Skills> subSkills = subSkillsRepo.findAll();
 

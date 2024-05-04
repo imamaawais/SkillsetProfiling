@@ -34,8 +34,19 @@ public class SubSkillsController {
         return new ResponseEntity<>(subSkills, HttpStatus.OK);
     }
 
+    @GetMapping("/getFromSkillId/{skillID}")
+    public ResponseEntity<List<Sub_Skills_DTO>> getSubSkillsBySkillID(@PathVariable int skillID) {
+        List<Sub_Skills_DTO> subSkills = service.getSubSkillsBySkillID(skillID);
+
+        if (subSkills.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(subSkills, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{subSkillId}")
-    public ResponseEntity<Sub_Skills_DTO> getSubSkillGroupById(@PathVariable int subSkillId) throws SubSkillNotFoundException {
+    public ResponseEntity<Sub_Skills_DTO> getSubSkillById(@PathVariable int subSkillId) throws SubSkillNotFoundException {
         Sub_Skills_DTO subSkillsDTO = service.getSubSkillById(subSkillId);
 
         return new ResponseEntity<>(subSkillsDTO, HttpStatus.OK);
