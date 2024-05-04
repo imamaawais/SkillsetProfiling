@@ -33,6 +33,7 @@ public class Feedback_Request {
     @PrePersist
     protected void onCreate() {
         requestTimestamp = new Timestamp(System.currentTimeMillis());
+        requestStatus = "Pending";
     }
 
     @PreUpdate
