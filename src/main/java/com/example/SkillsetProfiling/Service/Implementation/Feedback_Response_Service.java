@@ -60,6 +60,15 @@ public class Feedback_Response_Service implements IFeedback_Response_Service {
     }
 
     @Override
+    @Transactional
+    public List<Feedback_Response_DTO> getAllFeedbackResponsesByStudentID(Integer studentID) {
+        List<Feedback_Response> feedbackResponses = feedbackResponseRepo.getAllFeedbackResponsesByStudentID(studentID);
+        return feedbackResponses.stream()
+                .map(response -> modelMapper.map(response, Feedback_Response_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Feedback_Response_DTO updateFeedbackResponse(Integer feedbackId, Feedback_Response_DTO updatedFeedbackResponseDTO) throws FeedbackResponseNotFoundException {
         Optional<Feedback_Response> feedbackResponseOptional = feedbackResponseRepo.findById(feedbackId);
         if (feedbackResponseOptional.isPresent()) {

@@ -40,6 +40,17 @@ public class FeedbackResponseController {
         return new ResponseEntity<>(feedbackResponses, HttpStatus.OK);
     }
 
+    @GetMapping("/getFromStudentId/{studentId}")
+    public ResponseEntity<List<Feedback_Response_DTO>> getAllFeedbackResponsesByStudentID(@PathVariable Integer studentId) {
+        List<Feedback_Response_DTO> feedbackResponses = feedbackResponseService.getAllFeedbackResponsesByStudentID(studentId);
+
+        if (feedbackResponses.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(feedbackResponses, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{responseId}")
     public ResponseEntity<Feedback_Response_DTO> getFeedbackResponseById(@PathVariable Integer responseId) {
         try {

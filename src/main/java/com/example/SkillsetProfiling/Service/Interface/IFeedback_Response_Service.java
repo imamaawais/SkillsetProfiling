@@ -13,6 +13,8 @@ public interface IFeedback_Response_Service {
 
     List<Feedback_Response_DTO> getAllFeedbackResponses();
 
+    List<Feedback_Response_DTO> getAllFeedbackResponsesByStudentID(Integer studentID);
+
     Feedback_Response_DTO updateFeedbackResponse(Integer feedbackId, Feedback_Response_DTO updatedFeedbackResponseDTO);
 
     boolean deleteFeedbackResponse(Integer feedbackId);
