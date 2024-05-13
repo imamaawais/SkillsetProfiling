@@ -11,6 +11,7 @@ public interface IJob_Skills_Requirements_Service {
     Job_Skills_Requirements_DTO addJobSkillsRequirements(Job_Skills_Requirements_DTO jobSkillsRequirementsDto) throws DuplicateJobSkillsRequirementsException;
     Job_Skills_Requirements_DTO getJobSkillsRequirementsByID(Job_Skills_Requirements_Key jobSkillsRequirementsKey) throws JobSkillsRequirementsNotFoundException;
     List<Job_Skills_Requirements_DTO> getAllJobSkillsRequirements();
+    List<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByJobID(Integer jobID);
     Job_Skills_Requirements_DTO updateJobSkillsRequirements(Job_Skills_Requirements_Key jobSkillsRequirementsKey, Job_Skills_Requirements_DTO updatedJobSkillsRequirementsDTO) throws JobSkillsRequirementsNotFoundException;
     boolean deleteJobSkillsRequirements(Job_Skills_Requirements_Key jobSkillsRequirementsKey);
 }

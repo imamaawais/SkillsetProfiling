@@ -41,6 +41,15 @@ public class JobSkillsRequirementsController {
         }
     }
 
+    @GetMapping("/getFromJobId/{jobID}")
+    public ResponseEntity<List<Job_Skills_Requirements_DTO>> getJobSkillsRequirementsByJobID(@PathVariable Integer jobID) {
+        List<Job_Skills_Requirements_DTO> jobSkillsRequirementsList = service.getJobSkillsRequirementsByJobID(jobID);
+        if (jobSkillsRequirementsList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(jobSkillsRequirementsList, HttpStatus.OK);
+    }
+
     @GetMapping("/getAll")
     public ResponseEntity<List<Job_Skills_Requirements_DTO>> getAllJobSkillsRequirements() {
         List<Job_Skills_Requirements_DTO> jobSkillsRequirementsList = service.getAllJobSkillsRequirements();

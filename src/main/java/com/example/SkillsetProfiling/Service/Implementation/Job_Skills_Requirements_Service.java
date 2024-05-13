@@ -46,6 +46,14 @@ public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements
     }
 
     @Override
+    public List<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByJobID(Integer jobID) {
+        List<Job_Skills_Requirements> jobSkillsRequirements = jobSkillsRequirementsRepo.getJobSkillsRequirementsByJobID(jobID);
+        return jobSkillsRequirements.stream()
+                .map(jobSkillsRequirement -> new Job_Skills_Requirements_DTO(jobSkillsRequirement.getJobID(), jobSkillsRequirement.getSkillID(), jobSkillsRequirement.getLevelID()))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public List<Job_Skills_Requirements_DTO> getAllJobSkillsRequirements() {
         List<Job_Skills_Requirements> jobSkillsRequirements = jobSkillsRequirementsRepo.findAll();
         return jobSkillsRequirements.stream()
