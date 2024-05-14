@@ -1,15 +1,16 @@
 package com.example.SkillsetProfiling.Service.Implementation;
 
 import com.example.SkillsetProfiling.Dto.Test_Attempt_History_DTO;
+import com.example.SkillsetProfiling.Dto.Test_DTO;
 import com.example.SkillsetProfiling.Entity.Assessment;
+import com.example.SkillsetProfiling.Entity.Student_Skills;
 import com.example.SkillsetProfiling.Entity.Test;
 import com.example.SkillsetProfiling.Entity.Test_Attempt_History;
 import com.example.SkillsetProfiling.Exception.DuplicateTestAttemptHistoryException;
 import com.example.SkillsetProfiling.Exception.TestAttemptHistoryNotFoundException;
+import com.example.SkillsetProfiling.Key.Student_Skills_Key;
 import com.example.SkillsetProfiling.Key.Test_Attempt_History_Key;
-import com.example.SkillsetProfiling.Repository.Assessment_Repo;
-import com.example.SkillsetProfiling.Repository.Test_Attempt_History_Repo;
-import com.example.SkillsetProfiling.Repository.Test_Repo;
+import com.example.SkillsetProfiling.Repository.*;
 import com.example.SkillsetProfiling.Service.Interface.ITest_Attempt_History_Service;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -25,6 +26,8 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
 
     private final Test_Attempt_History_Repo testAttemptHistoryRepo;
     private final Test_Repo testRepo;
+    private final Student_Skills_Repo studentSkillsRepo;
+    private final Skill_Level_Repo skillLevelRepo;
     private final Assessment_Repo assessmentRepo;
     private final ModelMapper modelMapper;
 
@@ -42,6 +45,27 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
         Assessment attemptedAssessment = assessmentRepo.findById(testAttemptHistoryDTO.getAssessment().getAssessmentID()).get();
 
         attemptedTest.setIsPassed(attemptedAssessment.getIsPassed());
+
+        if(attemptedTest.getIsPassed()) {
+            List<Test> allTests = testRepo.findTestByStudentSkillLevel(attemptedTest.getStudentSkillLevel().getStudentDetails().getStudentID(), attemptedTest.getStudentSkillLevel().getSkills().getSkillID(), attemptedTest.getStudentSkillLevel().getSkillLevel().getLevelID());
+
+            boolean allTestsPassed = true;
+            for (Test test : allTests) {
+                if (!test.getIsPassed()) {
+                    allTestsPassed = false;
+                    break;
+                }
+            }
+
+            if (allTestsPassed) {
+                // All tests are passed
+                Optional<Student_Skills> studentSkills = studentSkillsRepo.findById(new Student_Skills_Key(attemptedTest.getStudentSkillLevel().getStudentDetails().getStudentID(), attemptedTest.getStudentSkillLevel().getSkills().getSkillID()));
+
+                studentSkills.get().setLevelID(skillLevelRepo.findById(studentSkills.get().getLevelID().getLevelID() + 1).get());
+            } else {
+                // Not all tests are passed
+            }
+        }
         if (attemptedTest.getNoOfAttempts() == null) {
             attemptedTest.setNoOfAttempts(1);
         }
