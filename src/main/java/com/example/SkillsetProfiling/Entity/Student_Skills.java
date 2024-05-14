@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 
@@ -19,14 +21,17 @@ import java.sql.Timestamp;
 public class Student_Skills {
     @Id
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "StudentID")
     private Student_Details StudentID;
     @Id
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "SkillID")
     private Skills SkillID;
     private Integer selfLevel;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name="LevelID")
     private Skill_Level LevelID;
     private Timestamp timestampUpdated;

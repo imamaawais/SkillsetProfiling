@@ -2,6 +2,8 @@ package com.example.SkillsetProfiling.Entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -16,6 +18,7 @@ public class Skills {
     private Integer SkillID;
     private String skillName;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "skill_GroupID")
     private Skill_Groups skillGroup;
     private String skillDescription;

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -17,6 +19,7 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer TestID;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "student_Skill_LevelID")
     private Student_Skill_Level studentSkillLevel;
     private Integer testNumber;

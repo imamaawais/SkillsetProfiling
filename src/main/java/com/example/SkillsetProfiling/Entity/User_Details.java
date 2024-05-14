@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -20,6 +22,7 @@ public class User_Details {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer UserID;
     @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "email")
     private Auth auth;
     private String firstName;
@@ -28,6 +31,7 @@ public class User_Details {
     @Lob
     private byte[] profilePicture;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "roleID")
     private Role role;
     private Timestamp timestampCreated;

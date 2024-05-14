@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 
@@ -19,9 +21,11 @@ public class Question_Paper {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer QuestionPaperID;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "levelID")
     private Skill_Level skillLevel;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "skillID")
     private Skills skillID;
     private Timestamp timestampCreated;

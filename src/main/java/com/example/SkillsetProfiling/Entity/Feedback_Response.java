@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 
@@ -19,9 +21,11 @@ public class Feedback_Response {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer FeedbackResponseID;
     @OneToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "FeedbackID")
     private Feedback_Request feedbackID;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "mentorID")
     private Mentor_Details mentorDetails;
     private String responseMessage;

@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
 
@@ -19,10 +21,12 @@ public class Reports {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer ReportID;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "report_TypeID")
     private Report_Types reportTypes;
     private String reportDescription;
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "userID")
     private User_Details userDetails;
     private String reportStatus;

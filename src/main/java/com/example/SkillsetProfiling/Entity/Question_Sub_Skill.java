@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Setter
@@ -17,10 +19,12 @@ public class Question_Sub_Skill {
 
     @Id
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "QuestionID")
     private Question_Bank QuestionID;
     @Id
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "SubSkillID")
     // Inconsistent variable name cz was getting error with name "SubSkillID" -> Also changed in Question_Sub_Skill_Key
     private Sub_Skills subSkills;

@@ -65,6 +65,7 @@ public class Student_Details_Service implements IStudent_Details_Service {
     }
 
     @Override
+    @Transactional
     public Student_Details_DTO updateStudentDetails(Integer studentID, Student_Details_DTO updatedStudentDetailsDTO) {
         Optional<Student_Details> existingStudentDetailsOptional = studentDetailsRepo.findById(studentID);
 
@@ -75,6 +76,7 @@ public class Student_Details_Service implements IStudent_Details_Service {
             existingStudentDetails.setExpectedGraduation(updatedStudentDetailsDTO.getExpectedGraduation());
             existingStudentDetails.setUserDetails(updatedStudentDetailsDTO.getUserDetails());
             existingStudentDetails.setDomain(updatedStudentDetailsDTO.getDomain());
+            existingStudentDetails.setResume(updatedStudentDetailsDTO.getResume());
 
             Student_Details updatedStudentDetails = studentDetailsRepo.save(existingStudentDetails);
             return mapper.map(updatedStudentDetails, Student_Details_DTO.class);
