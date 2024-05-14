@@ -60,10 +60,12 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
             if (allTestsPassed) {
                 // All tests are passed
                 Optional<Student_Skills> studentSkills = studentSkillsRepo.findById(new Student_Skills_Key(attemptedTest.getStudentSkillLevel().getStudentDetails().getStudentID(), attemptedTest.getStudentSkillLevel().getSkills().getSkillID()));
-
-                studentSkills.get().setLevelID(skillLevelRepo.findById(studentSkills.get().getLevelID().getLevelID() + 1).get());
-            } else {
-                // Not all tests are passed
+                if(studentSkills.get().getLevelID() == null){
+                    studentSkills.get().setLevelID(skillLevelRepo.findById(1).get());
+                }
+                else{
+                    studentSkills.get().setLevelID(skillLevelRepo.findById(studentSkills.get().getLevelID().getLevelID() + 1).get());
+                }
             }
         }
         if (attemptedTest.getNoOfAttempts() == null) {
