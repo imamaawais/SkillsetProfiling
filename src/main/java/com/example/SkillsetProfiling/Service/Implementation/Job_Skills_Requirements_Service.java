@@ -7,6 +7,7 @@ import com.example.SkillsetProfiling.Exception.JobSkillsRequirementsNotFoundExce
 import com.example.SkillsetProfiling.Key.Job_Skills_Requirements_Key;
 import com.example.SkillsetProfiling.Repository.Job_Skills_Requirements_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IJob_Skills_Requirements_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,7 @@ public class Job_Skills_Requirements_Service implements IJob_Skills_Requirements
         }
     }
 
+    @Transactional
     @Override
     public List<Job_Skills_Requirements_DTO> getJobSkillsRequirementsByJobID(Integer jobID) {
         List<Job_Skills_Requirements> jobSkillsRequirements = jobSkillsRequirementsRepo.getJobSkillsRequirementsByJobID(jobID);
