@@ -5,6 +5,8 @@ import com.example.SkillsetProfiling.Entity.Student_Skills;
 import com.example.SkillsetProfiling.Exception.DuplicateStudentSkillsException;
 import com.example.SkillsetProfiling.Exception.StudentSkillsNotFoundException;
 import com.example.SkillsetProfiling.Key.Student_Skills_Key;
+import com.example.SkillsetProfiling.Repository.Assessment_Repo;
+import com.example.SkillsetProfiling.Repository.Student_Skill_Level_Repo;
 import com.example.SkillsetProfiling.Repository.Student_Skills_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IStudent_Skills_Service;
 import jakarta.transaction.Transactional;
@@ -20,6 +22,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class Student_Skills_Service implements IStudent_Skills_Service {
     private final Student_Skills_Repo studentSkillsRepo;
+    private final Student_Skill_Level_Repo studentSkillLevelRepo;
+    private final Assessment_Repo assessmentRepo;
     private final ModelMapper mapper;
 
     @Override
@@ -113,12 +117,15 @@ public class Student_Skills_Service implements IStudent_Skills_Service {
         }
     }
 
+    @Transactional
     @Override
     public boolean deleteStudentSkills(Student_Skills_Key key) {
         Optional<Student_Skills> studentSkillsOptional = studentSkillsRepo.findById(key);
 
         if (studentSkillsOptional.isPresent()) {
             studentSkillsRepo.deleteById(key);
+            studentSkillLevelRepo.deleteByStudentSkillLevel(key.getStudentID(), key.getSkillID());
+            assessmentRepo.deleteByStudentSkillLevel(key.getStudentID(), key.getSkillID());
             return true;
         } else {
             throw new StudentSkillsNotFoundException("Student skills not found with ID: " + key);

@@ -17,6 +17,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -51,9 +52,15 @@ public class Test_Attempt_History_Service implements ITest_Attempt_History_Servi
 
             boolean allTestsPassed = true;
             for (Test test : allTests) {
-                if (!test.getIsPassed()) {
-                    allTestsPassed = false;
-                    break;
+                if(!Objects.equals(test.getTestID(), attemptedTest.getTestID())){
+                    if (test.getIsPassed() == null) {
+                        allTestsPassed = false;
+                        break;
+                    }
+                    if (!test.getIsPassed()) {
+                        allTestsPassed = false;
+                        break;
+                    }
                 }
             }
 
