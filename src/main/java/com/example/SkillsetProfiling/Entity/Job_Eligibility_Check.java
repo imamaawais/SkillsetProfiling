@@ -37,7 +37,9 @@ public class Job_Eligibility_Check {
     @PrePersist
     protected void onCreate() {
         timestampChecked = new Timestamp(System.currentTimeMillis());
-//        timestampApplied = new Timestamp(System.currentTimeMillis());
+        if(applied) {
+            timestampApplied = new Timestamp(System.currentTimeMillis());
+        }
     }
 
 //    @PreUpdate

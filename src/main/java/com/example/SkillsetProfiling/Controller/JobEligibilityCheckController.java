@@ -39,6 +39,17 @@ public class JobEligibilityCheckController {
         return new ResponseEntity<>(userList, HttpStatus.OK);
     }
 
+    @GetMapping("/getFromJobId/{jobPostingID}")
+    public ResponseEntity<List<Job_Eligibility_Check_DTO>> getJobEligibilityChecksByJobID(@PathVariable Integer jobPostingID) {
+        List<Job_Eligibility_Check_DTO> userList = service.getJobEligibilityChecksByJobID(jobPostingID);
+
+        if (userList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+
+        return new ResponseEntity<>(userList, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{jobPostingID}/{studentID}")
     public ResponseEntity<Job_Eligibility_Check_DTO> getJobEligibilityCheckByID(@PathVariable Integer jobPostingID, @PathVariable Integer studentID) {
         Job_Eligibility_Check_Key jobEligibilityCheckKey = new Job_Eligibility_Check_Key(jobPostingID, studentID);

@@ -59,6 +59,15 @@ public class Reports_Service implements IReports_Service {
     }
 
     @Override
+    @Transactional
+    public List<Reports_DTO> getAllNotPendingReports() {
+        List<Reports> reports = reportsRepo.getAllNotPendingCases();
+        return reports.stream()
+                .map(report -> mapper.map(report, Reports_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Override
     public Reports_DTO updateReport(Integer reportId, Reports_DTO updatedReportsDTO) throws ReportsNotFoundException {
         Optional<Reports> reportOptional = reportsRepo.findById(reportId);
         if (reportOptional.isPresent()) {

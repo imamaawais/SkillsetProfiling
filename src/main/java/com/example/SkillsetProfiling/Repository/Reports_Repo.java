@@ -10,4 +10,6 @@ import java.util.Optional;
 public interface Reports_Repo extends JpaRepository<Reports, Integer> {
     @Query("SELECT r FROM Reports r WHERE r.reportStatus = 'Pending'")
     List<Reports> getAllPendingCases();
+    @Query("SELECT r FROM Reports r WHERE r.reportStatus != 'Pending'")
+    List<Reports> getAllNotPendingCases();
 }

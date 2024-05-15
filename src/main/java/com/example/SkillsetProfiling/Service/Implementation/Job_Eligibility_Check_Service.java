@@ -8,6 +8,7 @@ import com.example.SkillsetProfiling.Exception.QualificationNotFoundException;
 import com.example.SkillsetProfiling.Key.Job_Eligibility_Check_Key;
 import com.example.SkillsetProfiling.Repository.Job_Eligibility_Check_Repo;
 import com.example.SkillsetProfiling.Service.Interface.IJob_Eligibility_Check_Service;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -54,6 +55,15 @@ public class Job_Eligibility_Check_Service implements IJob_Eligibility_Check_Ser
     @Override
     public List<Job_Eligibility_Check_DTO> getAllJobEligibilityChecks() {
         List<Job_Eligibility_Check> jobEligibilityChecks = jobEligibilityChecksRepo.findAll();
+        return jobEligibilityChecks.stream()
+                .map(jobEligibilityCheck -> mapper.map(jobEligibilityCheck, Job_Eligibility_Check_DTO.class))
+                .collect(Collectors.toList());
+    }
+
+    @Transactional
+    @Override
+    public List<Job_Eligibility_Check_DTO> getJobEligibilityChecksByJobID(Integer jobID) {
+        List<Job_Eligibility_Check> jobEligibilityChecks = jobEligibilityChecksRepo.getJobEligibilityChecksByJobID(jobID);
         return jobEligibilityChecks.stream()
                 .map(jobEligibilityCheck -> mapper.map(jobEligibilityCheck, Job_Eligibility_Check_DTO.class))
                 .collect(Collectors.toList());

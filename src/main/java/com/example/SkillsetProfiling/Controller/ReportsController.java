@@ -46,6 +46,15 @@ public class ReportsController {
         return new ResponseEntity<>(reports, HttpStatus.OK);
     }
 
+    @GetMapping("/getAllNotPending")
+    public ResponseEntity<List<Reports_DTO>> getAllNotPendingReports() {
+        List<Reports_DTO> reports = service.getAllNotPendingReports();
+        if (reports.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(reports, HttpStatus.OK);
+    }
+
     @GetMapping("/getFromId/{ReportID}")
     public ResponseEntity<Reports_DTO> getReportById(@PathVariable int ReportID) {
         try {
